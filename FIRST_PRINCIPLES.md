@@ -243,6 +243,11 @@ The architecture should get *cleaner* over time as LLMs improve. Workarounds get
 ### Speak in business outcomes, not engineering activity 🤖
 "We closed the loop on the lead-routing flow" beats "We deployed an edge function with realtime subscriptions." Especially in summaries to the user.
 
+### Fire on decision shape, not decision size 🤖
+The trigger for invoking Harness (and the wider review stack — `office-hours`, `ceo-plan-review`, `engineering-review`, `investigate`) is *whether the work contains a real choice point*, not how big the work is. Small decisions routinely hide the highest-leverage option surfaces — especially around format, friction, ICP fit, and false binaries. A 30-minute task with two viable approaches needs the framework just as much as a 3-day build; the analysis cost is 3–5 minutes either way and the upside is surfacing options the operator hadn't seen.
+
+**Practical rule for any agent operating with Harness:** when you see decision-shape work (A vs B, include vs skip, build vs buy, do-it-the-obvious-way vs is-there-a-better-way), surface "harness this?" *before* executing — even if the user hasn't explicitly invoked the skill. One-line prompts, not gatekeeping. Skip only when the work is pure execution of an already-approved plan: typo fixes, applying a pre-approved migration, deploying a reviewed change. Origin: the 2026-05-12 DOCX-upload retro, where a "trivial" 30-minute decision surfaced a materially better third option (HTML extraction preserving tables vs raw-text dropping them) that would have been missed on size-based filtering.
+
 *(Note: previous heuristics "Graceful Degradation" and "Workaround-First Mindset" were consolidated into the gap-filler caveat on Principle #10.)*
 
 ---
