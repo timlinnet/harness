@@ -2,6 +2,18 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v6 — 2026-05-12
+
+Skill-side directive added.
+
+**New section in `skills/harness/SKILL.md`**: "Distribution sync (keep public harness aligned with local skill changes)". Codifies that user-level skill files in `~/.claude/skills/` are working copies; the same skills published here are distributable copies adopters get via `./install.sh`. Without explicit sync, working copies drift from distributable copies as Tim cherry-picks from gstack or refines prompts locally.
+
+Directive: when you make a substantive change to a user-level skill (cherry-pick, HARNESS INTEGRATION marker, prompt refinement), also copy to `harness/skills/{skill}/` and ship a CHANGELOG entry. Skip for typos / personal-only customizations.
+
+**Self-applying**: this v6 release itself follows the directive — the change was made to `~/.claude/skills/harness/SKILL.md` first, then synced to `skills/harness/SKILL.md` here, then this CHANGELOG entry written. First instance of the directive in action.
+
+Catalyst: Tim spotted (2026-05-12) that the divergence risk between working copies and distributable copies was real and growing; needed an explicit directive in the canonical to prevent silent drift.
+
 ## v5 — 2026-05-12
 
 Public release + distribution architecture.
