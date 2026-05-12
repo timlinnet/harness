@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Pre-push hook: run security scan on outgoing commits before they leave.
+#
+# Activate on a clone with:
+#   git config core.hooksPath .githooks
+#
+# (install.sh sets this automatically.)
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+SCAN="$REPO_ROOT/scripts/security-scan.sh"
+
+if [ ! -x "$SCAN" ]; then
+  echo "  ⚠️   $SCAN not executable — skipping security scan."
+  exit 0
+fi
+
+remote="$1"
+
+# stdin format: <local-ref> <local-sha> <remote-ref> <remote-sha>
+while read local_ref local_sha remote_ref remote_sha; do
+  # Branch deletion — nothing to scan
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    continue
+  fi
+
+  # New branch — use the remote default as base
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    base="$(git symbolic-ref --short refs/remotes/$remote/HEAD 2>/dev/null || echo "$remote/main")"
+  else
+    base="$remote_sha"
+  fi
+
+  echo ""
+  echo "  🔍  Security scan: $base..$local_sha"
+  "$SCAN" "$base" "$local_sha" || exit 1
+done
+
+exit 0
