@@ -8,9 +8,15 @@ cd ~/Documents/GitHub/harness
 ./install.sh
 ```
 
-That gets you:
-- `~/.claude/skills/harness/` — the portable trigger skill (auto-fires on architectural/product/business decisions, loads Harness principles)
-- `~/.claude/skills/{ceo-plan-review, engineering-review, office-hours, autoplan}/` — Tim's lean adaptations of Garry Tan's gstack skills with HARNESS INTEGRATION markers wired in (Garry's MIT-licensed work; this is the redistributable lean version)
+That's everything. Five skills install into your Claude Code environment:
+
+- **`harness`** — portable trigger skill (auto-fires on architectural / product / business / agent / team decisions; loads first principles from `FIRST_PRINCIPLES.md` via progressive disclosure)
+- **`ceo-plan-review`** — challenge premises, find the 10x version, ICP pressure test before any planning
+- **`engineering-review`** — pressure-test architecture, map failure modes, generate Mermaid diagrams, produce a buildable technical spec
+- **`office-hours`** — YC-style product diagnostic; outputs a design doc, never code
+- **`autoplan`** — auto-runs CEO + Eng review with auto-decisions; surfaces taste calls at a single approval gate
+
+No additional dependencies. No second install. Run `./install.sh`, you're done.
 
 ## Next-step: point your project at Harness
 
@@ -51,11 +57,11 @@ Add to `~/.claude/settings.json` to auto-surface your open PRs + OPEN_LOOPS mark
 }
 ```
 
-Replace `YOUR_ORG/repo1` etc with your actual repos. The OPEN_LOOPS scanner finds any `OPEN_LOOPS.md` files in your `~/Documents/GitHub` directory and shows entries marked `← YOU ARE HERE`.
+Replace `YOUR_ORG/repo1` etc. with your actual repos. The OPEN_LOOPS scanner finds any `OPEN_LOOPS.md` files in your `~/Documents/GitHub` directory and shows entries marked `← YOU ARE HERE`.
 
 ## Optional: set up your own private overlay
 
-Public Harness gives you universal framework + adapted gstack skills. **Your specific worked decisions, project layers, business context** belong in a private overlay you maintain alongside.
+Public Harness gives you the universal framework + agent role skills. Your **specific worked decisions, project layers, business context** belong in a private overlay you maintain alongside.
 
 ```bash
 git init ~/Documents/GitHub/your-harness-private
@@ -63,34 +69,31 @@ cd ~/Documents/GitHub/your-harness-private
 mkdir -p decisions
 ```
 
-When you make a non-trivial architectural decision, write it as a numbered file (`0001-{topic}.md`) using the Decision Template from `FIRST_PRINCIPLES.md` → "The Questioning Framework" section.
+When you make a non-trivial architectural / product / business decision, write it as a numbered file (`0001-{topic}.md`) using the Decision Template from `FIRST_PRINCIPLES.md` → "The Questioning Framework" section.
 
 The pattern: principles are universal (public). Decisions are yours (private). Both compose at runtime.
 
-See `decisions/README.md` in this repo for examples of decision shapes.
+See `decisions/README.md` for the template + when to write a decision vs. just making the call.
 
 ## Updating Harness
 
 ```bash
 cd ~/Documents/GitHub/harness
 git pull
-./install.sh  # re-runs; will prompt on existing skills
+./install.sh  # re-runs; prompts on existing skills before overwriting
 ```
 
-Watch the `CHANGELOG.md` for what changed. Harness updates are intended to be additive — new principles, new strategic positions, refinements — rarely breaking.
+Watch the `CHANGELOG.md` for what changed. Harness updates are intended to be additive — new principles, sharpened positions, refinements — rarely breaking.
 
 ## Troubleshooting
 
-- **`gh` not found**: install GitHub CLI (`brew install gh` on Mac) for the SessionStart hook PR-listing to work.
-- **Skills not firing**: check `~/.claude/skills/` contents and Claude Code's skill picker. Skills auto-fire based on description matching; the `harness` skill triggers on decision language ("should we build X", "let's add Y", "A or B?").
-- **Conflicts with existing skills**: `install.sh` prompts on overwrite. If you have your own `ceo-plan-review` etc, decide per-skill whether to keep yours or adopt the Harness-adapted version.
+- **`gh` not found**: install GitHub CLI (`brew install gh` on Mac) — only needed for the SessionStart hook's PR-listing.
+- **Skills not firing**: check `~/.claude/skills/` contents and Claude Code's skill picker. The `harness` skill triggers on decision language ("should we build X", "let's add Y", "A or B?").
+- **Conflicts with existing skills**: `install.sh` prompts on overwrite. If you have your own `ceo-plan-review` etc., decide per-skill whether to keep yours or adopt the Harness-adapted version.
 
 ## Background
 
-- **Public Harness** — this repo. Universal first-principles framework, adapted gstack skills, install tooling.
-- **Private overlay** — yours to maintain (or use Tim's template at `timlinnet/harness-private` if you have access).
-- **gstack** — [Garry Tan's open-source skill suite](https://github.com/garrytan/gstack) (MIT licensed). The full unmodified gstack is more elaborate than this lean adaptation; you may want it for reference or to pull future updates.
-- **FreedomOS** — Tim's product (the canonical for live business state). Out of scope for this install.
+The agent role skills are adapted from [Garry Tan's gstack](https://github.com/garrytan/gstack) (MIT licensed). Tim's adaptations are leaner — they trade gstack-runtime scaffolding for portability so they run in any Claude Code environment without additional dependencies. Attribution to gstack is preserved at the top of each adapted SKILL.md file.
 
 ---
 

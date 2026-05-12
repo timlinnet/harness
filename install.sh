@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Harness installer — sets up your local Claude Code environment to use Harness
-# as the first-principles substrate alongside Garry Tan's gstack.
+# Harness installer — sets up your Claude Code environment with the
+# Harness first-principles substrate + agent role skills.
 #
 # Usage:  ./install.sh
 # Run from the cloned harness repo root.
@@ -9,7 +9,6 @@ set -e
 
 HARNESS_REPO="$(cd "$(dirname "$0")" && pwd)"
 CLAUDE_SKILLS="$HOME/.claude/skills"
-SETTINGS_JSON="$HOME/.claude/settings.json"
 
 echo ""
 echo "  Harness installer"
@@ -27,39 +26,22 @@ fi
 
 mkdir -p "$CLAUDE_SKILLS"
 
-# 2. Install the portable harness skill (the auto-trigger for decisions)
-echo "  → Installing harness skill (auto-fires on architectural / product / business decisions)"
-mkdir -p "$CLAUDE_SKILLS/harness"
-if [ -f "$CLAUDE_SKILLS/harness/SKILL.md" ]; then
-  echo "    ⚠️  $CLAUDE_SKILLS/harness/SKILL.md already exists."
-  read -p "       Overwrite? (y/n) " yn
-  case "$yn" in
-    [Yy]*) cp "$HARNESS_REPO/skills/harness/SKILL.md" "$CLAUDE_SKILLS/harness/SKILL.md"; echo "       ✅  Updated";;
-    *) echo "       ⏭️  Skipped";;
-  esac
-else
-  cp "$HARNESS_REPO/skills/harness/SKILL.md" "$CLAUDE_SKILLS/harness/SKILL.md"
-  echo "    ✅  Installed"
-fi
-
-# 3. Install the four adapted gstack skills (lean versions with HARNESS INTEGRATION markers)
-echo ""
-echo "  → Installing adapted gstack skills (Garry Tan's gstack, MIT licensed,"
-echo "    lean adaptations with HARNESS INTEGRATION markers wired in)"
-
-for skill in ceo-plan-review engineering-review office-hours autoplan; do
-  src="$HARNESS_REPO/skills/gstack-adapted/$skill/SKILL.md"
-  dst_dir="$CLAUDE_SKILLS/$skill"
-  dst="$dst_dir/SKILL.md"
+# Helper: install a single skill with confirmation if it already exists
+install_skill() {
+  local skill_name="$1"
+  local description="$2"
+  local src="$HARNESS_REPO/skills/$skill_name/SKILL.md"
+  local dst_dir="$CLAUDE_SKILLS/$skill_name"
+  local dst="$dst_dir/SKILL.md"
 
   if [ ! -f "$src" ]; then
     echo "    ⚠️  Source missing: $src — skipped"
-    continue
+    return
   fi
 
   if [ -f "$dst" ]; then
-    echo "    ⚠️  $skill already exists at $dst"
-    read -p "       Overwrite with Harness-adapted version? (y/n) " yn
+    echo "    ⚠️  $skill_name already exists at $dst"
+    read -p "       Overwrite? (y/n) " yn
     case "$yn" in
       [Yy]*) cp "$src" "$dst"; echo "       ✅  Updated";;
       *) echo "       ⏭️  Skipped";;
@@ -67,9 +49,21 @@ for skill in ceo-plan-review engineering-review office-hours autoplan; do
   else
     mkdir -p "$dst_dir"
     cp "$src" "$dst"
-    echo "    ✅  $skill installed"
+    echo "    ✅  $skill_name installed — $description"
   fi
-done
+}
+
+# 2. Install the portable harness skill (the principles substrate)
+echo "  → Installing harness skill"
+install_skill "harness" "auto-fires on architectural / product / business decisions; loads first principles"
+
+# 3. Install the four agent role skills
+echo ""
+echo "  → Installing agent role skills"
+install_skill "ceo-plan-review" "challenge premises, find the 10x version, ICP pressure test"
+install_skill "engineering-review" "pressure-test architecture, map failure modes, generate diagrams"
+install_skill "office-hours" "YC-style product diagnostic — name the actual human, smallest wedge"
+install_skill "autoplan" "auto-run CEO + Eng review with auto-decisions; surface taste calls at the gate"
 
 echo ""
 echo "  ✅  Harness installed."
@@ -80,19 +74,12 @@ echo "  1.  Point your project's CLAUDE.md or .agent/AGENT.md at the canonical:"
 echo "      \"~/Documents/GitHub/harness/FIRST_PRINCIPLES.md\""
 echo "      (Or wherever you cloned this repo.)"
 echo ""
-echo "  2.  (Optional) Add a SessionStart hook that surfaces open PRs + OPEN_LOOPS"
+echo "  2.  (Optional) Add a SessionStart hook to surface your open PRs + OPEN_LOOPS"
 echo "      markers at every session start — see INSTALL.md for the snippet."
 echo ""
-echo "  3.  (Optional) Create your own private overlay for your worked decisions:"
-echo "      git init ~/your-harness-private"
-echo "      Use the Decision Template from FIRST_PRINCIPLES.md (Questioning Framework section)."
-echo "      See decisions/README.md for the public/private architecture pattern."
-echo ""
-echo "  4.  Start using it: invoke any \"should I build X?\" decision and the harness"
-echo "      skill auto-fires. The gstack-adapted skills load Harness as their"
-echo "      principles substrate automatically."
+echo "  3.  Start using it. Invoke any \"should we build X?\" / \"A or B?\" decision and"
+echo "      the harness skill auto-fires. The agent role skills load Harness principles"
+echo "      as their substrate automatically."
 echo ""
 echo "  Reference: github.com/timlinnet/harness"
-echo "  License:   See LICENSE (TBD — likely MIT for gstack-adapted code,"
-echo "             CC-BY-SA for principles content)"
 echo ""
