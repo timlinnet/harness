@@ -47,6 +47,16 @@ If a fact is only useful to one person or one business, it goes in their private
 
 Semantic-ish, monotonically-increasing single integer (`v1`, `v2`, …). CHANGELOG entries are the source of truth. Bump on structural change, not every typo.
 
+## Before pushing — enable the pre-push security scan
+
+On a fresh clone, activate the hook once:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+It scans the outgoing diff for secrets, internal infra refs, private names, and money figures (`scripts/security-scan.sh`). Push is blocked with line-by-line hits if anything trips. Override (rare): `HARNESS_SECURITY_SKIP=1 git push`. Edit the `PATTERNS` array in the scanner to extend coverage as new categories appear.
+
 ## Tone
 
 Terse. Direct. No filler. The framework rewards clarity — the docs should model it.
