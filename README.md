@@ -90,6 +90,10 @@ v5 (2026-05-12) — public release. The framework is itself a feedback machine; 
 
 Tim Linnet — [timlinnet.com](https://timlinnet.com)
 
+## Related
+
+**[FreedomOS](https://myfreedomcompany.com)** — Tim's SaaS for faith-driven founders running portfolios of side hustles. Productizes the **Context Shell Pattern** (see `FIRST_PRINCIPLES.md` → Strategic Positions): user's business context + Harness substrate + agent execution loop in one place. Harness is the framework Tim thinks with; FreedomOS is where the thinking ships at scale.
+
 ## Built on
 
 The four agent role skills (`ceo-plan-review`, `engineering-review`, `office-hours`, `autoplan`) are adaptations of skills from [Garry Tan's `gstack`](https://github.com/garrytan/gstack) (MIT). Source attribution is preserved at the top of each adapted SKILL.md file. The lean Harness versions trade gstack-runtime scaffolding for portability — they run in any Claude Code environment without additional dependencies.
