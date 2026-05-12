@@ -2,6 +2,18 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v5 — 2026-05-12
+
+Public release + distribution architecture.
+
+**Repo restructured** for public adoption: `skills/harness/` (portable trigger skill) and `skills/gstack-adapted/` (4 lean adaptations of Garry Tan's gstack with HARNESS INTEGRATION markers) added; `install.sh` for one-command setup; detailed `INSTALL.md` for SessionStart hook + private-overlay pattern.
+
+**Architecture decision**: public base + private overlay. Tim's specific worked decisions (0001–0005) moved to a private companion repo (`timlinnet/harness-private`). Public harness now holds universal framework + adapted skills + sanitized teaching decisions; private overlay holds Tim's specific calls and business context. Composition at runtime via the portable `harness` skill.
+
+**Catalyst**: a FreedomOS customer (Kendall, vibe coder using Lovable) asked whether Tim's multi-role agent setup still works. Answering required a real public artifact — the customer pull-signal turned an internal todo into a customer-service moment + thought-leadership artifact simultaneously. *(Marketing is part of the product, Strategic Position #13, manifesting.)*
+
+**For external adopters**: clone, run `./install.sh`, point your project's CLAUDE.md at `FIRST_PRINCIPLES.md`. Optional: set up your own private overlay for your worked decisions. See INSTALL.md.
+
 ## v4 — 2026-05-12
 
 Trigger refinement, surfaced from real use.

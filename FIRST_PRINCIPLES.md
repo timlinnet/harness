@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (Tim, Lonnie, agent-CEO, future team) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v3 (2026-05-11). Lives in this repo as the canonical source. The framework is itself a feedback machine — refinements expected as the world signals.
+> **Status**: v5 (2026-05-12) — public release. The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 
