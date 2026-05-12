@@ -100,4 +100,4 @@ The four agent role skills (`ceo-plan-review`, `engineering-review`, `office-hou
 
 ## License
 
-**[MIT](LICENSE)** — free to use, modify, redistribute, commercially or otherwise. Attribution to `github.com/timlinnet/harness` not required by license but appreciated when adapting the framework. Same license as upstream gstack ([Garry Tan, MIT](https://github.com/garrytan/gstack)) — keeps everything compatible.
+**[MIT](LICENSE)** — free to use, modify, redistribute, commercially or otherwise. Attribution to `github.com/timlinnet/harness` not required by license but appreciated when adapting the framework.
