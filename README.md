@@ -100,4 +100,4 @@ The four agent role skills (`ceo-plan-review`, `engineering-review`, `office-hou
 
 ## License
 
-To be finalized. Likely **MIT** for `skills/` (required by MIT propagation), and **CC-BY-SA** for `FIRST_PRINCIPLES.md` and other framework content (attribution + share-alike). Until LICENSE finalized: content is shared in good faith. Attribution to `github.com/timlinnet/harness` requested.
+**[MIT](LICENSE)** — free to use, modify, redistribute, commercially or otherwise. Attribution to `github.com/timlinnet/harness` not required by license but appreciated when adapting the framework. Same license as upstream gstack ([Garry Tan, MIT](https://github.com/garrytan/gstack)) — keeps everything compatible.
