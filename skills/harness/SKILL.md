@@ -93,11 +93,11 @@ When a decision applied via this skill **completes a chain item** in an active l
 - Move the `← YOU ARE HERE` marker to the next pending step
 - Update `Last touched:` with today's date
 - If the completion advances the Compound Test score, update that
-- Sign the edit `<!-- claude-tim YYYY-MM-DD -->` (or claude-lonnie if working as Lonnie)
+- Sign the edit `<!-- claude-{operator} YYYY-MM-DD -->` (the operator's first name lowercased — matches git identity routing)
 
 This keeps OPEN_LOOPS.md as the live source of truth instead of decaying. The SessionStart hook surfaces YOU ARE HERE markers; this directive keeps those markers accurate.
 
-If a decision opens a *new* loop (a non-trivial chain of work), propose adding a new entry to OPEN_LOOPS.md before exiting. Don't auto-create — surface the candidate so Tim/Lonnie agrees it's a real loop.
+If a decision opens a *new* loop (a non-trivial chain of work), propose adding a new entry to OPEN_LOOPS.md before exiting. Don't auto-create — surface the candidate so the operator agrees it's a real loop.
 
 ## Distribution sync (keep public harness aligned with local skill changes)
 

@@ -2,7 +2,7 @@
 
 > A framework for builders, founders, and pioneers making decisions in an era where intelligence is cheap, capability is expanding faster than we can map, and wisdom remains scarce. Lives at the wiring layer — between user context (the moat) and AI primitives (LLMs). This doc is the bridge.
 
-> **Audiences**: Agents read 🤖 sections at runtime. Builders (Tim, Lonnie, agent-CEO, future team) read everything. Sections marked 🏗️ are builder-only context.
+> **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
 > **Status**: v5 (2026-05-12) — public release. The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
@@ -105,7 +105,7 @@ Context drifts faster than code can be updated. A hardcoded value embedded in a 
 Principle #1 applied to tools, not just data. Agents should be able to discover *what's available* on demand, not have it all loaded at start. **Therefore: agents find and equip their own tools at need.** Search for capabilities, load schemas on demand, request access scoped to the task. The ToolSearch pattern (deferred-tool registry with schema-on-demand) is a working example.
 
 ### 14. Complementary strengths > monolithic capability 🤖
-Different intelligence types — humans, LLMs, specialized tools — have different strengths and structural weaknesses. A single agent, human, or tool cannot dominate every task; combinations outperform monoliths in finite cycles. **Therefore: compose complementary strengths.** Tim hires Lonnie for the strengths Tim lacks (loop closure, marketing execution). The harness combines human judgment with LLM breadth. We use multiple LLMs because each is strong in different places. Don't fight a strength — partner with it; don't pretend to cover a weakness — pair around it. This principle gives the deepest case for both human teams and model diversification.
+Different intelligence types — humans, LLMs, specialized tools — have different strengths and structural weaknesses. A single agent, human, or tool cannot dominate every task; combinations outperform monoliths in finite cycles. **Therefore: compose complementary strengths.** A founder hires a complementary operator for the strengths they lack (e.g., loop closure, marketing execution). The harness combines human judgment with LLM breadth. We use multiple LLMs because each is strong in different places. Don't fight a strength — partner with it; don't pretend to cover a weakness — pair around it. This principle gives the deepest case for both human teams and model diversification.
 
 ### 15. Intelligence is abundant; wisdom is scarce 🤖
 LLMs have **intelligence** — knowledge, recall, pattern-matching, speed, breadth. LLMs do not have **wisdom** — lived experience, values, embodied judgment, moral compass, knowing what *matters* for *this* user in *this* moment. The gap is structural: training data captures what was written, not what was *learned through living*. **Therefore: design systems where wisdom directs and intelligence executes.** The wise human is the irreducible input; the LLM is the leverage. This is the bedrock under "User = Director" — founder agency matters because wisdom is what you bring that AI cannot. It is also why we don't let agents make consequential decisions alone, and why faith-aligned framing has structural backing, not just values backing.
@@ -182,7 +182,7 @@ Deep platform integration, not thin API wrapper. Follows from Principle #10 — 
 ### Match closure metric to goal 🤖
 "Done" means different things in different operating modes. For internal compounding work (FreedomOS, agent infrastructure): a capability is "done" when it completes a full business-value cycle — closing loops prevents 90%-done work from accumulating as technical debt. For customer-facing product launches (Conduit, Linnet Biopharm): shipping to customers is the loop; over-closing internally becomes its own distraction from external value delivery. The position is: *name the operating mode and choose the closure metric that fits.*
 
-The underlying principle (Loop Closure as a universal) was too strong — for Tim personally it's a corrective against feature-creep avoidance of marketing, which is exactly why Lonnie was hired. The honest framing is: closure is contextual.
+The underlying principle (Loop Closure as a universal) was too strong — for builder-types it's a corrective against feature-creep avoidance of marketing, which is exactly why pairing with a complementary operator helps. The honest framing is: closure is contextual.
 
 *Could be wrong if* a universal "done" metric is achievable (we haven't seen evidence); or if mode-switching becomes cover for never closing anything.
 
@@ -191,7 +191,7 @@ The underlying principle (Loop Closure as a universal) was too strong — for Ti
 ### Marketing is part of the product 🤖
 Distribution is not "what happens after we ship" — it is part of what we ship. A great product unshipped is worth zero; a great product shipped without marketing is worth almost zero. Bet that founders who treat marketing as core build durable companies; founders who treat it as separate build perfect, invisible ones.
 
-This is the strategic correction to a specific failure mode: Tim's loop-closure temptation to add features instead of shipping marketing. Lonnie was hired exactly because this position needed enforcement. Naming it here makes the bet legible across all decisions, not just Tim's personal sprint planning.
+This is the strategic correction to a specific failure mode: a builder's loop-closure temptation to add features instead of shipping marketing. A complementary operator may be hired exactly because this position needs enforcement. Naming it here makes the bet legible across all decisions, not just personal sprint planning.
 
 *Could be wrong if* the product is so unusually good it markets itself (rare in practice — even great products had marketing).
 
@@ -262,7 +262,7 @@ Implementation choices that follow from the above. Refactored constantly. Builde
 - **`.agent/` directory convention** — file layout tactic, project-scoped.
 - **Decision register pattern** — `architecture-alignment.md` tracks numbered architectural decisions with date, rationale, and status. Lives separately from this principles doc.
 - **Skill chain for architecture-shaped work**: `office-hours → ceo-plan-review → engineering-review → build → qa-testing → deploy`. The spec-writing apparatus (Principle #16). Safety net for changes affecting MCP schemas, agent execution pipelines, RLS, the Linnet core, and similar load-bearing surfaces.
-- **Identity routing by git email** — multi-operator file (Tim + Lonnie + future) uses `git config user.email` to load the right profile and FOCUS file.
+- **Identity routing by git email** — multi-operator file (founder + operators + future) uses `git config user.email` to load the right profile and FOCUS file.
 
 ---
 
@@ -331,6 +331,6 @@ This document is itself a feedback machine (Principle #8). It updates by the sam
 - **Heuristics** are tested against outcomes. If a heuristic produces bad decisions repeatedly, sharpen or remove it.
 - **Tactics** are refactored constantly without ceremony.
 
-**Auto-research input**: new candidate principles surface from Tim's FreedomOS Ideas tab, his reading (X.com, papers), and Lonnie's experience. A weekly scheduled review proposes additions or refinements; Tim approves before merge. (The mechanism for this loop is its own work item — see related skill design.)
+**Auto-research input**: new candidate principles surface from the operator's idea capture, their reading (X.com, papers), and team experience. A weekly scheduled review proposes additions or refinements; the framework owner approves before merge. (The mechanism for this loop is its own work item — see related skill design.)
 
 **The framework decides about itself**: where this document lives, when it triggers, who edits it, are all questions answered *by* this framework. The portability decision (this doc lives in a shared portable location, not project-scoped) is the first worked example.

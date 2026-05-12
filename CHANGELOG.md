@@ -32,9 +32,9 @@ Trigger refinement, surfaced from real use.
 
 **Added 1 heuristic**: *Fire on decision shape, not decision size.* Captures the lesson from the 2026-05-12 DOCX-upload retro — a 30-minute tactical task surfaced a materially better option (mammoth → HTML preserving tables) once Tim explicitly invoked Harness, that would have been missed on the prior size-based filter ("skip review for sub-1-hour fixes"). The corrected trigger is shape (real choice point yes/no), not size.
 
-**Behavioral implication for agents**: proactively surface "harness this?" when decision-shape work appears, even without explicit invocation — promoted to a framework default, not a per-user preference. Lonnie and any future operator benefit by default.
+**Behavioral implication for agents**: proactively surface "harness this?" when decision-shape work appears, even without explicit invocation — promoted to a framework default, not a per-user preference. Any operator on the team benefits by default.
 
-**Process note**: Tim spotted the gap that this content was sitting in Claude Code user-memory (where Lonnie wouldn't see it) and asked it be migrated to the canonical. Reinforces the rule that *guidance about how to use Harness* belongs in the Harness repo, while *user-specific preferences* belong in memory. This entry is the first instance of "active challenge produces a CHANGELOG entry" (the loop Harness's own "When Harness is not enough" section invites).
+**Process note**: this content was sitting in Claude Code user-memory (where teammates wouldn't see it) — migrating it to the canonical reinforces the rule that *guidance about how to use Harness* belongs in the Harness repo, while *user-specific preferences* belong in memory. First instance of "active challenge produces a CHANGELOG entry" — the loop Harness's own "When Harness is not enough" section invites.
 
 ## v3 — 2026-05-11
 
