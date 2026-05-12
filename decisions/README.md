@@ -25,3 +25,4 @@ Cross-cutting architectural decisions, numbered chronologically. Each decision u
 | # | Title | Date | Status |
 |---|---|---|---|
 | 0001 | [Portability of the canonical](0001-portability-of-the-canonical.md) | 2026-05-11 | Decided |
+| 0002 | [Gstack sync, May 2026](0002-gstack-sync-may-2026.md) | 2026-05-12 | Decided |
