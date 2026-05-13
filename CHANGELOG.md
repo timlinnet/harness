@@ -2,6 +2,20 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v7 — 2026-05-13
+
+Silent-mode discipline codified in `harness` and `office-hours` skills.
+
+**New section in `skills/harness/SKILL.md`**: "Silent mode is the default (read this first)". Three valid outcomes (silent terse / silent skipped / explicit invocation), two named failure modes ("Want me to run harness first?" forwarding the decision back, and silent skip from inattention), and a hard tripwire — 2+ constraints/forward-compat needs/anti-abuse requirements make the checklist mandatory. Auto mode is explicitly compatible: execute decisively on routine calls, but never override the product/architecture diagnostic.
+
+**Parallel section in `skills/office-hours/SKILL.md`**: same three-outcomes structure, adapted for the YC-style diagnostic ("name the user, the wedge, the one premise that might be wrong" as the terse surface). The prior "When This Triggers" section renamed to "When Full Mode triggers" — silent-checklist runs always; full-design-doc mode triggers on the original mandatory list.
+
+**Why this matters**: the prior phrasing had a soft default — agents would ask "want me to run harness first?" instead of running it silently and surfacing only what was substantive. That asks the user to make a decision they hired the framework to make. The new structure makes the silent checklist the default behavior, not an opt-in.
+
+Catalyst: real use surfaced the failure mode repeatedly — without explicit "silent default" language, agents would either ask permission to think (annoying friction) or skip the diagnostic entirely on multi-constraint asks (silent quality loss). Codifying the rule with named failure modes makes it self-enforcing.
+
+**For external adopters**: no install action required — `./install.sh` pulls the updated SKILL.md files on next run. Existing installs can `cp` the two files manually or re-run the installer.
+
 ## v6 — 2026-05-12
 
 Skill-side directive added.

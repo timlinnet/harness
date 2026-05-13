@@ -9,6 +9,23 @@ This skill fires **automatically** during any work that involves a meaningful ch
 
 > **Key mindset shift**: Don't wait to be invoked. If you're at an "A or B?" moment, apply the framework. If a prior decision is documented in the project or in `~/Documents/GitHub/harness/decisions/`, follow it unless explicit user agreement to change.
 
+## Silent mode is the default (read this first)
+
+**Run the framework as a silent mental checklist on every feature/decision-shaped request, before writing code or migrations. Surface only what's substantive.** Three valid outcomes:
+
+1. **Silent → terse surface** (default): run the questioning framework + architecture lenses internally; output 3-5 lines: framing + key insight + recommendation. Then proceed.
+2. **Silent → no surface needed**: when the framework produces nothing non-obvious (cosmetic fix, copy change, obviously-right refactor), proceed without mentioning it.
+3. **Explicit invocation by user** (`/harness`, "run harness", "pressure-test this"): output the full Decision Template below. Invocation is consent for depth.
+
+**Two failure modes, both bad:**
+
+- ❌ **"Want me to run harness first?"** — forwarding the decision back. The decision to run is yours; the user hired you to filter, not to ask permission to think.
+- ❌ **Silent skip from inattention** — reading a multi-requirement feature ask and jumping straight to code. If the request has 2+ constraints/forward-compat needs/anti-abuse requirements, the checklist is mandatory.
+
+**Auto mode is COMPATIBLE with silent mode.** Auto means execute decisively on routine calls; it does not override product/architecture diagnostics. Run silently, surface the takeaway, then act.
+
+Adopters may extend with project-specific calibration (escalation thresholds, custom phrasing) via CLAUDE.md or memory files; this canonical sets the framework default.
+
 ## What Harness is
 
 Harness is the canonical first-principles framework for designing systems in the AI age. It lives at `~/Documents/GitHub/harness/` (repo: `timlinnet/harness`). It is cross-project — used by FreedomOS, PCAI, Linnet Labs, and any future work.
