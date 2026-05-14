@@ -48,7 +48,30 @@ Four layers, each changing at a different rate:
 - Choosing where infrastructure lives (location decisions like the one that produced Harness itself)
 - Any work where you face a "should I do A or B?" choice — including non-engineering decisions (business, marketing, team)
 
-## Step 1: Load relevant principles (progressive disclosure)
+## Step 1: Bring the Postures (operative directives)
+
+Before loading principles or running the questioning framework, bring these five postures to the decision. They're not facts about the world — they're stances you carry into the moment of decision. Each is the *shape of thinking* you bring before you know which principle applies.
+
+Postures shape *what you reach for*; the five questions (Step 3) shape *what you choose*. They complement, they don't duplicate.
+
+**1. Decompose every bundle. Reason in atoms.**
+The world ships you composites — SaaS products, "the way it's done," inherited categories. The atom is what each component physically costs to build, run, and operate. Decompose before deciding. *(Operative version of Principle #6.)*
+
+**2. Doubt the inherited boundary.**
+"This is what a CRM is." "This is how marketing works." "This is the standard architecture." Inherited boundaries are conventions, not laws. Surface them, name them, test whether they bind.
+
+**3. Make the requirement less dumb — especially your own.**
+Most "requirements" carry someone's stale assumption. Including the ones you wrote yesterday. Question every requirement before accepting it. The smart-person-said-it bias is real.
+
+**4. Start from atoms and dollars, not analogy.**
+"It's like X but cheaper" is downstream reasoning. Upstream: what does it physically cost in time, energy, capability, dollars? Analogies hide assumptions; atoms expose them.
+
+**5. The default move is sharpen or delete, not add.**
+When you reach for "add a section / add a flag / add a step" — first try "sharpen what exists" or "delete the friction entirely." Adding is the obvious move; subtraction is usually correct. (When structure is wrong, replacement is right — but that's still subtractive: rewrite, don't accrete.)
+
+These fire FIRST. Loading principles (Step 2) and the questioning framework (Step 3) come after.
+
+## Step 2: Load relevant principles (progressive disclosure)
 
 Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load all 18 principles every time. Per Principle #1 (Context is finite and ordered) and #13 (Self-discovery is progressive disclosure for capabilities): retrieve only the layers and entries relevant to the current decision.
 
@@ -57,7 +80,7 @@ Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load a
 - Decisions about product / users / market → Strategic Positions + Heuristics
 - Decisions about implementation details → Tactics + the underlying principle each tactic descends from
 
-## Step 2: Apply the Questioning Framework
+## Step 3: Apply the Questioning Framework
 
 **The Five Questions** (delete is the strongest lever):
 
@@ -80,11 +103,11 @@ Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load a
 - Is shipping/distribution part of this plan, not after?
 - Is the structure right — or is a rewrite cheaper than incremental refactor? *(Watch for sunk-cost dressed up as Kaizen.)*
 
-## Step 3: Check project context
+## Step 4: Check project context
 
 Harness is cross-project. After applying it, check the project-level `.agent/AGENT.md` or `CLAUDE.md` for project-specific overrides (e.g., FreedomOS Strategic Posture, PCAI specifics, ICPs, business context). Project context **refines** Harness; it does not override principles.
 
-## Step 4: Output using the Decision Template
+## Step 5: Output using the Decision Template
 
 ```
 ## Options

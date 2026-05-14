@@ -2,6 +2,28 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v9 — 2026-05-13
+
+**Decision Postures added to the `harness` skill** as a new Step 1, firing before principle-loading and the questioning framework.
+
+**What v9 does**: adds 5 operative postures to `skills/harness/SKILL.md`:
+
+1. Decompose every bundle. Reason in atoms.
+2. Doubt the inherited boundary.
+3. Make the requirement less dumb — especially your own.
+4. Start from atoms and dollars, not analogy.
+5. The default move is sharpen or delete, not add.
+
+These don't replace the five questions (delete/simplify/accelerate/automate); they precede them. Postures shape *what you reach for*; questions shape *what you choose*. Postures = shape of thinking, questions = shape of solution.
+
+**Why postures in the skill, not FIRST_PRINCIPLES.md**: the doc is bedrock context — read once at session start. The skill fires every decision. Operative directives belong at the moment of fire, not in background context. This location decision was itself made through the framework — running the principles produced "skill, not doc" as the answer.
+
+**Catalyst**: 2026-05-13 conversation. Tim noticed the agent (me) generated new heuristics during a Conduit CRM build-vs-buy decision rather than deriving from existing principles. Diagnosis surfaced a real gap: the principles are *descriptive* ("X is true; therefore Y") and require derivation work at decision time. Elon-style postures are *operative* — pre-derived directives that fire as the decision arises. The existing five questions covered solution-shape; the postures cover thinking-shape. Both belong, in that order.
+
+**Self-applying**: this v9 release was itself made through the postures it adds. The first proposal was "add a new section to FIRST_PRINCIPLES.md" — additive. Posture 5 ("sharpen or delete, not add") caught it. The corrected move was "put them in the skill where they fire." Framework self-correcting through real use, again — Principle #8 in action.
+
+**For external adopters**: `./install.sh` pulls the updated SKILL.md on next run. Behavior change: agents will run a posture pass before loading principles for any decision-shaped work. The postures are universal (not Tim-specific) and travel with the public skill.
+
 ## v8 — 2026-05-13
 
 Retro: v7's "Silent mode is the default" framing was wrong. Rolled back.
