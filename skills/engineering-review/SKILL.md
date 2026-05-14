@@ -214,6 +214,8 @@ Skip this step entirely if the project has a single execution path.
 
 Append the engineering review to the existing `implementation_plan.md` under a new `## Engineering Review` header. Do NOT create a separate document.
 
+**Format for the review pass**: if the appended review exceeds ~100 lines or contains diagrams, comparative tables, or failure-mode matrices, render it as **HTML** for the user's review before committing the markdown to the codebase. Reason: render-rich format preserves diff highlighting, mermaid rendering, and table structure that markdown-in-chat scrollback fragments. See FIRST_PRINCIPLES.md → 📐 Heuristics → "Render-rich format for review-heavy output." The review draft is HTML in a session-served path (operator-configured); the final approved artifact is markdown in the project folder.
+
 ## Quality Gate
 
 Before approving for build, confirm:

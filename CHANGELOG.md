@@ -2,6 +2,22 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v10 — 2026-05-14
+
+**Heuristic added: render-rich format for review-heavy output.** New entry in `FIRST_PRINCIPLES.md → 📐 Heuristics`. One-line pointers added to the Output sections of `engineering-review`, `ceo-plan-review`, and `office-hours`.
+
+**The rule**: when producing review-heavy artifacts (audits, plans, eng-reviews, design docs — anything >~100 lines with diffs, tables, mermaid diagrams, or comparative structure), default to **HTML** for the review pass. Markdown in chat scrollback fragments visual structure — diffs lose syntax highlighting, tables get squished, mermaid blocks don't render. Two-phase: HTML for the review draft (in a session-served path, operator-configured), markdown for the final committed artifact in the codebase.
+
+**Why this is a heuristic, not a principle**: it's an operative craft rule, not a substrate truth. It follows from Principle #17 (asymmetric attention is the leverage point) — review time is the user's most expensive resource, and format-fidelity is part of preserving it. Heuristics belong with other tactics-adjacent rules.
+
+**Why a one-line pointer in three skills, not full duplication**: the rule lives in one place (FIRST_PRINCIPLES.md). The skills get a brief reference at the moment of fire — Output section in `engineering-review` and `ceo-plan-review`, Phase 5 in `office-hours`. Posture 5 ("sharpen or delete, not add") caught the first draft, which proposed duplicating the full rule into each skill.
+
+**Catalyst**: 2026-05-14 retro. A harness audit produced a ~400-line markdown file that the user couldn't open from chat (link-resolution edge case across multiple GitHub identities). The friction cost them the ability to push back on the audit before forwarding it onward. The Tim-specific routing issue was the catalyst, but the rule generalizes: render-rich is strictly higher fidelity for review-heavy output regardless of why a particular markdown link fails for a particular user. The friction case made the universal benefit visible.
+
+**For external adopters**: `./install.sh` pulls the updated FIRST_PRINCIPLES.md and SKILL.md files on next run. Behavior change: agents running the review skills will produce HTML for review-heavy output before writing the markdown artifact to disk. Session-folder path is environment-specific — configure in your project's CLAUDE.md or memory layer (e.g. `/tmp/<session-id>/` or whatever path your chat UI can reliably serve).
+
+**Self-applying**: this v10 release surfaced the heuristic from real use (audit friction), passed it through the framework (CEO Plan Review reframed "add HTML output" → "render-rich for review-heavy output as a universal heuristic"; Eng Review confirmed non-Tim adopters benefit; Posture 5 caught the duplication), and shipped one rule referenced from three locations rather than three near-copies. Principle #8 in action.
+
 ## v9 — 2026-05-13
 
 **Decision Postures added to the `harness` skill** as a new Step 1, firing before principle-loading and the questioning framework.

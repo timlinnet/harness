@@ -511,6 +511,9 @@ For each issue:
 
 When this skill completes, the following must exist in the plan:
 
+**Format for the review pass**: if the completed plan exceeds ~100 lines or contains diagrams, comparison tables, or the Failure Modes Registry, render it as **HTML** for the user's review before committing the markdown to disk. The review draft is HTML in a session-served path (operator-configured); the final approved plan is markdown at `.agent/ceo-plans/{date}-{slug}.md`. See FIRST_PRINCIPLES.md → 📐 Heuristics → "Render-rich format for review-heavy output."
+
+
 ### "NOT in scope" section
 List work considered and explicitly deferred, with one-line rationale each.
 

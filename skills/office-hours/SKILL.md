@@ -269,6 +269,8 @@ Write the design document to `.agent/design-docs/`.
 mkdir -p .agent/design-docs
 ```
 
+**Format for the review pass**: design docs are review-heavy by definition (problem statement, demand evidence, approaches considered, premises, recommended approach). If the completed doc exceeds ~100 lines or includes comparison tables / approach-vs-approach grids, render it as **HTML** for the user's review before writing the markdown to `.agent/design-docs/`. The review draft is HTML in a session-served path (operator-configured); the final approved doc lives at `.agent/design-docs/{date}-{slug}.md`. See FIRST_PRINCIPLES.md → 📐 Heuristics → "Render-rich format for review-heavy output."
+
 ### Startup mode template:
 Write to `.agent/design-docs/{YYYY-MM-DD}-{feature-slug}.md`:
 

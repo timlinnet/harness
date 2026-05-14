@@ -248,6 +248,20 @@ The trigger for invoking Harness (and the wider review stack — `office-hours`,
 
 **Practical rule for any agent operating with Harness:** when you see decision-shape work (A vs B, include vs skip, build vs buy, do-it-the-obvious-way vs is-there-a-better-way), surface "harness this?" *before* executing — even if the user hasn't explicitly invoked the skill. One-line prompts, not gatekeeping. Skip only when the work is pure execution of an already-approved plan: typo fixes, applying a pre-approved migration, deploying a reviewed change. Origin: the 2026-05-12 DOCX-upload retro, where a "trivial" 30-minute decision surfaced a materially better third option (HTML extraction preserving tables vs raw-text dropping them) that would have been missed on size-based filtering.
 
+### Render-rich format for review-heavy output 🤖
+The reader's ability to read is part of the deliverable. If they can't take in what you produced, you haven't shipped — even if the file exists.
+
+When producing output the user needs to *review* — audits, plans, eng-reviews, design docs, anything >~100 lines with diffs, tables, mermaid diagrams, or comparative structure — default to **HTML**. Markdown in chat scrollback fragments visual structure: diffs lose syntax highlighting, tables get squished, mermaid blocks don't render, sections that were supposed to carry meaning become a wall the reader scrolls past.
+
+Short content inline in chat is fine. The rule fires for review-heavy long-form output:
+
+- **Review draft → HTML**, in a path the chat UI can serve (session folder, `/tmp/<session>/`, environment-specific — let the operator's CLAUDE.md or memory layer pick the right path for their setup).
+- **Final committed artifact → markdown**, in the codebase, after the user approves.
+
+Two-phase: render-rich for the review pass, plain-text for the durable codebase artifact.
+
+Anchored to Principle #17 (asymmetric attention is the leverage point) — review time is the user's most expensive resource. Format that maximizes signal per unit attention. Origin: 2026-05-14 retro — a harness audit produced a 400-line markdown file the user couldn't open in chat (link-resolution edge case); the friction cost them the ability to push back on the audit before forwarding it onward. Rule generalized: regardless of why a particular markdown link fails, render-rich is strictly higher fidelity for review-heavy output.
+
 *(Note: previous heuristics "Graceful Degradation" and "Workaround-First Mindset" were consolidated into the gap-filler caveat on Principle #10.)*
 
 ---
