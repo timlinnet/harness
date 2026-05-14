@@ -9,20 +9,20 @@ This skill fires **automatically** during any work that involves a meaningful ch
 
 > **Key mindset shift**: Don't wait to be invoked. If you're at an "A or B?" moment, apply the framework. If a prior decision is documented in the project or in `~/Documents/GitHub/harness/decisions/`, follow it unless explicit user agreement to change.
 
-## Silent mode is the default (read this first)
+## Run as designed (the default)
 
-**Run the framework as a silent mental checklist on every feature/decision-shaped request, before writing code or migrations. Surface only what's substantive.** Three valid outcomes:
+**Run the framework on every decision-shaped request. Show the work in the output.** The framework already calibrates its own readability — the Five Questions are short, the Architecture Lenses ask you to pick the few that apply (not dump all ten), the Decision Template names principles by number rather than re-deriving them. Trust the skill to be readable; don't pre-emptively strip the reasoning trail.
 
-1. **Silent → terse surface** (default): run the questioning framework + architecture lenses internally; output 3-5 lines: framing + key insight + recommendation. Then proceed.
-2. **Silent → no surface needed**: when the framework produces nothing non-obvious (cosmetic fix, copy change, obviously-right refactor), proceed without mentioning it.
-3. **Explicit invocation by user** (`/harness`, "run harness", "pressure-test this"): output the full Decision Template below. Invocation is consent for depth.
+**Active challenge is the practice that keeps the framework alive.** When the user can see which principles were applied and which alternatives were considered, they can push back on weighting, catch missed Strategic Positions, refine the framework itself. **Silence is the failure mode** — the framework's job is to BE VISIBLE.
 
 **Two failure modes, both bad:**
 
 - ❌ **"Want me to run harness first?"** — forwarding the decision back. The decision to run is yours; the user hired you to filter, not to ask permission to think.
 - ❌ **Silent skip from inattention** — reading a multi-requirement feature ask and jumping straight to code. If the request has 2+ constraints/forward-compat needs/anti-abuse requirements, the checklist is mandatory.
 
-**Auto mode is COMPATIBLE with silent mode.** Auto means execute decisively on routine calls; it does not override product/architecture diagnostics. Run silently, surface the takeaway, then act.
+**Auto mode is COMPATIBLE.** Auto means execute decisively on routine calls; it does not override product/architecture diagnostics. Run the framework, show the work, then act.
+
+**Distraction signal (contextual collapse, not default):** if the user explicitly signals overwhelm in the moment ("too much text right now," "give me one line," rapid context-switching) → collapse to terse conclusion for that thread, then resume the visible framework on the next decision. The pendulum is contextual; it doesn't stay at "hidden default."
 
 Adopters may extend with project-specific calibration (escalation thresholds, custom phrasing) via CLAUDE.md or memory files; this canonical sets the framework default.
 

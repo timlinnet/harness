@@ -2,6 +2,29 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v8 — 2026-05-13
+
+Retro: v7's "Silent mode is the default" framing was wrong. Rolled back.
+
+**What v7 did**: codified "silent mental checklist + terse 3-5 line surface" as the default for `harness` and `office-hours`. Intent was to prevent agents from asking "want me to run X?" — a real friction pattern in v6 and earlier.
+
+**Why v7 was wrong**: the same framing also muted the framework's own visibility. Agents stopped emitting Decision Templates, stopped asking Forcing Questions one at a time, stopped naming Principles in their recommendations. They surfaced only conclusions. Users could no longer audit the reasoning, catch missed Strategic Positions, or push back on weighting. From the harness skill itself: *"Active challenge is the practice that keeps the framework alive. Silence is the failure mode."* v7 codified the silence.
+
+**What v8 does**: replaces the "Silent mode is the default" sections in `skills/harness/SKILL.md` and `skills/office-hours/SKILL.md` with **"Run as designed (the default)"**. New framing:
+
+- The framework already calibrates its own readability — Five Questions are short, Architecture Lenses ask the operator to pick the few that apply (not dump all ten), Decision Templates name principles by number rather than re-deriving them, Forcing Questions are asked one at a time. Trust the skill to be readable.
+- "Active challenge is the visible practice" — when the operator can see which principles were applied and which alternatives were considered, they can push back. The framework's job is to BE VISIBLE.
+- The two preserved rules from v7 (never ask "want me to run X?"; never silently skip from inattention) stay — they were correct.
+- A "Distraction signal (contextual collapse, not default)" clause: if the operator explicitly signals overwhelm in the moment, collapse to terse for that thread, then resume the visible framework on the next decision. The default doesn't change.
+
+The `When Full Mode triggers` section in office-hours was renamed back to **`When to run / when to skip`** — v7's Silent/Full dichotomy was an artifact of the muted-default framing and no longer fits.
+
+**Catalyst**: Tim's retro 2026-05-13 — *"I never get challenged by those principles or by G-Stack, which is concerning. It's almost like maybe I need to remove that restriction from you so that way you can start communicating about G-Stack the way that it is defined or the way that it was intended."* A user-memory file (`feedback_wall_of_text.md`) written on a tired/distracted day had bolted "terse default" onto the framework. v7 then propagated the same pattern into the canonical skills. Both rolled back the same day. **Lesson: the framework already knows how to be readable; don't add rules that strip the work.**
+
+This v8 retro is itself an instance of Principle #8 (Feedback loops compound) — the framework correcting itself through real use.
+
+**For external adopters**: `./install.sh` pulls the updated SKILL.md files on next run. Existing installs can `cp` the two files manually or re-run the installer. Behavior change: the agent will emit more visible reasoning trail by default. If that's too much for your environment, your own CLAUDE.md or memory layer is the right place to calibrate down — not the canonical.
+
 ## v7 — 2026-05-13
 
 Silent-mode discipline codified in `harness` and `office-hours` skills.
