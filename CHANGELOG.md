@@ -2,6 +2,26 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v11 — 2026-05-14
+
+**Parallel Launchpad added to the `harness` skill** as a new Step 6, firing at the end of response generation.
+
+**What v11 does**: adds a "Parallel Launchpad" section to `skills/harness/SKILL.md`. When producing a deep response, the agent scans three candidate pools (in-thread, adjacent topics, portfolio-wide OPEN_LOOPS at `← YOU ARE HERE`) for a chunk of work that can be launched in a parallel Claude Code session while the operator continues reading. If a candidate passes all 5 gates (decided, self-contained, >5min agent work, non-conflicting, launchable as-is), it surfaces as a paste-ready prompt at the *top* of the response. Calibration: **false-positive bias** — when uncertain, include. An ignored launchpad costs seconds; a missed launch costs an entire wisdom-window.
+
+**Why this matters**: the operative principle is *wisdom is the limited resource; everything else parallelizes* (Principle #15 + #17). Throughput in a Claude Code session is gated by operator decision time, not by agent execution time. Every minute the operator spends reading a deep response is a minute that could also be paying out deterministic work-in-flight — checks, verification, builds, drafts — if the surface area for parallel launches is one paste away. The Launchpad collapses the extract-and-reframe friction.
+
+**Why a section in `harness`, not a new skill**: the directive fires every time the framework produces a Decision Template — i.e., at the end of harness's own flow. Adding it to `harness` puts it at the moment of fire. Carrier skills (`next`, `autoplan`, `office-hours`, `ceo-plan-review`, `engineering-review`) inherit by routing through harness. Posture #5 ("sharpen or delete, not add") caught a first draft that wanted to spawn a "parallel-launchpad" skill — sharpened into "Step 6 of harness" instead.
+
+**10x challenge addressed**: the 10x version of "produce paste-ready prompts" is "spawn agents autonomously while the operator reads." We explicitly rejected that move — wisdom-directing / intelligence-executing means the launch decision stays with the operator. Autonomous spawning crosses the trust boundary and breaks the Architecture Lens "wisdom and intelligence in the right places." The semi-automated version (operator launches, agent executes) is the correct shape.
+
+**Adopter universality**: gates are universal (no Tim-specific calibration). Any operator using Claude Code with an OPEN_LOOPS-style backlog + multi-session workflow benefits. Adopters without a portfolio backlog see launchpads from pool 1 (in-thread) only. SessionStart hook that prefetches OPEN_LOOPS is adopter-configurable.
+
+**Catalyst**: 2026-05-14 conversation. Tim observed that during deep architecture/theory threads, his read-and-understand time was the binding constraint on his throughput — decisions sequential, deterministic work blocked on his single-threaded comprehension. Reframe: *user wisdom is the limited resource; everything else parallelizes*. Goal articulated: *"I want to be a 100X engineer, not just a 5X engineer."*
+
+**Self-applying**: this v11 release was itself shaped by the false-positive-bias calibration it codifies. The Forcing Question ("which bias?") was the load-bearing call; once Tim answered, the design locked. Posture #5 caught a first draft that proposed a new skill (additive). Sharpened to "Step 6 inside harness." Framework self-correcting through real use — Principle #8 in action.
+
+**For external adopters**: `./install.sh` pulls the updated `skills/harness/SKILL.md` on next run. Behavior change: agents surface a top-of-response Parallel Launchpad when a candidate passes the 5 gates. To opt out, state in your project's CLAUDE.md that Parallel Launchpads should not be surfaced.
+
 ## v10 — 2026-05-14
 
 **Heuristic added: render-rich format for review-heavy output.** New entry in `FIRST_PRINCIPLES.md → 📐 Heuristics`. One-line pointers added to the Output sections of `engineering-review`, `ceo-plan-review`, and `office-hours`.

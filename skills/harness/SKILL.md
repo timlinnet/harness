@@ -125,6 +125,55 @@ B) [option]
 
 For decisions that are genuinely cross-cutting (not project-specific), suggest documenting in `~/Documents/GitHub/harness/decisions/` as a numbered entry — these get committed and become part of the framework's history.
 
+## Step 6: Surface a Parallel Launchpad (if a qualifying candidate exists)
+
+After producing the Decision Template (or any deep response), scan for a candidate to surface in a top-of-response **Parallel Launchpad**: a paste-ready prompt the operator can drop into a fresh Claude Code session to launch deterministic work while they continue reading this thread.
+
+**The principle**: *wisdom is the limited resource; everything else parallelizes.* (Principles #15 + #17.) Operator read/decide time is the binding constraint on throughput. Every read-window that does not also produce parallel work-in-flight is leverage left on the table.
+
+### Three candidate pools (scan all three)
+
+1. **In-thread** — chunks where a decision just got made and the build is ready
+2. **Adjacent** — topics referenced or implied in this conversation that have ready next steps
+3. **Portfolio** — items at `← YOU ARE HERE` in any project's `OPEN_LOOPS.md` where the next step is build-shaped and self-contained (SessionStart hooks typically prefetch these)
+
+Pick the single highest-leverage candidate that passes all gates. (Rarely two, only if non-conflicting and the operator has clearly indicated big-batch mode.)
+
+### Gates (ALL must pass to include a Launchpad)
+
+1. **Decided, not pending** — the chunk does not depend on a question still open in this thread.
+2. **Self-contained** — the prompt can act *cold* with no memory of this conversation: project, working directory, file paths, what's been done, what success looks like.
+3. **Worth the paste friction** — agent work would take >5 min. Below that, inline action is faster.
+4. **Non-conflicting** — won't race with work the operator is about to start in this thread. Worktree isolation or different-files mitigates; flag explicitly when relevant.
+5. **Launchable as-is** — no further operator input needed beyond pasting, or any required input is spelled out as `[FILL IN: ...]`.
+
+### Calibration: false-positive bias
+
+When uncertain whether a candidate qualifies, **include** rather than omit. The operator can ignore an unusable launchpad in seconds; a missed parallel launch costs an entire wisdom-window. (Decision: `CHANGELOG.md` v11.)
+
+The bias governs *ambiguous cases*, not the gates themselves. A candidate that fails a gate is omitted, not surfaced as "low confidence."
+
+### Format
+
+```
+⚡ Parallel Launchpad — [one-line title]
+Source: [in-thread / adjacent / portfolio: <loop name>]
+Estimated agent time: ~Xmin. Safe to run in parallel because [reason].
+
+----- PASTE-READY PROMPT -----
+[Self-contained block: project, working directory, context, what to do, success criteria, where to commit/report]
+-----------------------------
+```
+
+If no candidate passes all gates → **omit the section entirely**. Do not manufacture launchpads. Silence is correct when nothing qualifies.
+
+### When NOT to fire
+
+- The operator's response IS the build (you're doing the inline work — no parallel pool-1 candidate exists)
+- The conversation is mid-decision (a would-be launchpad depends on a still-open question)
+- The candidate races with imminent thread work
+- No qualifying candidate in any pool
+
 ## Loop maintenance (update OPEN_LOOPS.md as work completes)
 
 When a decision applied via this skill **completes a chain item** in an active loop in the project's `OPEN_LOOPS.md`, update that entry:
