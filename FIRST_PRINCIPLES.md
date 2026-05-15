@@ -133,7 +133,7 @@ We design agents as employees who earn trust over time, not as stateless chatbot
 *Alternatives*: agent = stateless tool (no identity, no memory); agent = expert-on-demand (specialist consulted, no persistent identity); agent = orchestrator (delegates but doesn't execute).
 
 ### User = Director 🤖
-The user carries vision, mission, moral compass. The agent executes. Linnet is the CFO/COO/CMO the user couldn't afford to hire. Bet rooted in founder agency + faith-driven values + the reality (Principle #15) that LLMs have intelligence but not wisdom.
+The user carries vision, mission, moral compass. The agent executes. The agent is the CFO/COO/CMO the user couldn't afford to hire. Bet rooted in founder agency + the reality (Principle #15) that LLMs have intelligence but not wisdom.
 
 *Could be wrong if* users prefer to be served rather than direct (some founder personalities), or if agents become trustworthy enough to set direction themselves.
 
@@ -151,7 +151,7 @@ The moat is not "we hold user context" generically. The moat is: **willingness o
 
 *Could be wrong if* AI primitives absorb context management natively (users hand context to ChatGPT/Grok directly with no harness needed); or if the focused ICP is too small to scale; or if trust mechanisms commoditize.
 
-*Alternatives*: broad horizontal context shell (any user, any context, less depth); single-vertical specialist (PCAI-pharmacy without the FreedomOS portfolio); we-handle-context-but-not-execution (consultant model); we-build-the-LLM (vertical foundation model).
+*Alternatives*: broad horizontal context shell (any user, any context, less depth); single-vertical specialist (one focused domain, no portfolio); we-handle-context-but-not-execution (consultant model); we-build-the-LLM (vertical foundation model).
 
 ### Trust Through Transparency + Shared Values 🤖
 Two distinct trust dimensions, both load-bearing:
@@ -180,7 +180,7 @@ Deep platform integration, not thin API wrapper. Follows from Principle #10 — 
 *Alternatives*: thin wrapper (just route to the LLM); best-of-breed integrator (deep partnerships with existing tools, no native opinion); agnostic platform (no opinions at all).
 
 ### Match closure metric to goal 🤖
-"Done" means different things in different operating modes. For internal compounding work (FreedomOS, agent infrastructure): a capability is "done" when it completes a full business-value cycle — closing loops prevents 90%-done work from accumulating as technical debt. For customer-facing product launches (Conduit, Linnet Biopharm): shipping to customers is the loop; over-closing internally becomes its own distraction from external value delivery. The position is: *name the operating mode and choose the closure metric that fits.*
+"Done" means different things in different operating modes. For internal compounding work (platform / agent infrastructure): a capability is "done" when it completes a full business-value cycle — closing loops prevents 90%-done work from accumulating as technical debt. For customer-facing product launches: shipping to customers is the loop; over-closing internally becomes its own distraction from external value delivery. The position is: *name the operating mode and choose the closure metric that fits.*
 
 The underlying principle (Loop Closure as a universal) was too strong — for builder-types it's a corrective against feature-creep avoidance of marketing, which is exactly why pairing with a complementary operator helps. The honest framing is: closure is contextual.
 
@@ -200,7 +200,7 @@ This is the strategic correction to a specific failure mode: a builder's loop-cl
 ### Model Diversification 🤖
 We design for interchangeability between LLMs — tool interfaces, prompts, and harness architecture all assume any frontier model can plug in. Bet *against* single-winner outcomes in LLMs. Tim's current preferences: Opus 4.7 for some workloads, xAI 4.3 for others — the harness supports both.
 
-*Could be wrong if* one provider achieves persistent dominance (e.g., xAI's compute scale lets it pull decisively ahead; a single player wins infrastructure economics; or Elon Musk's organizational continuity becomes a single point of failure for xAI specifically) — then optionality becomes wasted cost.
+*Could be wrong if* one provider achieves persistent dominance (e.g., compute scale lets one pull decisively ahead; a single player wins infrastructure economics; or a single founder's organizational continuity becomes a single point of failure for one provider specifically) — then optionality becomes wasted cost.
 
 *Alternatives*: best-of-breed bet on a single provider; bet on open-source frontier catching up; agnostic stance with provider-specific optimization layers.
 
@@ -210,20 +210,6 @@ Don't ask users to rip-and-replace their working stack. Port what they're alread
 *Could be wrong if* users become so tool-agnostic that switching costs collapse, or if AI primitives absorb tool-switching entirely (the agent does the porting transparently).
 
 *Alternatives*: opinionated rip-and-replace ("our system or none"); modular but uncomposable (each user assembles their own stack); we-build-everything-natively (no integrations).
-
-### Faith-aligned product surface 🤖 *(FreedomOS-specific)*
-The user's faith and calling are direction inputs, not optimization targets. Linnet leaves room for spiritual guidance; it does not prescribe. Strategic position rooted in values, not principles.
-
-*Could be wrong if* faith-aligned framing alienates non-faith users we want to reach (then a more neutral surface wins broader adoption).
-
-*Alternatives*: secular/neutral surface (broader appeal, less depth); multi-faith approach (lower trust per user, broader); optional spiritual layer (off by default, opt-in).
-
-### Linnet Labs as autonomous R&D sandbox 🏗️
-The agent company with zero external customers operates with a fully autonomous CEO agent. Freedom Pledge reviews output (not Tim). Trust ladder climbs via agent-to-agent approval. Proven patterns deploy to real companies. Bet on parallel autonomous learning outpacing Tim's serial review bandwidth.
-
-*Could be wrong if* agent-to-agent approval produces low-quality patterns that contaminate real companies, or if the R&D sandbox diverges so far from real-company needs that patterns don't transfer.
-
-*Alternatives*: Tim-reviews-everything (current bottleneck); no R&D sandbox (proven patterns only, slow learning); external partnerships for new patterns; multiple agent CEOs with different mandates.
 
 ---
 
@@ -272,10 +258,10 @@ Implementation choices that follow from the above. Refactored constantly. Builde
 
 - **Business logic = skills** in Claude Code (`.agent/skills/<name>/SKILL.md`). Could change if the harness shifts; the principle ("encode business logic in the harness's portable primitive") stays.
 - **Tool access = MCPs, CLIs, custom edge functions.** Same caveat.
-- **Realtime when agents have CRUD** — if Linnet can write to a table, the UI must subscribe via Supabase Realtime (Principle: agents-as-first-class-citizens demands UI ↔ agent parity).
+- **Realtime when agents have CRUD** — if an agent can write to a table, the UI must subscribe via realtime (Principle: agents-as-first-class-citizens demands UI ↔ agent parity).
 - **`.agent/` directory convention** — file layout tactic, project-scoped.
 - **Decision register pattern** — `architecture-alignment.md` tracks numbered architectural decisions with date, rationale, and status. Lives separately from this principles doc.
-- **Skill chain for architecture-shaped work**: `office-hours → ceo-plan-review → engineering-review → build → qa-testing → deploy`. The spec-writing apparatus (Principle #16). Safety net for changes affecting MCP schemas, agent execution pipelines, RLS, the Linnet core, and similar load-bearing surfaces.
+- **Skill chain for architecture-shaped work**: `office-hours → ceo-plan-review → engineering-review → build → qa-testing → deploy`. The spec-writing apparatus (Principle #16). Safety net for changes affecting MCP schemas, agent execution pipelines, RLS, the agent core, and similar load-bearing surfaces.
 - **Identity routing by git email** — multi-operator file (founder + operators + future) uses `git config user.email` to load the right profile and FOCUS file.
 
 ---
@@ -329,9 +315,9 @@ This doc covers principles, positions, heuristics, and tactics. The following li
 
 - **Specific architectural decisions** (Multi-Step vs AI-First, Anti-Bottleneck phases, Skills v2, etc.) → `architecture-alignment.md` (decision register)
 - **ICPs and target user profiles** → product/marketing docs (`.agent/icps/` or equivalent)
-- **Project-specific operating insights** (FreedomOS Strategic Posture, PCAI specifics) → project-level `.agent/AGENT.md`
+- **Project-specific operating insights** (per-project Strategic Posture, vertical specifics) → project-level `.agent/AGENT.md`
 - **Skill definitions and runbooks** → `.agent/skills/<name>/SKILL.md`
-- **Live business state** (OKRs, KRs, finances, team rosters) → FreedomOS Supabase, queried via MCP — never embedded as markdown
+- **Live business state** (OKRs, KRs, finances, team rosters) → your platform's source-of-truth datastore, queried via MCP — never embedded as markdown
 - **Open dependency chains** → `OPEN_LOOPS.md`
 
 ---

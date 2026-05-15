@@ -92,7 +92,7 @@ Tim Linnet — [timlinnet.com](https://timlinnet.com)
 
 ## Related
 
-**[FreedomOS](https://getfreedomos.com)** — Tim's SaaS for faith-driven founders running portfolios of side hustles. Productizes the **Context Shell Pattern** (see `FIRST_PRINCIPLES.md` → Strategic Positions): user's business context + Harness substrate + agent execution loop in one place. Harness is the framework Tim thinks with; FreedomOS is where the thinking ships at scale.
+**[FreedomOS](https://getfreedomos.com)** — Tim's SaaS productizing the **Context Shell Pattern** (see `FIRST_PRINCIPLES.md` → Strategic Positions): user's business context + Harness substrate + agent execution loop in one place. Harness is the framework Tim thinks with; FreedomOS is where the thinking ships at scale.
 
 ## Built on
 

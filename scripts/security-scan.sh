@@ -43,6 +43,19 @@ PATTERNS=(
   # Tim's own name is allowed (he's the public author). Add others here as they appear.
   "private-person::(Kendall|Lonnie|Aiko)"
 
+  # Tim-specific business entities and sister products. These should never appear in
+  # public framework content; they belong in the private overlay. FreedomOS is the one
+  # exception — allowed in README's "Related" section as the product-to-framework bridge.
+  # PCAI and Conduit are accepted in passing prose as generic-enough references but
+  # not as strategic positions or worked decisions; review case-by-case.
+  "tim-business-name::(Linnet Labs|Linnet Biopharm|Linnet Biopharmaceuticals|Linnet Legacies|Freedom Pledge)"
+
+  # Position names that were sanitized out of public — block re-introduction.
+  # Matched only as Strategic-Position-style markdown headings (### prefix) so that
+  # CHANGELOG / CLAUDE.md / decisions docs can describe these positions in prose
+  # (e.g. "moved to private") without tripping the scanner.
+  "private-position-heading::^\\+#{2,4}[[:space:]]+(Faith-aligned product surface|Linnet Labs as autonomous R&D)"
+
   # Business specifics
   "money-figure::\\\$[0-9]+(,[0-9]{3})*(\\.[0-9]+)?(K|M|k|m)?(/mo|/month|/yr|/year| MRR| ARR)"
 )
