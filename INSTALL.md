@@ -44,7 +44,11 @@ Add to `~/.claude/settings.json` to auto-surface your open PRs + OPEN_LOOPS mark
         "hooks": [
           {
             "type": "command",
-            "command": "echo \"📋 Open PRs across your repos:\"; for repo in YOUR_ORG/repo1 YOUR_ORG/repo2; do gh pr list --repo \"$repo\" --state open 2>/dev/null | sed \"s|^|  [$repo] |\"; done; echo \"\""
+            "command": "~/Documents/GitHub/harness/scripts/session-pr-digest.sh YOUR_ORG/repo1 YOUR_ORG/repo2"
+          },
+          {
+            "type": "command",
+            "command": "~/Documents/GitHub/harness/scripts/dirty-state-ownership.sh ~/Documents/GitHub/repo1 ~/Documents/GitHub/repo2"
           },
           {
             "type": "command",
@@ -57,7 +61,18 @@ Add to `~/.claude/settings.json` to auto-surface your open PRs + OPEN_LOOPS mark
 }
 ```
 
-Replace `YOUR_ORG/repo1` etc. with your actual repos. The OPEN_LOOPS scanner finds any `OPEN_LOOPS.md` files in your `~/Documents/GitHub` directory and shows entries marked `← YOU ARE HERE`.
+Replace `YOUR_ORG/repo1` and the local paths with your actual repos. Both scripts ship with this clone — `git pull` to update them.
+
+## Multi-operator visibility
+
+Two of the SessionStart hooks above (`session-pr-digest.sh` and `dirty-state-ownership.sh`) are part of Harness's multi-operator coordination primitives — designed for repos touched by more than one human or more than one AI agent. They turn raw `gh pr list` / `git status` dumps into **author-attributed, status-filtered** views, so you can open your laptop and know within 30 seconds what needs your attention.
+
+- **`session-pr-digest.sh`** buckets open PRs by what they mean to *you* (your `gh api user` login). Five buckets: needs-your-review, discipline-mismatch (others' drafts that READ as ready — author forgot to un-draft), yours-ready, yours-drafting, others-drafting (collapsed).
+- **`dirty-state-ownership.sh`** classifies each modified/untracked file in your repos as local-config noise, yours (recent), yours (stale), or another operator's. Collapses to *"all noise — zero code in flight"* when applicable.
+
+See [`conventions/multi-operator.md`](conventions/multi-operator.md) for the full convention — discipline rules, optional `who:*` label scheme, falsifiability gate for graduating to per-agent heartbeats if these primitives leave real gaps.
+
+Both scripts are CLI-only and shell-portable — they work from any tool that can invoke a command on session start (Claude Code, your shell rc, an IDE hook, tmux init).
 
 ## Optional: set up your own private overlay
 
