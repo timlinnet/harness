@@ -2,6 +2,26 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v12 — 2026-05-15
+
+**Multi-operator coordination primitives added.** Two scripts (`scripts/session-pr-digest.sh`, `scripts/dirty-state-ownership.sh`) + one convention doc (`conventions/multi-operator.md`). Solves the "I can't tell whose PR / whose dirty file" problem in any repo with more than one human operator and/or multiple AI agents.
+
+**What v12 does**:
+
+- `scripts/session-pr-digest.sh <owner/repo> ...` — author-aware filtered PR digest. Five buckets: **NEEDS YOUR REVIEW** (others, non-draft) → **discipline mismatch** (others' drafts whose body suggests "ready" — author forgot to un-draft) → **yours, ready** → **yours, drafting** → **others' drafts** (collapsed). Identity inferred from `gh api user --jq .login`; no labels required.
+- `scripts/dirty-state-ownership.sh <repo-dir> ...` — classifies each modified/untracked file as **local-config noise** (`.mcp.json`, `supabase/.temp/*`, `.claude/launch.json`, IDE/swap files; configurable) / **yours, recent** / **yours, stale** / ***other-identity*** (bucketed by email) / **untracked**. Collapses to *"all noise — zero code in flight"* when applicable.
+- `conventions/multi-operator.md` — names the discipline rule (**un-draft when you want review**) that makes the GitHub `isDraft` flag load-bearing, plus optional `who:*` label scheme for repos where author identity is genuinely ambiguous (don't introduce speculatively).
+
+**Why scripts + convention, not skill**: this is operational infrastructure, not decision-shape work. Scripts fire on every session start through the host's hook mechanism; the convention doc is read once, internalized, then enforced by the scripts' output (the discipline-mismatch flag self-corrects the un-draft habit). A `harness`-style skill would add an LLM hop between the operator and the data — wrong tier of tool for "render the state I already have."
+
+**Defensive design**: both scripts fail soft. Missing `gh` / `jq` / unauthenticated CLI / 404 repos all silent-skip rather than break the SessionStart pipeline. This matters because hooks fire on every session — one noisy failure becomes constant friction.
+
+**Catalyst**: 2026-05-15 — a real coordination failure surfaced in a co-founder + contractor + three-agent repo. The operator couldn't tell at a glance whose work was sitting in the working tree (an existing memory rule patched one agent's behavior, but the rule wasn't infrastructure — every new operator and every new agent would have to learn it independently). The conversation that surfaced the gap also framed the fix: *"this could be a harness update that supports working with more than one person."* The primitives are public because every multi-operator team will hit this; the specific PR numbers and operator names belong in private overlays.
+
+**For external adopters**: pull the latest harness clone (`git pull`). The new scripts live at `scripts/session-pr-digest.sh` and `scripts/dirty-state-ownership.sh` — wire into `~/.claude/settings.json` (or wherever you trigger session-start work). See `INSTALL.md` → "Multi-operator visibility" section for the snippet. No `install.sh` change yet — the scripts are invoked directly from the host's hook by absolute path, which keeps installation a single `git clone` step.
+
+**Self-applying**: this v12 release was itself shaped by the framework. The 2026-05-15 conversation surfaced the gap → office-hours diagnosis named the two visibility problems → ceo-plan-review produced a 3-option decision (GitHub primitives, Linear, Harness extension) → A-with-C-deferred chosen (Phase 2 gates on falsifiability evidence). Posture 5 ("sharpen or delete, not add") caught a first draft that wanted three primitives + labels mandatory — sharpened to two scripts, labels optional, convention doc names the discipline rule that the scripts already enforce mechanically.
+
 ## v11 — 2026-05-14
 
 **Parallel Launchpad added to the `harness` skill** as a new Step 6, firing at the end of response generation.
