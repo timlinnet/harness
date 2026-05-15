@@ -39,9 +39,17 @@ Every meaningful change is a decision. Run it through the framework before writi
 This repo is public. Anything committed ships to anyone who clones.
 
 **Belongs here**: the framework, the skills, the install tooling, sanitized teaching decisions, generic guidance.
-**Does NOT belong here**: specific business context, customer names, internal metrics, project-specific worked decisions, credentials, private repo paths.
 
-If a fact is only useful to one person or one business, it goes in their private overlay — not here.
+**Does NOT belong here**:
+- Specific business context, customer names, internal metrics
+- Project-specific worked decisions, credentials, private repo paths
+- **Strategic positions explicitly tagged "X-specific"** (FreedomOS-specific, Linnet-Labs-specific, etc.) — these live in the private overlay's `positions/` folder
+- **Personal-goal quotes** that reveal strategy or ambition (the framework owner's specific aspirations belong with the framework owner, not the framework)
+- **Business / sister-product / entity names** beyond a single bridge mention in `README.md`'s "Related" section. The framework owner's sister-business names and any internal entity names belong in the private overlay only — see `scripts/security-scan.sh` pattern `tim-business-name` for the current blocklist
+
+The rule of thumb: if a fact is only useful to one person or one business, it goes in their private overlay — not here. If a *pattern* is reusable but the *instance* names a specific business, the pattern stays public (in generic form) and the instance moves to private.
+
+**Enforcement**: `scripts/security-scan.sh` runs on `git push` and blocks the push if any pattern group fires. When a real leak slips through the scanner, *add the pattern*. The scanner is the durable mechanism; this section is the policy that informs which patterns belong.
 
 ## Versioning
 

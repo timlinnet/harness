@@ -2,6 +2,28 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v13 — 2026-05-15
+
+**Public/private boundary audit.** Removed business-specific content from public Harness; tightened the discipline that keeps it out going forward. The framework remains public; only the instance-level specifics moved.
+
+**What v13 does**:
+
+- **Two Strategic Positions moved to the private overlay** (`timlinnet/harness-private/positions/business-specific-strategic-positions.md`): one tied to a values-aligned product surface for one specific business, one to an autonomous-CEO-agent sandbox-company. Both explicitly named one specific business in their public form. The *patterns* (values-aligned surface, autonomous-R&D-sandbox-company) remain reusable by any adopter; the *instances* live with the framework owner.
+- **Business-name scrubs across public framework content**: `FIRST_PRINCIPLES.md` (User = Director's "Linnet is the CFO/COO/CMO" → "The agent is the CFO/COO/CMO"; Context Shell alternatives; Match closure metric examples; Model Diversification example with a named public figure; Tactics' "if Linnet can write" → "if an agent can write"; "What lives elsewhere" section). `skills/harness/SKILL.md` Step 1 and Step 4. `decisions/0006-lovable-supabase-migration-workflow.md` Alternative bets. `README.md` Related section. Where the name was the leak, replaced with generic phrasing; where the position was the leak, the entire section moved to the private overlay.
+- **CHANGELOG catalysts sanitized** (v5, v9, v11) to remove specific product names and personal-goal quotes while preserving the "real-use" attribution. The catalyst pattern is essential to Principle #8 (feedback loops compound); the business specifics aren't.
+- **`scripts/security-scan.sh` extended** with two new pattern groups (`tim-business-name` and `private-position-name`) that block business-name leaks and re-introduction of the two position titles just removed. See the scanner file itself for the exact blocklist.
+- **`CLAUDE.md` "Public vs private" section** sharpened with explicit examples of what crosses the boundary.
+
+**Why a boundary audit, not a deprecation**: the framework remains public and continues to compound through external use (Principle #8 — v5's catalyst was a customer pull-signal; v8 was retro from real use). Going fully private would have reversed the *Marketing is part of the product* Strategic Position. The audit addresses the real concern surgically — about an hour of edits + scanner update — without dismantling the bet.
+
+**Posture 5 caught**: a first draft proposed adding a dozen new scanner patterns including every product name. Sharpened — added only patterns that map to leaks actually found, plus the two position titles we just removed. Don't over-instrument; let discipline carry the rest.
+
+**Self-applying**: the audit was itself a Harness-shaped decision. Public-vs-private was framed as a false binary (*Posture 1: Decompose every bundle*); the real choice was *what specifically belongs in each*. Five options surfaced via Decision Template; B (tighten boundary, keep public) chosen — falsifiability gate: no competitor explicit clone-and-outcompete in 12 months. The framework defended itself through the framework.
+
+**Catalyst**: 2026-05-15 conversation. The framework owner raised a strategic concern about exposure as Harness accumulates more substance: *"Harness feels like it's going to continue to get more of our business bets and strategies. I'm wondering if that exposes us..."* Diagnosis surfaced three tiers of content: universal (no-leak), reusable patterns (low-leak), and instance-level specifics (Tier 3 — the actual leak). Tier 3 was leaking through Strategic Positions, catalysts, and prose mentions. The audit + scanner update closes those paths.
+
+**For external adopters**: pull the latest clone. The public framework reads slightly more universal (less name-dropping of one business owner's projects). No skills changed in behavior — only description prose.
+
 ## v12 — 2026-05-15
 
 **Multi-operator coordination primitives added.** Two scripts (`scripts/session-pr-digest.sh`, `scripts/dirty-state-ownership.sh`) + one convention doc (`conventions/multi-operator.md`). Solves the "I can't tell whose PR / whose dirty file" problem in any repo with more than one human operator and/or multiple AI agents.
@@ -36,7 +58,7 @@ The framework is itself a feedback machine (Principle #8). This log captures maj
 
 **Adopter universality**: gates are universal (no Tim-specific calibration). Any operator using Claude Code with an OPEN_LOOPS-style backlog + multi-session workflow benefits. Adopters without a portfolio backlog see launchpads from pool 1 (in-thread) only. SessionStart hook that prefetches OPEN_LOOPS is adopter-configurable.
 
-**Catalyst**: 2026-05-14 conversation. Tim observed that during deep architecture/theory threads, his read-and-understand time was the binding constraint on his throughput — decisions sequential, deterministic work blocked on his single-threaded comprehension. Reframe: *user wisdom is the limited resource; everything else parallelizes*. Goal articulated: *"I want to be a 100X engineer, not just a 5X engineer."*
+**Catalyst**: 2026-05-14 conversation. The framework owner observed that during deep architecture/theory threads, read-and-understand time was the binding constraint on throughput — decisions sequential, deterministic work blocked on single-threaded comprehension. Reframe: *user wisdom is the limited resource; everything else parallelizes*.
 
 **Self-applying**: this v11 release was itself shaped by the false-positive-bias calibration it codifies. The Forcing Question ("which bias?") was the load-bearing call; once Tim answered, the design locked. Posture #5 caught a first draft that proposed a new skill (additive). Sharpened to "Step 6 inside harness." Framework self-correcting through real use — Principle #8 in action.
 
@@ -74,7 +96,7 @@ These don't replace the five questions (delete/simplify/accelerate/automate); th
 
 **Why postures in the skill, not FIRST_PRINCIPLES.md**: the doc is bedrock context — read once at session start. The skill fires every decision. Operative directives belong at the moment of fire, not in background context. This location decision was itself made through the framework — running the principles produced "skill, not doc" as the answer.
 
-**Catalyst**: 2026-05-13 conversation. Tim noticed the agent (me) generated new heuristics during a Conduit CRM build-vs-buy decision rather than deriving from existing principles. Diagnosis surfaced a real gap: the principles are *descriptive* ("X is true; therefore Y") and require derivation work at decision time. Elon-style postures are *operative* — pre-derived directives that fire as the decision arises. The existing five questions covered solution-shape; the postures cover thinking-shape. Both belong, in that order.
+**Catalyst**: 2026-05-13 conversation. The framework owner noticed the agent generated new heuristics during a build-vs-buy decision rather than deriving from existing principles. Diagnosis surfaced a real gap: the principles are *descriptive* ("X is true; therefore Y") and require derivation work at decision time. Elon-style postures are *operative* — pre-derived directives that fire as the decision arises. The existing five questions covered solution-shape; the postures cover thinking-shape. Both belong, in that order.
 
 **Self-applying**: this v9 release was itself made through the postures it adds. The first proposal was "add a new section to FIRST_PRINCIPLES.md" — additive. Posture 5 ("sharpen or delete, not add") caught it. The corrected move was "put them in the skill where they fire." Framework self-correcting through real use, again — Principle #8 in action.
 
@@ -137,7 +159,7 @@ Public release + distribution architecture.
 
 **Architecture decision**: public base + private overlay. Tim's specific worked decisions (0001–0005) moved to a private companion repo (`timlinnet/harness-private`). Public harness now holds universal framework + adapted skills + sanitized teaching decisions; private overlay holds Tim's specific calls and business context. Composition at runtime via the portable `harness` skill.
 
-**Catalyst**: a FreedomOS customer (a vibe coder using Lovable) asked whether Tim's multi-role agent setup still works. Answering required a real public artifact — the customer pull-signal turned an internal todo into a customer-service moment + thought-leadership artifact simultaneously. *(Marketing is part of the product, Strategic Position #13, manifesting.)*
+**Catalyst**: a customer asked whether the framework owner's multi-role agent setup still works. Answering required a real public artifact — the customer pull-signal turned an internal todo into a customer-service moment + thought-leadership artifact simultaneously. *(Marketing is part of the product manifesting.)*
 
 **For external adopters**: clone, run `./install.sh`, point your project's CLAUDE.md at `FIRST_PRINCIPLES.md`. Optional: set up your own private overlay for your worked decisions. See INSTALL.md.
 
