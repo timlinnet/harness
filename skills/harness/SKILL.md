@@ -28,7 +28,7 @@ Adopters may extend with project-specific calibration (escalation thresholds, cu
 
 ## What Harness is
 
-Harness is the canonical first-principles framework for designing systems in the AI age. It lives at `~/Documents/GitHub/harness/` (repo: `timlinnet/harness`). It is cross-project — used by FreedomOS, PCAI, Linnet Labs, and any future work.
+Harness is the canonical first-principles framework for designing systems in the AI age. It lives at `~/Documents/GitHub/harness/` (repo: `timlinnet/harness`). It is cross-project — applied across the framework owner's projects and any future work.
 
 Four layers, each changing at a different rate:
 
@@ -105,7 +105,7 @@ Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load a
 
 ## Step 4: Check project context
 
-Harness is cross-project. After applying it, check the project-level `.agent/AGENT.md` or `CLAUDE.md` for project-specific overrides (e.g., FreedomOS Strategic Posture, PCAI specifics, ICPs, business context). Project context **refines** Harness; it does not override principles.
+Harness is cross-project. After applying it, check the project-level `.agent/AGENT.md` or `CLAUDE.md` for project-specific overrides (e.g., per-project Strategic Posture, vertical specifics, ICPs, business context). Project context **refines** Harness; it does not override principles.
 
 ## Step 5: Output using the Decision Template
 

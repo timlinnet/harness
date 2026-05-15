@@ -75,7 +75,7 @@ State after:
 ## Alternative bets not taken
 
 - **Bet that Lovable will fix its own emission and we just need to wait.** Plausible — Lovable's modern format is already correct. But the *historical* sediment is permanent, and any future era-change repeats the problem. Tooling that's portable across eras compounds more than waiting.
-- **Bet that humans will rarely write Supabase migrations.** Possibly true for solo Lovable users. But for any team or any project where security / RLS / cron / specialized SQL is needed (FreedomOS, PCAI), human-authored migrations are recurring. The tooling earns its keep on the first manual fix.
+- **Bet that humans will rarely write Supabase migrations.** Possibly true for solo Lovable users. But for any team or any project where security / RLS / cron / specialized SQL is needed, human-authored migrations are recurring. The tooling earns its keep on the first manual fix.
 
 ## Adoption note for harness users
 
