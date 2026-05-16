@@ -2,6 +2,26 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v14 — 2026-05-16
+
+**Strategic Position added: Connector Hierarchy.** Codifies the tier-based default for every external-service decision: native LLM primitive → vendor MCP → vendor SDK → community wrapper → hand-wired REST. Stop at the first tier that fits. Includes a sub-heuristic ("Own utility, federate identity") that governs OWN-vs-BYO within the vendor-MCP tier.
+
+**What v14 does**: adds one Strategic Position to `FIRST_PRINCIPLES.md` between "Native Over Integration" (the position it most directly extends) and "Match closure metric to goal". No principles changed; no skills changed; no install pattern changed. The SP is a context-typed hierarchy — cloud variant (edge functions / serverless) ranks `primitive → MCP → SDK → community → REST`; local variant (IDE / dev tooling) elevates CLI above SDK. The sub-heuristic resolves the OWN-vs-BYO question by user-data presence: user-data services federate (user connects their own account), utility services own (platform-owned key), LLM providers own by default with BYO as a power-user option.
+
+**Why a Strategic Position, not a Principle**: the hierarchy is derivable from Principles #6 (atomic primitives compose), #10 (tools become primitives — design for deletability), and #12 (dynamic > hardcoded). It's a bet that the MCP ecosystem matures fast enough to make the tier-1 default load-bearing, not a derivation from physics. Naming it as a contingent SP — with explicit *"could be wrong if..."* falsifiability conditions — keeps the framework honest about the bet's contingency.
+
+**Why a Strategic Position, not a Heuristic**: heuristics are situational; this fires on every external-service decision. The hierarchy is a default, not a guideline. Heuristics drift; Strategic Positions carry their alternatives forward as named bets and re-examine on world-signal.
+
+**Not in tension with Native Over Integration**: consuming a vendor MCP doesn't make the builder a wrapper of that vendor — the wrapper line is crossed when MCPs are re-exposed as proprietary tools with proprietary schemas. The Connector Hierarchy adopter stays a substrate by composing many vendor MCPs into the agent layer without re-wrapping them.
+
+**Catalyst**: 2026-05-15 conversation. A vendor that the operator's platform had hand-wired via REST shipped an official MCP server. The operator framed it as *"a harness bet — when possible, use MCPs over REST so vendor changes stop being rewiring tax."* Office-hours surfaced the bigger move: the bet isn't "MCP everywhere," it's "integration is itself a fallback — reach for the highest tier the job allows." Primitive-first emerged as the cross-cut: when a frontier LLM absorbs a capability, the right answer is to delete the integration, not migrate it. Across one office-hours → ceo-plan-review → engineering-review chain, the framework produced the SP that now lands in v14. First concrete deletion under the SP shipped same week (one obsolete pre-cleaning vendor removed from a single call site after frontier-model HTML parsing proved good enough).
+
+**Self-applying**: the SP itself was produced by the framework's own questioning gates. Office-hours challenged the polished version of the bet ("MCP everywhere") and surfaced the three-bet shape (principle-first opportunistic adoption / migration plan first / build a gateway). The principle walk in ceo-plan-review ran all 18 first principles + 13 existing SPs against the candidate; six principles aligned, zero opposed, the SP earned its position. Engineering-review pressure-tested the file-level shape and added the brittleness conditions to the falsifiability gate.
+
+**Posture 5 caught**: a first draft tried to elevate "Connector Hierarchy" to a First Principle. Sharpened — it's derivable from #6 + #10 + #12, so it's a bet, not bedrock. Putting it in the SP layer with explicit *could be wrong if...* conditions is the more honest framing.
+
+**For external adopters**: pull the latest clone (`git pull`). The new SP is in `FIRST_PRINCIPLES.md` under Strategic Positions, between "Native Over Integration" and "Match closure metric to goal". No skill behavior changes. The sub-heuristic ("Own utility, federate identity") is the most portable take-away: when adding any vendor integration, the OWN-vs-BYO question is answered by user-data presence — not by what feels easier to build.
+
 ## v13 — 2026-05-15
 
 **Public/private boundary audit.** Removed business-specific content from public Harness; tightened the discipline that keeps it out going forward. The framework remains public; only the instance-level specifics moved.

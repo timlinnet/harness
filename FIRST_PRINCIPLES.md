@@ -179,6 +179,32 @@ Deep platform integration, not thin API wrapper. Follows from Principle #10 — 
 
 *Alternatives*: thin wrapper (just route to the LLM); best-of-breed integrator (deep partnerships with existing tools, no native opinion); agnostic platform (no opinions at all).
 
+### Connector Hierarchy 🤖
+When wiring an external service, work down a context-typed tier hierarchy and stop at the first tier that fits. The bet is that *integration is a fallback*, not a default — and that the right tier shrinks the maintenance surface, rides the right primitive, and survives vendor changes longer than ad-hoc choice does.
+
+**Cloud-runtime variant** (edge functions, serverless, agent backends):
+
+```
+0. Native LLM primitive          (delete the integration; the model does it)
+1. Vendor-maintained MCP server  (vendor ships and maintains the wrapper)
+2. Vendor-maintained SDK         (typed library that absorbs auth + retry + schema drift)
+3. Reputable community MCP/SDK   (third-party with visible maintenance)
+4. Hand-wired REST               (last resort; design for deletability)
+```
+
+**Local-runtime variant** (IDE / dev tooling) elevates the vendor-maintained CLI above SDK, since shelling out is natural in that context and CLIs are typically vendor-maintained one tier deeper than SDKs.
+
+**Sub-heuristic — "Own utility, federate identity"**: within tier 1 (vendor MCP), three buckets govern OWN-vs-BYO:
+- **User-data services** (vendor holds the user's data or identity) → **BYO**. User connects their own account through the vendor's OAuth flow; the platform facilitates but doesn't custodian the credentials.
+- **Utility services** (stateless API; no user account at the vendor matters) → **OWN**. Platform-owned key, optional credit markup. User has nothing to gain by owning.
+- **LLM / AI provider services** → **OWN by default**, BYO as a power-user option for high-volume cost control.
+
+The hierarchy operationalizes Principle #10 (tools become primitives — design for deletability) + Principle #6 (atomic primitives compose — vendor MCPs are atomic) + Principle #12 (dynamic > hardcoded — vendor MCP servers absorb schema drift the way our REST wrappers cannot). It is not in tension with *Native Over Integration*: consuming a vendor MCP does not make us a wrapper of that vendor; we stay above the wrapper line by composing many vendor MCPs into our agent layer. The position fires whenever a new external service decision lands — including the "should we even integrate?" question, which the tier-0 option forces.
+
+*Could be wrong if* the MCP ecosystem fragments or stalls (fewer than ~50% of vendors a builder uses ship MCP servers within 12 months), OR vendor MCP servers prove materially less reliable than direct REST endpoints over 6+ months of real use, OR primitive absorption stalls and the tier-0 deletion bucket fails to materialize. In those worlds, the hierarchy demotes from a Strategic Position to a situational heuristic.
+
+*Alternatives*: wrapper-of-everything (no hierarchy — every vendor gets a custom integration); SDK-first across the board (skip the MCP tier entirely); defer adoption until MCP standardizes further (let other platforms eat the early-adopter cost); build a gateway abstraction layer that hides the underlying transport (adds operational complexity that only earns its keep at high migration count).
+
 ### Match closure metric to goal 🤖
 "Done" means different things in different operating modes. For internal compounding work (platform / agent infrastructure): a capability is "done" when it completes a full business-value cycle — closing loops prevents 90%-done work from accumulating as technical debt. For customer-facing product launches: shipping to customers is the loop; over-closing internally becomes its own distraction from external value delivery. The position is: *name the operating mode and choose the closure metric that fits.*
 
