@@ -2,6 +2,30 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v16 — 2026-05-27
+
+**Strategic Position added: Clarity Over Gates.** The wiring layer's primary job is to provide clarity for autonomous drivers (operator, teammate, or agent) — not to gate decisions. Empowering a teammate or agent looks like sharpening the substrate they decide from, not approving each decision they make.
+
+**What v16 adds**: one Strategic Position to `FIRST_PRINCIPLES.md` between "Integrity Gate on agent-produced output" and "Business-Native communication." No principles changed; no skills changed; no install pattern changed.
+
+**Operating model in one sentence**: three driver types (operator + teammate + agent) are all first-class users of the same six Clarity Surfaces (profile, domain map, recovery surfaces, visibility surfaces, decision template, worked decisions); escalation happens only on conflicting principles or genuinely new concepts.
+
+**Why a Strategic Position, not a Principle**: the bet is contingent on driver-side and substrate-side prereqs — drivers can internalize the substrate; recovery + visibility surfaces stay cheap; compounding investment continues; drivers bring alignable unique value. Each is falsifiable; explicit *could be wrong if...* conditions named. Principles are irreducible — this is a bet about how the existing principles compose in a multi-driver world.
+
+**Why a Strategic Position, not a Heuristic**: this fires on the operating model itself, not on situational decisions. The choice between "wiring layer as clarity-provider" vs "wiring layer as decision-gate" is a structural bet about what the wiring layer is FOR — not a rule-of-thumb that applies in some contexts and not others. Heuristics drift; Strategic Positions carry their alternatives forward as named bets and re-examine on world-signal.
+
+**The killer scenario this Position is designed to pass**: hand the substrate (the framework + any overlay + a domain map + recovery/visibility surfaces) to an autonomous agent, and that agent should operate for hours → days → weeks autonomously, escalating only on conflicting principles or genuinely new concepts. A Position that only worked for human teammates would fail that test. This one scales to agent fleets because the substrate is driver-type-agnostic — the framing of "driver" is what carries it.
+
+**Operationally consequential rotation**: under the prior implicit operating model, the operator's daily move was "approve teammate decisions." Under Clarity Over Gates, the operator's daily move is "sharpen Clarity Surfaces" — the questions, the worked decisions, the recovery + visibility surfaces. Same outcome (teammates and agents make good decisions) via a different mechanism (substrate-sharpening over decision-gating). When a driver hits friction, the answer is to **sharpen a Clarity Surface, not to gate the decision**.
+
+**The compounding investment**: substrate gets sharper through use, not maintenance. Every conflict a driver resolves, every tool gap an agent unlocks, every refinement to a profile feeds back. Anchored to Principle #8 (Feedback loops compound) — not a separate mechanism, an instance of an existing principle made operational at the substrate level. The Position survives only if the labor continues.
+
+**Catalyst**: 2026-05-27. An operator preparing a scope-authorization conversation with a recent hire ran the harness questioning framework on the meta-question — *how should harness function for empowering teammates?* The interview surfaced that the existing operator-centric framing (Director / Employee / Transparency / Integrity) didn't quite carry the load when extended to multi-driver scenarios spanning operators, human teammates, and autonomous agents. Distinct surface, distinct bet, new Position. The agent-CEO killer scenario was the falsifiability test that proved the Position's shape: any Position that only worked for human teammates would fail at agent scale.
+
+**Posture caught**: a first draft tried to sharpen "User = Director" to extend to plural drivers. Tested — too much stretch (the Director frame doesn't carry the substrate-as-clarity-engine angle without distortion). New Position earned its place. Sharpen-or-delete-not-add applied: existing positions stay tight; new content gets its own Position cleanly.
+
+**For external adopters**: pull the latest clone (`git pull`). The new SP is in `FIRST_PRINCIPLES.md` under Strategic Positions, between "Integrity Gate on agent-produced output" and "Business-Native communication." No skill behavior changes; no install pattern changes. The most portable take-away: when delegating to a teammate or agent, ask *"what Clarity Surface is missing for them to drive autonomously?"* before asking *"should I approve this decision?"* — that's the operating-model rotation Clarity Over Gates names.
+
 ## v15 — 2026-05-27
 
 **Two heuristics and one Strategic Position added** — surfaced from a reconciliation pass over four March CEO plans whose underlying work shipped, parked, or was superseded but produced durable agent-design patterns worth carrying into the framework.
