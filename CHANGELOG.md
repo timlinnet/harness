@@ -2,6 +2,24 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v15 — 2026-05-27
+
+**Two heuristics and one Strategic Position added** — surfaced from a reconciliation pass over four March CEO plans whose underlying work shipped, parked, or was superseded but produced durable agent-design patterns worth carrying into the framework.
+
+**What v15 adds**:
+
+- **Heuristic: Graduate agent autonomy in trust tiers** — Watcher → Builder → Cofounder, with tier transitions earned by measured branch-acceptance rate over time windows. Origin: a Tier-1 Watcher heartbeat shipped in March under the codename "Jarvis," rebranded as the platform's autonomous-developer agent ("OpenClaw"), accumulated real branch-acceptance data, then was strategically parked in favor of an internal Agent-CEO pattern. The *tier graduation pattern itself* outlasted the host agent and re-emerged as the framing on the next agent build.
+- **Heuristic: Consult oracles in a fresh context window** — when running review frameworks (ceo-plan-review, eng-review, design-audit) and hitting user-shaped questions, query the relevant profile in a fresh window so the answer isn't anchored by the calling context. Origin: the "ICP predictive oracle" pattern from the same March agent build, generalized.
+- **Strategic Position: Integrity Gate on agent-produced output** — every public-surface agent output passes accuracy + compliance + values checks before ship. Bet: the cost of one ungated misrepresentation exceeds the cumulative cost of the gate. Positioned next to Trust Through Transparency + Shared Values (transparency is what you show; integrity is what you don't ship). Origin: the integrity-gate pattern from the same March agent build, where the team's named values commitments lived alongside FTC compliance + accuracy checks on all public-facing agent output.
+
+**Why heuristics not principles for the first two**: they're situational rules of thumb. The trust tier ratio (acceptance %) and window size (weeks) are contingent on context — not bedrock truths about LLMs. Anchored to "Agent = Employee" (already a Strategic Position) and Principle #14 (Complementary Strengths) respectively.
+
+**Why a Strategic Position not a principle for Integrity Gate**: it's a bet that the cost of misrepresentation outweighs the cost of latency, with explicit *could be wrong if...* falsifiability — could be wrong if frontier models become self-policing at inference, or if the gate becomes over-cautious filtering. Honest framing: contingent, not derivable from physics.
+
+**Catalyst**: 2026-05-27 — running ceo-plan-review on a new agent routing-context primitive surfaced four March CEO plans that had aged past 30 days. A reconciliation pass over those plans showed three patterns that survived the work parking: graduated trust, fresh-context oracle queries, and the integrity gate on agent output. The pattern surfacing was itself an application of "feedback loops compound" (Principle #8) — the parked work paid forward into the framework.
+
+**For external adopters**: pull the latest clone (`git pull`). The two new heuristics land under 📐 Heuristics; the Strategic Position lands under 🎯 Strategic Positions between "Trust Through Transparency + Shared Values" and "Business-Native communication." No skill behavior changes; no install pattern changes.
+
 ## v14 — 2026-05-16
 
 **Strategic Position added: Connector Hierarchy.** Codifies the tier-based default for every external-service decision: native LLM primitive → vendor MCP → vendor SDK → community wrapper → hand-wired REST. Stop at the first tier that fits. Includes a sub-heuristic ("Own utility, federate identity") that governs OWN-vs-BYO within the vendor-MCP tier.

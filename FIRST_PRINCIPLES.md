@@ -165,6 +165,13 @@ Most products lean on one. We bet on both because the ICP cares about both — t
 
 *Alternatives*: trust through results only; trust through scale ("everyone uses it"); trust through credentials/brand; trust through community.
 
+### Integrity Gate on agent-produced output 🤖
+Every agent output destined for the outside world — marketing copy, public posts, customer-facing content, anything with a published surface — passes through a structured integrity gate before ship: accuracy check (does this honestly represent the current state of what's described?), compliance check (regulatory fit + honest AI-content disclosure where required), and values check (aligns with the team's named values commitments). Failures hold; the agent surfaces what failed and to whom for resolution. The bet: agents that ship without an integrity gate will eventually ship a misrepresentation or compliance miss that costs more in trust than the gate ever cost in latency. Pairs with Trust Through Transparency + Shared Values — transparency is what you show; integrity is what you don't ship.
+
+*Could be wrong if* frontier models develop trustworthy self-policing at the inference layer (the gate becomes redundant), or if the cost of a gate-induced delay exceeds the cost of any single integrity miss in the bet's actual domain (small audiences, low stakes), or if the values check becomes a vehicle for over-cautious filtering of valid content.
+
+*Alternatives*: trust the model (no gate — bet on inference-layer integrity); single check (accuracy only, skip values/compliance); human review of everything (works at small scale, breaks at agent throughput); reactive moderation (let issues post, fix on report).
+
 ### Business-Native communication 🤖
 Speak business, not technical. "Revenue grew 12%," not "the query returned." "Leads," not "Flow." Bet that non-technical founders are the durable market and that register-shifting is cheap for LLMs (Principle #5).
 
@@ -273,6 +280,12 @@ Short content inline in chat is fine. The rule fires for review-heavy long-form 
 Two-phase: render-rich for the review pass, plain-text for the durable codebase artifact.
 
 Anchored to Principle #17 (asymmetric attention is the leverage point) — review time is the user's most expensive resource. Format that maximizes signal per unit attention. Origin: 2026-05-14 retro — a harness audit produced a 400-line markdown file the user couldn't open in chat (link-resolution edge case); the friction cost them the ability to push back on the audit before forwarding it onward. Rule generalized: regardless of why a particular markdown link fails, render-rich is strictly higher fidelity for review-heavy output.
+
+### Graduate agent autonomy in trust tiers 🤖
+New autonomous agents start as Watchers (read signals, propose, never act), graduate to Builders (act on branches, principal approves merges), and finally to Cofounders (act on main within scoped authority). Tier transitions are earned via measured branch-acceptance rate over time windows, not promised up-front. Pairs with the Agent = Employee position: trust is built incrementally through observed work, not granted by configuration. Anti-pattern: shipping Tier 3 autonomy on day one because the agent passes a demo; the demo isn't the same as a 4-week acceptance window.
+
+### Consult oracles in a fresh context window 🤖
+When an agent runs a review framework (ceo-plan-review, eng-review, design-audit) and hits a user-shaped question — "would the ICP want this?", "would the principal approve this scope?" — query the relevant profile (ICP doc, founder profile) in a *fresh context window* with only the minimum context needed to answer. The agent's working context is anchored by everything it has already decided; a fresh window gets an answer that hasn't been pre-rationalized. Anchored to Principle #14 (complementary strengths) — the oracle's strength is unbiased response, which only survives if you don't pollute it with the calling context. Generalizes any "consult oracle without anchoring" scenario: ICP questions, principal-style predictions, alternative-perspective passes.
 
 *(Note: previous heuristics "Graceful Degradation" and "Workaround-First Mindset" were consolidated into the gap-filler caveat on Principle #10.)*
 
