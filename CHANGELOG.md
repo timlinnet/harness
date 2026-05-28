@@ -2,6 +2,23 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v17 — 2026-05-28
+
+**Two conventions added + the Distribution-sync directive rewritten: Harness now documents how it interoperates with gstack when both are installed.**
+
+**What v17 adds**:
+- `conventions/output-artifacts.md` — the durable-output contract the review skills follow (`.agent/ceo-plans`, `test-plans`, `design-docs`) plus the render-rich-for-review heuristic, factored out of the individual skills so it's defined once and referenced everywhere.
+- `conventions/gstack-interop.md` — the "complement, not fork" stance toward [gstack](https://github.com/garrytan/gstack), the two-variant pattern (self-contained default vs. opt-in delegating shim when gstack is also installed), the precedence rule that resolves the trigger collision, and the signal-driven sync approach.
+- Rewrote the `harness` skill's "Distribution sync" section: from "keep working copies aligned with distributable copies" to the **two-variant model** — self-contained skills are canonical for distribution; delegating shims are a local opt-in and must **never** be pushed to `skills/` (they'd break portability for adopters who don't run gstack).
+
+**Why**: installing gstack alongside Harness registers `gstack-*` skills that trigger on the same intents as the Harness review skills — a collision. The naive resolution (retire the Harness skills, lean on gstack) silently loses the Harness seam (principle compliance, conflict rule, Decision Template, loop maintenance) and the output contracts — none of which gstack carries. The principled resolution: keep the Harness skills as the precedence-winning layer; where gstack is installed, thin them to shims that delegate gstack's *process* while preserving the seam; keep the published skills self-contained for adopters who don't run gstack. None of the skill copies is "wrong" — they split cleanly by whether gstack is present in the environment.
+
+**No principles changed; the published review skills in `skills/` are untouched** (self-contained, as before). This is additive documentation plus one directive rewrite in the `harness` skill.
+
+**Catalyst**: 2026-05-28. An operator who runs both Harness and gstack installed the full gstack runtime (for its security and breadth skills) and hit the trigger collision against the four Harness review skills. Working it through the Harness framework produced the decomposition above — the adapted skills aren't redundant with gstack; they carry a seam gstack lacks. The fix is precedence + optional delegation, not retirement. The pattern generalized into the two conventions above. Posture applied: *decompose the bundle* (keep the irreducible atom, delegate the rest) and *sharpen-or-delete-not-add* (thin the skills; don't accrete).
+
+**For external adopters**: pull the latest clone (`git pull`). If you don't run gstack, nothing changes — the skills work exactly as before. If you do, see `conventions/gstack-interop.md` for the optional delegating-shim pattern that lets you ride gstack's process while keeping the Harness seam on top.
+
 ## v16 — 2026-05-27
 
 **Strategic Position added: Clarity Over Gates.** The wiring layer's primary job is to provide clarity for autonomous drivers (operator, teammate, or agent) — not to gate decisions. Empowering a teammate or agent looks like sharpening the substrate they decide from, not approving each decision they make.

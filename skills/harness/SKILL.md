@@ -188,22 +188,20 @@ This keeps OPEN_LOOPS.md as the live source of truth instead of decaying. The Se
 
 If a decision opens a *new* loop (a non-trivial chain of work), propose adding a new entry to OPEN_LOOPS.md before exiting. Don't auto-create — surface the candidate so the operator agrees it's a real loop.
 
-## Distribution sync (keep public harness aligned with local skill changes)
+## Distribution sync (two variants — keep the seam aligned, not byte-identical)
 
-User-level skill files in `~/.claude/skills/` are **working copies**. The same skills published in `timlinnet/harness/skills/` are the **distributable copies** that adopters get via `./install.sh`. They don't auto-sync.
+The skills published in `timlinnet/harness/skills/` are **self-contained**: they inline the full review process and run in any Claude Code environment with **no external dependency**. That portability is the bet — don't break it.
 
-**When you make a substantive change to a user-level skill** (cherry-pick from upstream gstack, add/refine a HARNESS INTEGRATION marker, sharpen a prompt, add a new section) — also copy it to `~/Documents/GitHub/harness/skills/{skill}/SKILL.md` and commit to the public harness repo with a CHANGELOG entry (v{N+1}).
+If you *also* run [gstack](https://github.com/garrytan/gstack), you can optionally swap the self-contained review skills (`ceo-plan-review`, `engineering-review`, `office-hours`) for thin **delegating shims** that hand the process to the installed `gstack-*` twin and keep only the Harness seam on top. See `conventions/gstack-interop.md` for the pattern. The two variants are **semantically** aligned (same seam, same output contracts) but intentionally **not** byte-identical — one inlines the process, one delegates it.
 
-The skills to keep in sync:
-- `harness` itself (this file)
-- `ceo-plan-review`
-- `engineering-review`
-- `office-hours`
-- `autoplan`
+**Sync rules:**
+- The **self-contained** versions are canonical for distribution. Substantive seam/convention changes (a sharpened prompt, a new output contract, a refined principle hook) get made there and committed with a CHANGELOG entry (v{N+1}).
+- **Never push a delegating shim to `skills/`** — it depends on gstack being installed and would break portability for adopters who don't run it.
+- The `harness` skill itself stays self-contained and generic in both places.
 
-**Trigger this sync directive when you see**: "applying cherry-pick from gstack", "adding/refining HARNESS INTEGRATION", "sharpening prompt language", "v{N} of harness".
+**Trigger this sync directive when you see**: "sharpening prompt language", "new output contract", "refining a HARNESS INTEGRATION marker", "v{N} of harness".
 
-**Skip sync for**: typo fixes, personal preferences specific to Tim's setup, experiments not yet proven. Adopter-facing changes only.
+**Skip sync for**: typo fixes, environment-specific personal preferences, experiments not yet proven. Adopter-facing changes only.
 
 ## Epistemic stance
 
