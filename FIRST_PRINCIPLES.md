@@ -368,7 +368,7 @@ This doc covers principles, positions, heuristics, and tactics. The following li
 
 ---
 
-## Updating this doc 🏗️
+## Updating & personalizing this doc 🏗️
 
 This document is itself a feedback machine (Principle #8). It updates by the same principles it encodes.
 
@@ -377,6 +377,15 @@ This document is itself a feedback machine (Principle #8). It updates by the sam
 - **Heuristics** are tested against outcomes. If a heuristic produces bad decisions repeatedly, sharpen or remove it.
 - **Tactics** are refactored constantly without ceremony.
 
+**Personalizing vs. changing the shared canonical** — the same layer model governs *who may change what*: for a single owner, for an adopter who clones the base, or for a second operator running their own personalization. The more universal the layer, the less it is personally modifiable and the more a disagreement belongs upstream as a shared challenge; the more situational, the more personal variation is expected, with a designated home.
+
+- **🪨 Principles — challenge, don't fork.** They claim to follow from physics, economics, or observed dynamics: true for everyone or wrong for everyone. A *personal* principle is a preference in a principle's clothes — the rigidity failure the epistemic stance warns against. If you think one is wrong, challenge it (active challenge is the practice); a surviving challenge changes the canonical *for everyone* through the owner-approval + CHANGELOG path. There is no coherent per-person principle.
+- **🎯 Positions — personalize in your overlay.** Bets contingent on *values + business context*, which differ by operator. Your divergent positions live in your private overlay's `positions/` folder; they don't overwrite the shared ones.
+- **📐 Heuristics — personalize freely; challenge what's *generally* wrong.** "Generally true, situationally false" means not all heuristics apply to everyone: add your own, mark a shared one not-applicable-to-you. Only when a shared heuristic is *generally* bad — not just ill-fitting for your situation — does it belong upstream; challenge it centrally so the fix compounds (Principle #8) instead of silently forking.
+- **🔧 Tactics — yours, no ceremony.** Per-project, per-operator.
+
+These are *governance scopes*, not new layers: a **single owner** maintains the shared canonical (see below); an **operator** clones the base and personalizes in their own overlay while challenging shared principles upstream — the default for a collaborator running Harness on their own work, per the *Clarity Over Gates* driver taxonomy (operator / teammate / agent); an **independent fork** is always allowed (the repo is MIT) but forfeits the shared compounding (Principle #8). See `conventions/multi-operator.md` for the multi-operator authorship model and the seams that load the right overlay per operator.
+
 **Auto-research input**: new candidate principles surface from the operator's idea capture, their reading (X.com, papers), and team experience. A weekly scheduled review proposes additions or refinements; the framework owner approves before merge. (The mechanism for this loop is its own work item — see related skill design.)
 
-**The framework decides about itself**: where this document lives, when it triggers, who edits it, are all questions answered *by* this framework. The portability decision (this doc lives in a shared portable location, not project-scoped) is the first worked example.
+**The framework decides about itself**: where this document lives, when it triggers, who edits it, are all questions answered *by* this framework. The portability decision (this doc lives in a shared portable location, not project-scoped) is the first worked example; the per-layer personalization rule above is another.

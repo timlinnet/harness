@@ -2,6 +2,24 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v18 — 2026-05-29
+
+**Multi-operator authorship governance written down — the companion to v12's coordination primitives.** The framework already *implied* who-may-change-what (the four-layer model + the public/private overlay); v18 states it, so a second operator's *"can I modify the principles?"* has an answer in the repo instead of one re-derived each time.
+
+**What v18 adds**:
+- `FIRST_PRINCIPLES.md` → "Updating this doc" expanded to "**Updating & personalizing this doc**" with a per-layer authorship rule: 🪨 Principles — challenge, never personally fork (true-for-all or wrong-for-all); 🎯 Positions — personalize in your overlay (contingent on your values + context); 📐 Heuristics — add your own / opt out freely, challenge centrally only what's *generally* wrong; 🔧 Tactics — yours, no ceremony. Plus the three governance scopes: single owner / operator-with-overlay / independent MIT fork.
+- `conventions/multi-operator.md` → new section "**Authorship & personalization — who may change which layer**": the operator/teammate/agent driver taxonomy applied to authorship, and the note that the seams were already present (per-driver profile, the decision template's `Decided by` field, identity-routing by git email) — v18 supplies the rule they were waiting for.
+
+**Why**: v12 solved the *visibility* half of multi-operator ("whose work is this?"). The *authorship* half ("who may change which layer?") stayed unwritten — `multi-operator.md` was silent on it and "Updating this doc" assumed a single owner. The gap was invisible until a second operator asked directly. No new layers and no new tooling: the answer is the existing four-layer model + overlay architecture, made explicit.
+
+**The core distinction**: the more universal the layer, the less it's personally modifiable and the more a disagreement belongs upstream as a shared challenge; the more situational, the more personal variation is expected, with a designated home. A *personal principle* is incoherent within the framework's own ontology — a preference wearing a principle's clothes. So "modify the principles" decomposes (Posture 1): you don't fork principles, you challenge them; you personalize positions/heuristics/tactics in your overlay.
+
+**Catalyst**: 2026-05-29. An operator who runs Harness with his own personalization asked whether he could modify the principles. The question surfaced that the allowance existed in spirit but had never been written as a rule — and that "the principles" bundled four layers with four different answers. The overlay model was chosen (operator personalizes their own instance and challenges the shared base upstream) over co-ownership-of-canonical (a later graduation) and independent fork (forfeits shared compounding, Principle #8).
+
+**Self-applying**: the `harness` skill ran on the meta-question. Posture 1 (decompose the bundle) split "the principles" into four layers — which is the entire answer. Posture 5 (sharpen-or-delete-not-add) caught the impulse to build a "per-person principles" feature and deleted it: half category-error (principles), half already-solved (positions/heuristics via overlay). What remained was a documentation sharpening, not a build.
+
+**For external adopters**: pull the latest clone (`git pull`). No principles changed; no skills changed; no install pattern changed. The portable take-away: when someone asks "can I change the framework?", ask *which layer* — principles you challenge upstream, everything else you personalize in your overlay.
+
 ## v17 — 2026-05-28
 
 **Two conventions added + the Distribution-sync directive rewritten: Harness now documents how it interoperates with gstack when both are installed.**

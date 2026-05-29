@@ -138,3 +138,26 @@ If 2+ of those fail, the gap is real — graduate to the per-agent heartbeat lay
 ## Origin
 
 This convention was extracted from a real coordination failure on 2026-05-15 — a co-founder + contractor + three AI agents repo where the operator couldn't tell at a glance whose work was sitting in the working tree and whose PRs needed his attention. The investigation tax exceeded the build value. Conventions that look like "common sense" only become common sense when the tooling makes the right behavior the easy behavior.
+
+---
+
+## Authorship & personalization — who may change which layer
+
+The primitives above answer *"whose work is this?"* — **visibility**. The companion question in any multi-operator setup is *"who may change which part of the framework?"* — **authorship**. Both are coordination; both scale badly on "I'll just remember."
+
+Authorship is governed by the same four-layer model as change-rate (`../FIRST_PRINCIPLES.md` → "Updating & personalizing this doc"), read through the *Clarity Over Gates* driver taxonomy:
+
+- **Operator** — a distinct driver running Harness on their *own* work, with their own vision and taste. Clones the public base; personalizes in their *own private overlay* (set one up per `../INSTALL.md`). Shared principles they challenge upstream; their positions, heuristics, tactics, and profile are theirs. **This is the default for a collaborator who runs their own instance** — not a fork, not co-ownership of the base.
+- **Teammate** — a domain specialist driving within *one* operator's portfolio. Shares that operator's base + overlay; contributes heuristics and worked decisions into it rather than maintaining a separate one.
+- **Agent** — an autonomous driver on the same substrate; authors via branches under the trust-tier graduation heuristic (principal approves merges).
+
+By layer (full detail in the canonical):
+
+- 🪨 **Principles** — challenge, never personally fork. True-for-all or wrong-for-all; a surviving challenge changes the canonical for everyone.
+- 🎯 **Positions** — personalize in your overlay's `positions/`; they're contingent on your values + context.
+- 📐 **Heuristics** — add your own freely; opt out of shared ones that don't fit; challenge centrally only the ones that are *generally* wrong.
+- 🔧 **Tactics** — yours, no ceremony.
+
+**The seams already exist** to make this mechanical rather than memorized: the per-driver **profile** (a Clarity Surface), the decision template's **`Decided by`** field, and **identity-routing by git email** (load the right operator's profile + overlay automatically). This section supplies the *rule* those seams were waiting for.
+
+**Co-ownership of the shared canonical** — a second operator with approval authority over the base principles that bind others — is a deliberate graduation, not the default. Start an operator on their own overlay; extend shared-canonical authority only as trust is earned. The trust-tier instinct (Watcher → Builder → Cofounder) applies to *framework authorship*, not just agent autonomy.
