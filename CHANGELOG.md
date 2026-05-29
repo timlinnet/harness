@@ -2,6 +2,22 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v19 — 2026-05-29
+
+**A featherweight staleness notifier — Harness now tells you when your clone has fallen behind, without becoming a build system.** Updating stays a one-command `git pull`; what was missing was knowing you *need* to.
+
+**What v19 adds**:
+- `scripts/harness-version-check.sh` — a SessionStart hook that does a quiet `git fetch` and, only when your local clone is behind origin, prints a one-line nudge (`⬆️ Harness update available (v18 → v19) — git pull`). Zero dependencies beyond git; fails soft (no network / no upstream / already-current → no output); silent for the author who is *ahead* with unpushed work. Opt-in `HARNESS_AUTO_PULL=1` pulls for you, but only when the working tree is clean (never clobbers WIP).
+- `INSTALL.md` — the hook is wired into the SessionStart snippet, plus a "Stay current automatically (optional)" section under Updating Harness.
+
+**Why a notifier, not an auto-installer**: the question that prompted this was "does Harness auto-update like gstack?" It didn't — update was manual `git pull` + `./install.sh` with no signal that a new version existed, so a cloned copy (a second operator, a second machine) could sit silently on stale principles. gstack solves this with a version-check binary + config + migrations + an upgrade flow — it can afford that because it already ships a `./setup` build step and compiled binaries. Harness ships plain markdown: no build, no binary, no on-disk state to migrate, so a `git pull` *is* the whole update. Porting gstack's machinery would have been the largest complexity addition in Harness's history and would have broken its defining bet (zero-dependency portability, v17). The right-sized answer is a shell nudge.
+
+**The decomposition (Posture 1)**: "auto-update" bundles detect-new-version / fetch / re-install / migrate. Harness needs only the first — the rest collapse to one `git pull` (plus `./install.sh` if a skill file changed). So the build is just the detector.
+
+**Catalyst**: 2026-05-29, immediately after v18. The same multi-operator world v18's governance opened is the one where silent drift bites — a second operator's clone stops matching the shared canonical and nobody is told. The `harness` skill ran the decision: Five-Questions #3 (simplify to the minimum that delivers the value) plus the v12 precedent (a version-check is "render state I already have" → a script/hook, not a skill, and certainly not a binary) pointed at the notifier. Posture 5 (sharpen-or-delete-not-add) rejected porting gstack's updater wholesale.
+
+**For external adopters**: pull the latest clone (`git pull`). Add `scripts/harness-version-check.sh` to your SessionStart hook (see INSTALL.md → "Stay current automatically") and you'll get a one-line heads-up whenever you've drifted behind — instead of finding out weeks later. No principles changed; no skills changed.
+
 ## v18 — 2026-05-29
 
 **Multi-operator authorship governance written down — the companion to v12's coordination primitives.** The framework already *implied* who-may-change-what (the four-layer model + the public/private overlay); v18 states it, so a second operator's *"can I modify the principles?"* has an answer in the repo instead of one re-derived each time.

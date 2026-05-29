@@ -52,6 +52,10 @@ Add to `~/.claude/settings.json` to auto-surface your open PRs + OPEN_LOOPS mark
           },
           {
             "type": "command",
+            "command": "~/Documents/GitHub/harness/scripts/harness-version-check.sh"
+          },
+          {
+            "type": "command",
             "command": "echo \"🔄 Open Loops scan:\"; for f in $(find ~/Documents/GitHub -maxdepth 4 -name \"OPEN_LOOPS.md\" 2>/dev/null); do echo \"\"; echo \"== $f ==\"; if grep -q \"YOU ARE HERE\" \"$f\" 2>/dev/null; then grep -B 2 -A 3 \"YOU ARE HERE\" \"$f\" 2>/dev/null; else echo \"(no YOU ARE HERE markers)\"; fi; done"
           }
         ]
@@ -99,6 +103,20 @@ git pull
 ```
 
 Watch the `CHANGELOG.md` for what changed. Harness updates are intended to be additive — new principles, sharpened positions, refinements — rarely breaking.
+
+### Stay current automatically (optional)
+
+Updating is manual *by design* — Harness ships plain markdown with no build step, so there is no installer daemon to keep running. But a cloned copy can drift silently off the shared canonical: you don't notice v18 landed until you happen to `git pull`. The `harness-version-check.sh` hook closes that gap. At every session start it does a quiet `git fetch` and, **only if you're behind**, prints a one-line nudge:
+
+```
+⬆️  Harness update available (v17 → v18). Run:  (cd ~/Documents/GitHub/harness && git pull)  — see CHANGELOG.md.
+```
+
+It's already in the SessionStart snippet above. Zero dependencies beyond git, and it fails soft — no network, no upstream, or already-current all produce no output. It stays silent for the framework author too (being *ahead* with unpushed work counts as current).
+
+**Hands-off variant**: set `HARNESS_AUTO_PULL=1` and the hook will `git pull` for you — but only when your working tree is clean, so it never clobbers uncommitted work. If a skill file changed in the pull, re-run `./install.sh`.
+
+This is deliberately a *notifier*, not a full auto-installer. A tool that ships a build step and compiled binaries (e.g. gstack) can justify a version-check binary + migrations; Harness is text files, so a `git pull` is the entire update and a shell nudge is the entire mechanism it needs.
 
 ## Troubleshooting
 
