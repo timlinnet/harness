@@ -241,7 +241,15 @@ APPROACH A: [Name]
 
 ### 0D. ICP Pressure Test (if your project has defined ICPs)
 
-Before mode selection, run the plan through the ICP lens. If your project has documented ICP profiles (pain themes, financial profiles, blockers), reference those. Otherwise, skip this sub-step and rely on the productize filter alone.
+Before mode selection, run the plan through the ICP lens.
+
+**Consult the real ICP when a scorer is wired.** If you have an ICP scorer configured (see [`conventions/icp-consult.md`](../../conventions/icp-consult.md) — a per-operator `~/.config/harness/icp.json` pointing at a FreedomOS-style ICP-eval), score the plan against the *real* ICP instead of reasoning from memory:
+
+```
+scripts/harness-icp-consult.sh --type strategy "<the plan / feature, in 1-2 sentences>"
+```
+
+It loads the current project's ICP fresh and returns a verdict + score + specific first-person feedback as that customer. Treat it as a first-class input (Strategic Position: *Context-Grounded Consumer Simulation*) — it **informs** the review, it does not gate it. If no scorer is configured (the helper exits 3) or your project has no documented ICP, fall back to the questions below using documented ICP profiles (pain themes, financial profiles, blockers), or the productize filter alone.
 
 1. **Would your primary ICP use this?**
 2. **Would your secondary ICP use this?**

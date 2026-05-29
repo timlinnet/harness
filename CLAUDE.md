@@ -8,7 +8,7 @@ This file orients you when working **on Harness itself**. If you're working in a
 
 Harness is the wiring layer between user context (the moat) and AI primitives (the LLMs). Public base, designed to be cloned and used by anyone — founders, operators, agent builders. It ships:
 
-- `FIRST_PRINCIPLES.md` — the canonical: 18 principles, 13 strategic positions, the Questioning Framework, the Canyon Model, the Decision Template, the Epistemic Stance.
+- `FIRST_PRINCIPLES.md` — the canonical: 18 principles, 14 strategic positions, the Questioning Framework, the Canyon Model, the Decision Template, the Epistemic Stance.
 - `skills/` — 5 portable Claude Code skills (`harness`, `ceo-plan-review`, `engineering-review`, `office-hours`, `autoplan`). Installed globally via `install.sh`.
 - `decisions/` — public/private architecture pattern + sanitized teaching examples. Real worked decisions live in a private companion overlay.
 - `CHANGELOG.md` — versioned history of structural shifts. The framework is itself a feedback machine (Principle #8).

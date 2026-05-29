@@ -251,6 +251,13 @@ Don't ask users to rip-and-replace their working stack. Port what they're alread
 
 *Alternatives*: opinionated rip-and-replace ("our system or none"); modular but uncomposable (each user assembles their own stack); we-build-everything-natively (no integrations).
 
+### Context-Grounded Consumer Simulation 🤖
+LLMs predict consumer behavior well *when given a specific persona*: the LLM supplies the prediction (pattern-matching is abundant, Principle #15); the platform supplies the persona (the specific ICP — the user-context an LLM lacks, Principle #11). So a context-grounded ICP simulation, consulted in a fresh context window, is a reliable enough signal to be a **first-class input to customer-shaped decisions** — not a replacement for talking to real customers, but a standing proxy that scales to every decision the way real customer research cannot. The bet: wiring the *real* ICP into the decision framework (not the operator's remembered guess of it) sharpens customer-shaped calls more than it costs — so make the consult a routine step, fired on decision *shape* (any call with a customer-value dimension), not a special occasion.
+
+*Could be wrong if* frontier models prove systematically biased consumer-predictors (reflecting internet-consensus rather than a niche segment), or the persona-specification gap dominates (a vague or stale ICP yields confident-but-wrong scores), or real-customer feedback loops get cheap enough that the simulation adds no marginal signal.
+
+*Alternatives*: trust the operator's internalized ICP (no simulation — faster, but anchored and un-auditable); real-customer-research only (higher fidelity, doesn't scale to every decision); simulation-as-gate (auto-block low scores — rejected: the score informs, the operator decides, per *Clarity Over Gates*). Pairs with Principle #11 (supply the context LLMs lack), #15 (intelligence abundant), and the *Consult oracles in a fresh context window* heuristic — the ICP consult is that heuristic made real.
+
 ---
 
 ## 📐 Heuristics

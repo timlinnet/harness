@@ -2,6 +2,24 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v20 — 2026-05-29
+
+**The first real bridge from Harness to FreedomOS — the real ICP, in the room, for customer-shaped decisions.** Until now the `ceo-plan-review` ICP Pressure Test reasoned about the customer from the operator's memory. v20 lets a skill consult the *real* ICP, loaded fresh from an ICP scorer, and treat the result as a first-class decision input.
+
+**What v20 adds**:
+- **New Strategic Position — *Context-Grounded Consumer Simulation*** (`FIRST_PRINCIPLES.md`): LLMs predict consumer behavior well *when given a specific persona* (the platform supplies the persona per #11; the LLM supplies the prediction per #15), so a context-grounded ICP simulation, consulted fresh, is a reliable enough signal to wire into customer-shaped decisions — fired on decision *shape*, not as a special occasion. Carries its `could be wrong if` (biased predictors / stale-ICP-in) and alternatives.
+- **`scripts/harness-icp-consult.sh`** — a portable, secret-free helper that reads a PRIVATE per-operator `~/.config/harness/icp.json`, resolves the current repo → a company's ICP, and scores an artifact via an MCP `challenge_as_customer` call. Exits 3 + falls back when unconfigured.
+- **`conventions/icp-consult.md`** — the wiring pattern + config schema + "connect your scorer" onboarding, so any operator points Harness at their own FreedomOS without sharing anything private.
+- **`skills/ceo-plan-review` ICP Pressure Test (0D)** — now consults the real ICP when a scorer is configured; falls back to documented-profile reasoning otherwise. (office-hours demand-premise + the harness Five Questions are same-pattern fast-follows.)
+
+**Public pattern, private instance**: the skills, helper, convention, and Position are generic and public. Every instance value — scorer URL, shared secret, company ids — lives only in `~/.config/harness/icp.json`, never in any repo; the pre-push scanner enforces it. This is what lets one framework serve multiple operators each pointed at their own FreedomOS.
+
+**Why a Strategic Position, not a 19th First Principle**: run the layer-litmus — *if this claim were wrong, does everything downstream re-derive?* No: the ICP consult dies, but Context Shell, Model Diversification, and the atomic-primitive bets do not. "True" was never the bar for bedrock; irreducibility is. Filing a contingent capability-bet as a Principle would dress a bet as a principle (the rigidity failure mode the Epistemic Stance warns against). It's a Position — real, important, and explicitly hedged.
+
+**Catalyst**: 2026-05-29, the graduation step of the FreedomOS Scoring-MCP-Bridge work. The scorer (`mcp-eval`) shipped + verified the same day; v20 is the consumer side — Harness gaining its first FreedomOS connector. The `harness` skill ran the classification decision via the layer-litmus above.
+
+**For external adopters**: the ICP consult is opt-in and degrades gracefully — without `~/.config/harness/icp.json`, `ceo-plan-review` behaves exactly as before. To turn it on, see `conventions/icp-consult.md`; you need an ICP scorer that speaks the `challenge_as_customer` MCP contract (FreedomOS ships one; the contract is documented so any backend works).
+
 ## v19 — 2026-05-29
 
 **A featherweight staleness notifier — Harness now tells you when your clone has fallen behind, without becoming a build system.** Updating stays a one-command `git pull`; what was missing was knowing you *need* to.
