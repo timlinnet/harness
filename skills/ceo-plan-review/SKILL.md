@@ -243,13 +243,9 @@ APPROACH A: [Name]
 
 Before mode selection, run the plan through the ICP lens.
 
-**Consult the real ICP when a scorer is wired.** If you have an ICP scorer configured (see [`conventions/icp-consult.md`](../../conventions/icp-consult.md) — a per-operator `~/.config/harness/icp.json` pointing at a FreedomOS-style ICP-eval), score the plan against the *real* ICP instead of reasoning from memory:
+**Consult the real ICP when a scorer is wired.** If an ICP-scorer MCP tool is wired into your agent — one that scores a deliverable *as a real customer's ICP* (the `challenge_as_customer` contract: arguments `{ companyId, deliverable, deliverable_type }` → `{ verdict, score, icp_name, specific_feedback }`) — call it directly to score the plan against the *real* ICP instead of reasoning from memory. Pass the plan in 1-2 sentences as `deliverable` with `deliverable_type: "strategy"`, and the company whose ICP applies as `companyId`.
 
-```
-scripts/harness-icp-consult.sh --type strategy "<the plan / feature, in 1-2 sentences>"
-```
-
-It loads the current project's ICP fresh and returns a verdict + score + specific first-person feedback as that customer. Treat it as a first-class input (Strategic Position: *Context-Grounded Consumer Simulation*) — it **informs** the review, it does not gate it. If no scorer is configured (the helper exits 3) or your project has no documented ICP, fall back to the questions below using documented ICP profiles (pain themes, financial profiles, blockers), or the productize filter alone.
+It loads that company's ICP fresh and returns a verdict + score + specific first-person feedback as that customer. Treat it as a first-class input (Strategic Position: *Context-Grounded Consumer Simulation*) — it **informs** the review, it does not gate it (*Clarity Over Gates*). If no ICP-scorer tool is wired, or your project has no documented ICP, fall back to the questions below using documented ICP profiles (pain themes, financial profiles, blockers), or the productize filter alone. (To wire one, see [`conventions/icp-consult.md`](../../conventions/icp-consult.md) — register your scorer as an MCP server; any backend honoring the `challenge_as_customer` contract works, and FreedomOS ships one.)
 
 1. **Would your primary ICP use this?**
 2. **Would your secondary ICP use this?**

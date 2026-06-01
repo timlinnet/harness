@@ -2,6 +2,21 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v21 — 2026-06-01
+
+**The ICP consult graduates to a native MCP tool — the bash helper, the per-operator config file, and the shared-secret call path all retire.** v20 wired the ICP Pressure Test through a portable helper (`harness-icp-consult.sh`) that curled an ICP scorer with a shared secret read from `~/.config/harness/icp.json`. The scorer has since grown a real front door — per-operator bearer tokens + per-tenant access — so the wrapper became the *parallel bypass*, not the primitive. v21 deletes it and points the skill at the scorer's **native `challenge_as_customer` MCP tool**, called directly.
+
+**What v21 changes**:
+- **`skills/ceo-plan-review` ICP Pressure Test (0D)** — calls the native `challenge_as_customer` MCP tool directly when one is wired (contract: `{ companyId, deliverable, deliverable_type }` → `{ verdict, score, icp_name, specific_feedback }`). Same first-class-input / never-gates posture; same graceful fallback when no scorer is wired.
+- **Retired `scripts/harness-icp-consult.sh`** — the bash wrapper, the `~/.config/harness/icp.json` schema, and the `X-Internal-Secret` shared-secret call path are gone. The native MCP client is the integration surface now.
+- **`conventions/icp-consult.md` rewritten** — from "wire a bash helper + secret file" to "register your ICP scorer as an MCP server" (`claude mcp add --transport http …`). FreedomOS operators get a per-operator token from the in-app Connect page; adopters point at any backend honoring the contract.
+
+**Why** — *Native over Integration*, and *prefer the vendor primitive over a parallel bypass*: a shell script that curls an endpoint with a shared secret was scaffolding for a scorer that couldn't yet authenticate a caller. Now it can — per-operator bearer token (SHA-256-hashed, revocable) + per-tenant `company_roles` enforcement, server-side — so the agent calls the tool natively and the scaffolding comes down. The shared secret was also the last "secret-holder can score any company" hole; retiring it (the scorer's `MCP_EVAL_SECRET` transition bypass, removed the same day on the FreedomOS side) makes per-tenant isolation true by construction.
+
+**Public pattern, private instance** (unchanged): the skill and convention name only the *contract* (`challenge_as_customer`); every instance value — scorer URL, per-operator token — lives in the operator's local MCP config, never in any repo. The pre-push scanner still enforces it.
+
+**Catalyst**: 2026-06-01, the graduate step of the FreedomOS Scoring-MCP-Bridge loop — the scorer reworked to per-operator tokens + per-tenant access + native MCP transport (verified live), so the v20 interim helper retires and the consult goes native.
+
 ## v20 — 2026-05-29
 
 **The first real bridge from Harness to FreedomOS — the real ICP, in the room, for customer-shaped decisions.** Until now the `ceo-plan-review` ICP Pressure Test reasoned about the customer from the operator's memory. v20 lets a skill consult the *real* ICP, loaded fresh from an ICP scorer, and treat the result as a first-class decision input.
