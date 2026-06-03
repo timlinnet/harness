@@ -26,7 +26,7 @@ See [INSTALL.md](INSTALL.md) for SessionStart hook setup and the private-overlay
 
 ```
 harness/
-├── FIRST_PRINCIPLES.md          ← the canonical doc — 18 principles, 13 strategic positions
+├── FIRST_PRINCIPLES.md          ← the canonical doc — 18 principles, 16 strategic positions
 ├── CHANGELOG.md                  ← version history
 ├── INSTALL.md                    ← detailed setup
 ├── install.sh                    ← one-command setup
@@ -84,7 +84,7 @@ The `harness` skill auto-fires on decision language ("should we build X", "let's
 
 ## Status
 
-v5 (2026-05-12) — public release. The framework is itself a feedback machine; expect refinements as the world gives signal. Each Strategic Position carries a *"could be wrong if..."* condition and a map of alternative bets not taken.
+v23 (2026-06-03). The framework is itself a feedback machine; expect refinements as the world gives signal. Each Strategic Position carries a *"could be wrong if..."* condition and a map of alternative bets not taken.
 
 ## Author
 

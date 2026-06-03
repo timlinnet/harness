@@ -2,6 +2,24 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v23 — 2026-06-03
+
+**A coherence audit + an ideas-inbox mining pass: three additive entries land, the `harness this?` wording is de-collided, and the long-stale version/count stamps are reconciled.** Two multi-agent workflows (81 agents, adversarially verified) audited the framework for internal conflicts and mined ~5 months of captured ideas for cherry-pickable principles. The coherence audit found **zero** genuine principle/position contradictions — only hygiene; the mining surfaced three medium additive entries and confirmed 24 captured ideas already lived in the framework (integrate-as-you-go works).
+
+**What v23 adds**:
+- **New 🎯 Strategic Position — *Agent-Native Surface (the customer is a machine)*** (`FIRST_PRINCIPLES.md`): when the consumer is an agent, the winning surface is end-to-end programmatic (no human click); the seller-side mirror of *Connector Hierarchy* / *Native Over Integration*. Security is resolved by trust-tier + capability-grain + execution-source gating + the engine-side per-tenant security agent — **not** by inserting a manual approval into every flow (the condition Tim attached on approval).
+- **New 📐 Heuristic — *Observe agents by telemetry, not self-report*** (`FIRST_PRINCIPLES.md`): judge an agent by what it emits (JSONL event stream, commits, PR/CI, telemetry), never its self-account. Names the unstated rationale already load-bearing in session-digest tooling and platform agent-telemetry.
+- **New 📐 Heuristic — *Mandate-derived durability*** (`FIRST_PRINCIPLES.md`): prefer wrapping work guaranteed by *law* over work guaranteed only by current model limits — law-mandated wrappers compound into moats; capability-gap wrappers get absorbed (#10's squeeze).
+
+**What v23 fixes (hygiene from the audit)**:
+- ***Fire on decision shape* wording de-collided** — "surface 'harness this?' *before* executing" reworded to "*run* the framework and surface the one-line **result** — don't ask permission to run it," removing a real contradiction with *Fire on orchestration shape* and `skills/harness` (both forbid the ask).
+- **Version stamp un-staled** — the `FIRST_PRINCIPLES.md` Status line and `README.md` were frozen at v5 while the doc had moved to v22; now track (v23).
+- **Strategic-Position count reconciled to 16** — `harness/CLAUDE.md` (said 14), `harness/README.md` (said 13), and the FreedomOS project CLAUDE.md (said 13) had all drifted as positions were added; corrected (15 prior + Agent-Native Surface).
+
+**Catalyst**: 2026-06-03 — Tim ran a two-workflow Harness coherence + ideas-inbox audit, the first real exercise of the *auto-research input* loop this doc's "Updating & personalizing" section describes as still-unbuilt. Findings adversarially verified; additive entries approved by Tim with the Agent-Native Surface security condition folded in.
+
+**For external adopters**: pull the latest clone. Two new heuristics + one new position; no existing entry's meaning changed except the *Fire on decision shape* wording sharpen. Orientation-doc counts corrected.
+
 ## v22 — 2026-06-03
 
 **A new 📐 Heuristic — *Fire on orchestration shape, not orchestration size* — plus the framework's first `UserPromptSubmit` wake-hook, so multi-agent fan-out actually surfaces at the moment it would accelerate the work.** The decision model for *when* to fan out already existed (a machine-local memory); what was missing was a canonical, adopter-shippable home for it **and** a firing surface — because context-resident rules under-fire (the sibling *Fire on decision shape* is on record going dormant: *"I never get challenged by those principles… which is concerning"*).
