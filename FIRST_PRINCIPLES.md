@@ -162,6 +162,7 @@ Two distinct trust dimensions, both load-bearing:
 Most products lean on one. We bet on both because the ICP cares about both — they want to see the work *and* feel that we get them.
 
 **Refinement — transparent degradation (2026-06-03):** a third face of Transparency that shows up under failure, not success. Trust is deepened not by appearing unbreachable but by failing safe and *saying so* — when a control holds an action or pulls an agent's autonomy back, it does so visibly and narrates why. Generalizes the Integrity Gate's "surface what failed" from pre-ship output to runtime enforcement. (Mechanism: the FreedomOS Engine-side CISO's auto-demote + report — freedom-ai decision 0009.)
+<!-- Provenance: the "transparent degradation (2026-06-03)" refinement above was authored in an office-hours session and bundled by auto-sync into commit bb257fb (whose message, "principles: add 'Resolve, don't float' heuristic", describes only the other change in that commit). It pairs with freedom-ai decision 0009 (Engine-side CISO v1) and security-architecture v2.1 Layer 5. -->
 
 *Could be wrong if* users prefer results over reasoning (trust = outcomes); or values-signaling backfires in mixed audiences; or trust commoditizes around brand instead.
 
