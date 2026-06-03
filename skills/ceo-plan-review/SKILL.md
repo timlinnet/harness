@@ -209,7 +209,7 @@ Rules:
 
 **Before presenting your recommendation**, cross-check EVERY proposed approach against:
 
-1. **Harness First Principles + Strategic Positions** (`~/Documents/GitHub/harness/FIRST_PRINCIPLES.md`) — *the principles substrate*:
+1. **Harness First Principles + Strategic Positions** (`~/GitHub/harness/FIRST_PRINCIPLES.md`) — *the principles substrate*:
    - 18 first principles (e.g., Wisdom > Intelligence, Complementary Strengths, Atomic Primitives Compose, Dynamic > Hardcoded, Specification is the Bottleneck, Asymmetric Attention, Tools Become Primitives)
    - 13 strategic positions, each with "could be wrong if..." conditions and alternative bets (Agent = Employee, User = Director, Context Shell Pattern, Native Over Integration, Trust Through Transparency + Shared Values, Loop Closure / Match Closure Metric, Marketing is Part of the Product, etc.)
    - Architecture Lenses from the Questioning Framework — especially: rides-an-improving-primitive, preserves-human-attention, deepens-focused-ICP-moat, structure-right-vs-rewrite

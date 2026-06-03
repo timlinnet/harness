@@ -14,13 +14,13 @@
 # this?", this answers "am I still on the latest shared principles?".
 #
 # Env:
-#   HARNESS_DIR        repo location (default: ~/Documents/GitHub/harness)
+#   HARNESS_DIR        repo location (default: ~/GitHub/harness)
 #   HARNESS_AUTO_PULL  set to 1 to auto-pull when the working tree is CLEAN
 #                      (never clobbers uncommitted work; falls back to a nudge)
 
 set -u
 
-HARNESS_DIR="${HARNESS_DIR:-$HOME/Documents/GitHub/harness}"
+HARNESS_DIR="${HARNESS_DIR:-$HOME/GitHub/harness}"
 
 # Bail silently unless we have git and a real clone.
 command -v git >/dev/null 2>&1 || exit 0

@@ -53,7 +53,7 @@ Adopters may extend with project-specific calibration (escalation thresholds, cu
 Understand the project and the area the user wants to change.
 
 <!-- HARNESS INTEGRATION START -->
-**Before anything else**, load Harness as ambient context — read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` (especially Strategic Positions and the Questioning Framework). Don't bulk-load all 18 principles; pull what's relevant once the user's goal is clear. The Harness substrate informs Phase 3 (Premise Challenge) and Phase 4 (Alternatives Generation). The YC-style forcing questions below layer on top — they ask "is the demand real?" while Harness asks "is this principled?". Both lenses, used together.
+**Before anything else**, load Harness as ambient context — read `~/GitHub/harness/FIRST_PRINCIPLES.md` (especially Strategic Positions and the Questioning Framework). Don't bulk-load all 18 principles; pull what's relevant once the user's goal is clear. The Harness substrate informs Phase 3 (Premise Challenge) and Phase 4 (Alternatives Generation). The YC-style forcing questions below layer on top — they ask "is the demand real?" while Harness asks "is this principled?". Both lenses, used together.
 <!-- HARNESS INTEGRATION END -->
 
 1. Read `.agent/AGENT.md` and `.agent/backlog/` — understand current priorities and constraints.

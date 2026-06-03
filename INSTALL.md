@@ -3,8 +3,8 @@
 ## Quick start
 
 ```bash
-git clone https://github.com/timlinnet/harness.git ~/Documents/GitHub/harness
-cd ~/Documents/GitHub/harness
+git clone https://github.com/timlinnet/harness.git ~/GitHub/harness
+cd ~/GitHub/harness
 ./install.sh
 ```
 
@@ -26,7 +26,7 @@ Add to your project's `CLAUDE.md` or `.agent/AGENT.md`:
 ## Read order on session start
 
 1. This file — orientation
-2. `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — the north star.
+2. `~/GitHub/harness/FIRST_PRINCIPLES.md` — the north star.
    18 first principles + 13 strategic positions + Questioning Framework.
    When you're at a design fork, Harness is the tiebreaker.
 3. [your project-specific docs]
@@ -44,15 +44,15 @@ Add to `~/.claude/settings.json` to auto-surface your open PRs + OPEN_LOOPS mark
         "hooks": [
           {
             "type": "command",
-            "command": "~/Documents/GitHub/harness/scripts/session-pr-digest.sh YOUR_ORG/repo1 YOUR_ORG/repo2"
+            "command": "~/GitHub/harness/scripts/session-pr-digest.sh YOUR_ORG/repo1 YOUR_ORG/repo2"
           },
           {
             "type": "command",
-            "command": "~/Documents/GitHub/harness/scripts/dirty-state-ownership.sh ~/Documents/GitHub/repo1 ~/Documents/GitHub/repo2"
+            "command": "~/GitHub/harness/scripts/dirty-state-ownership.sh ~/Documents/GitHub/repo1 ~/Documents/GitHub/repo2"
           },
           {
             "type": "command",
-            "command": "~/Documents/GitHub/harness/scripts/harness-version-check.sh"
+            "command": "~/GitHub/harness/scripts/harness-version-check.sh"
           },
           {
             "type": "command",
@@ -97,7 +97,7 @@ See `decisions/README.md` for the template + when to write a decision vs. just m
 ## Updating Harness
 
 ```bash
-cd ~/Documents/GitHub/harness
+cd ~/GitHub/harness
 git pull
 ./install.sh  # re-runs; prompts on existing skills before overwriting
 ```
@@ -109,7 +109,7 @@ Watch the `CHANGELOG.md` for what changed. Harness updates are intended to be ad
 Updating is manual *by design* — Harness ships plain markdown with no build step, so there is no installer daemon to keep running. But a cloned copy can drift silently off the shared canonical: you don't notice v18 landed until you happen to `git pull`. The `harness-version-check.sh` hook closes that gap. At every session start it does a quiet `git fetch` and, **only if you're behind**, prints a one-line nudge:
 
 ```
-⬆️  Harness update available (v17 → v18). Run:  (cd ~/Documents/GitHub/harness && git pull)  — see CHANGELOG.md.
+⬆️  Harness update available (v17 → v18). Run:  (cd ~/GitHub/harness && git pull)  — see CHANGELOG.md.
 ```
 
 It's already in the SessionStart snippet above. Zero dependencies beyond git, and it fails soft — no network, no upstream, or already-current all produce no output. It stays silent for the framework author too (being *ahead* with unpushed work counts as current).

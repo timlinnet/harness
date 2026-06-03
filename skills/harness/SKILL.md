@@ -7,7 +7,7 @@ description: Automatically apply when making architectural, product, business, a
 
 This skill fires **automatically** during any work that involves a meaningful choice — architecture, UX, agent behavior, product features, business positioning, team decisions, personal operating mode.
 
-> **Key mindset shift**: Don't wait to be invoked. If you're at an "A or B?" moment, apply the framework. If a prior decision is documented in the project or in `~/Documents/GitHub/harness/decisions/`, follow it unless explicit user agreement to change.
+> **Key mindset shift**: Don't wait to be invoked. If you're at an "A or B?" moment, apply the framework. If a prior decision is documented in the project or in `~/GitHub/harness/decisions/`, follow it unless explicit user agreement to change.
 
 ## Run as designed (the default)
 
@@ -28,7 +28,7 @@ Adopters may extend with project-specific calibration (escalation thresholds, cu
 
 ## What Harness is
 
-Harness is the canonical first-principles framework for designing systems in the AI age. It lives at `~/Documents/GitHub/harness/` (repo: `timlinnet/harness`). It is cross-project — applied across the framework owner's projects and any future work.
+Harness is the canonical first-principles framework for designing systems in the AI age. It lives at `~/GitHub/harness/` (repo: `timlinnet/harness`). It is cross-project — applied across the framework owner's projects and any future work.
 
 Four layers, each changing at a different rate:
 
@@ -73,7 +73,7 @@ These fire FIRST. Loading principles (Step 2) and the questioning framework (Ste
 
 ## Step 2: Load relevant principles (progressive disclosure)
 
-Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load all 18 principles every time. Per Principle #1 (Context is finite and ordered) and #13 (Self-discovery is progressive disclosure for capabilities): retrieve only the layers and entries relevant to the current decision.
+Read `~/GitHub/harness/FIRST_PRINCIPLES.md` — but do not bulk-load all 18 principles every time. Per Principle #1 (Context is finite and ordered) and #13 (Self-discovery is progressive disclosure for capabilities): retrieve only the layers and entries relevant to the current decision.
 
 **Heuristic for what to load**:
 - Decisions about architecture / agents / data → First Principles + relevant Strategic Positions
@@ -123,7 +123,7 @@ B) [option]
 [Option] because [reasoning derived from the layers above]
 ```
 
-For decisions that are genuinely cross-cutting (not project-specific), suggest documenting in `~/Documents/GitHub/harness/decisions/` as a numbered entry — these get committed and become part of the framework's history.
+For decisions that are genuinely cross-cutting (not project-specific), suggest documenting in `~/GitHub/harness/decisions/` as a numbered entry — these get committed and become part of the framework's history.
 
 ## Step 6: Surface a Parallel Launchpad (if a qualifying candidate exists)
 

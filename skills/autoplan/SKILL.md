@@ -139,7 +139,7 @@ Output: "Here's what I'm working with: [plan summary]. UI scope: [yes/no]. Start
 ### Step 3: Load Harness Principles
 <!-- HARNESS INTEGRATION START -->
 
-Read `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` to load the principles substrate:
+Read `~/GitHub/harness/FIRST_PRINCIPLES.md` to load the principles substrate:
 - **18 First Principles** (bedrock — derived from physics, economics, observed dynamics)
 - **13 Strategic Positions** (bets, each with "could be wrong if..." conditions and alternative bets)
 - **The Architecture Lenses** from the Questioning Framework

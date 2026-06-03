@@ -7,8 +7,8 @@ Harness is the wiring layer between user context (the moat) and AI primitives (t
 ## Quick start
 
 ```bash
-git clone https://github.com/timlinnet/harness.git ~/Documents/GitHub/harness
-cd ~/Documents/GitHub/harness
+git clone https://github.com/timlinnet/harness.git ~/GitHub/harness
+cd ~/GitHub/harness
 ./install.sh
 ```
 
@@ -75,7 +75,7 @@ Add to your project's `CLAUDE.md` or `.agent/AGENT.md`:
 ## Read order on session start
 
 1. This file — orientation
-2. `~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` — the north star.
+2. `~/GitHub/harness/FIRST_PRINCIPLES.md` — the north star.
    When you're at a design fork, Harness is the tiebreaker.
 3. [your project-specific docs]
 ```

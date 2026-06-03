@@ -1,6 +1,6 @@
 ---
 name: publish-harness
-description: Proactively fire when work on the harness repo reaches a publishable state. Detect committed-but-unpushed commits on main, OR a substantive set of uncommitted edits that touch FIRST_PRINCIPLES.md, skills/, CHANGELOG.md, INSTALL.md, or README.md. Ask once before publishing — never push silently. SKIP firing when: changes are typo-only, work is mid-draft (no completion signal), the user hasn't stopped editing, or no harness content has changed. Cwd must be inside ~/Documents/GitHub/harness. Triggers on completion signals while in the repo ("done", "looks good", "ship it", "publish", "push it", "ready"), at session end with unpushed work, or after a substantive edit chain to harness content. The pre-push hook is the safety net — let it run, surface its output if blocked.
+description: Proactively fire when work on the harness repo reaches a publishable state. Detect committed-but-unpushed commits on main, OR a substantive set of uncommitted edits that touch FIRST_PRINCIPLES.md, skills/, CHANGELOG.md, INSTALL.md, or README.md. Ask once before publishing — never push silently. SKIP firing when: changes are typo-only, work is mid-draft (no completion signal), the user hasn't stopped editing, or no harness content has changed. Cwd must be inside ~/GitHub/harness. Triggers on completion signals while in the repo ("done", "looks good", "ship it", "publish", "push it", "ready"), at session end with unpushed work, or after a substantive edit chain to harness content. The pre-push hook is the safety net — let it run, surface its output if blocked.
 ---
 
 # Publish Harness — Proactive Publish Gate
@@ -9,7 +9,7 @@ You are the gatekeeper between Tim's local harness work and the public `timlinne
 
 ## When you fire
 
-**Cwd check first.** Resolve `pwd`. If not under `~/Documents/GitHub/harness`, exit silently. This skill is repo-scoped.
+**Cwd check first.** Resolve `pwd`. If not under `~/GitHub/harness`, exit silently. This skill is repo-scoped.
 
 **Detection — what counts as "something to publish":**
 

@@ -97,11 +97,11 @@ Add to `~/.claude/settings.json` (or wherever your shell/IDE/agent expects sessi
         "hooks": [
           {
             "type": "command",
-            "command": "~/Documents/GitHub/harness/scripts/session-pr-digest.sh YOUR_ORG/repo1 YOUR_ORG/repo2"
+            "command": "~/GitHub/harness/scripts/session-pr-digest.sh YOUR_ORG/repo1 YOUR_ORG/repo2"
           },
           {
             "type": "command",
-            "command": "~/Documents/GitHub/harness/scripts/dirty-state-ownership.sh ~/Documents/GitHub/repo1 ~/Documents/GitHub/repo2"
+            "command": "~/GitHub/harness/scripts/dirty-state-ownership.sh ~/Documents/GitHub/repo1 ~/Documents/GitHub/repo2"
           }
         ]
       }

@@ -78,7 +78,7 @@ If the complexity check triggers (8+ files or 2+ new classes/services), proactiv
 <!-- HARNESS INTEGRATION START -->
 ## Step 0.5: Harness Architecture Lenses (cross-check)
 
-Before the architecture review, cross-check the plan against the Harness Architecture Lenses (`~/Documents/GitHub/harness/FIRST_PRINCIPLES.md` → "The Questioning Framework"):
+Before the architecture review, cross-check the plan against the Harness Architecture Lenses (`~/GitHub/harness/FIRST_PRINCIPLES.md` → "The Questioning Framework"):
 
 - Does this **ride a primitive that's improving** (capability + cost), or compete with it? (Principles #2, #10, #18)
 - Does it **preserve human attention** for what matters? (#17 — asymmetric attention is the leverage point)
