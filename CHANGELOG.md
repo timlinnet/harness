@@ -2,6 +2,17 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v25 — 2026-06-04
+
+**A third 📐 Heuristic in the "don't hand the operator agent-work" family — *Don't float settled process* — the execution-side twin of *Resolve, don't float* (surfacing side) and *Maintain tracked state* (completion side).** Promoted straight from an operator correction: the same defect surfaced again, now on the *shipping* mechanics.
+
+**What v25 adds**:
+- **New 📐 Heuristic `Don't float settled process`** (`FIRST_PRINCIPLES.md`, sited right after *Maintain tracked state*): once the *what* is decided and verified, the *how* of shipping — commit, PR mechanics, deploy order, verify cadence — is pre-decided convention protected by the review chain, not a fresh operator decision. Surfacing it as a menu is floating. The review chain (`engineering-review`, `/cso`, deploy security pre-flight) *is* the protection; treating it as a per-step approval workflow is the *skill-chain-as-gate* anti-pattern already named under *Clarity Over Gates*. Escalate only on a genuine judgment call or a principle/heuristic conflict; route mid-flow issues into the substrate rather than into more operator questions.
+
+**Catalyst**: 2026-06-04 — after finishing + verifying a fix, an agent handed the operator a commit-vs-PR-vs-deploy multiple-choice when the deployment process was already settled. Correction: *"I rely on Harness and gstack to protect us; ask only on true judgment calls or a principle conflict — and when we surface issues, we improve Harness, we don't ask ten more questions."* Same memory → Harness routing as v22/v24: a workflow discipline that helps every operator shouldn't live in one machine's notes.
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic, sited after *Maintain tracked state*; no existing entry's meaning changed.
+
 ## v24 — 2026-06-04
 
 **A new 📐 Heuristic — *Maintain tracked state, don't offer to* — the completion-side twin of *Resolve, don't float*.** Promoted from a machine-local memory after an operator correction, the same memory → Harness path v22 took: a generalizable workflow discipline shouldn't rot in one machine's notes when it helps every operator.
