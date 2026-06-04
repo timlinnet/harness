@@ -2,6 +2,17 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v24 — 2026-06-04
+
+**A new 📐 Heuristic — *Maintain tracked state, don't offer to* — the completion-side twin of *Resolve, don't float*.** Promoted from a machine-local memory after an operator correction, the same memory → Harness path v22 took: a generalizable workflow discipline shouldn't rot in one machine's notes when it helps every operator.
+
+**What v24 adds**:
+- **New 📐 Heuristic `Maintain tracked state, don't offer to`** (`FIRST_PRINCIPLES.md`, sited right after *Resolve, don't float*): updating the state that *tracks* a unit of work — the loop ledger, the backlog, the status board — is part of finishing it, not an optional follow-up. The two failure modes (offering the update; leaving it stale) share *Resolve, don't float*'s root defect — handing the operator work the agent should have closed — but on the completion side rather than the surfacing side. Anchored to the *User = Director* position (the board is only as good as its inputs) and Principle #8 (the feedback loop compounds only when the ledger reflects reality).
+
+**Catalyst**: 2026-06-04 — an agent shipped + verified a fix end-to-end, then *offered* to mark its loop entry done instead of just doing it; the operator's correction ("I shouldn't have to manually maintain [the loop ledger]") generalized past the instance into the routing realization that drove the promotion — **a learning that helps other operators belongs in Harness, not local memory.** This heuristic is the first entry surfaced *by* that routing rule (which now lives, by design, as a machine-local memory: the triage stays local; what it routes goes canonical).
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic, sited after *Resolve, don't float*; no existing entry's meaning changed. It applies on any host that tracks work state — a backlog, a loop file, an issue tracker.
+
 ## v23 — 2026-06-03
 
 **A coherence audit + an ideas-inbox mining pass: three additive entries land, the `harness this?` wording is de-collided, and the long-stale version/count stamps are reconciled.** Two multi-agent workflows (81 agents, adversarially verified) audited the framework for internal conflicts and mined ~5 months of captured ideas for cherry-pickable principles. The coherence audit found **zero** genuine principle/position contradictions — only hygiene; the mining surfaced three medium additive entries and confirmed 24 captured ideas already lived in the framework (integrate-as-you-go works).

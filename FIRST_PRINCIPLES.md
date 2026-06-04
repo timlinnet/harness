@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v23 (2026-06-03). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
+> **Status**: v24 (2026-06-04). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 
@@ -290,6 +290,9 @@ The architecture should get *cleaner* over time as LLMs improve. Workarounds get
 
 ### Resolve, don't float 🤖
 When surfacing state to the operator — open PRs, branch / working-tree status, cross-cutting "heads-ups," anything the agent noticed but the user didn't ask about — never hand over raw state that becomes *theirs* to triage. Run three filters first: (1) **Relevant?** to the task at hand — if not, drop it or say "ignore this." (2) **Whose job?** — this thread, or another session / operator? Say it explicitly. (3) **Then recommend** a resolution with clear ownership — not a bare decision. *"Here are all the PRs"* / *"the checkout's on a feature branch, fyi"* = floating. *"Not this thread's job — belongs to the #82 session; ignore here"* = resolved. Anchored to Principle #17 (asymmetric attention) and the *User = Director* position: the director's attention is spent on consequential calls, not on reconciling state the agent could have classified. The failure mode is making the operator ask, then resolve, what the agent surfaced. Origin: 2026-06-03 — an agent floated a branch-state "heads-up" as an FYI and handed the user a decision to reconcile; correction was to classify + own + recommend.
+
+### Maintain tracked state, don't offer to 🤖
+Updating the state that *tracks* a unit of work — the loop ledger, the backlog, the status board — is part of finishing the work, not an optional follow-up. When work hits a milestone (shipped, verified, merged, a chain step closed, or a tracked dependency's live state changes), update the owning entry **silently, as part of the task**. Two failure modes share one root: **offering** the update ("want me to mark X done?") and **leaving it stale** — both hand the operator maintenance that was the agent's to do. This is the completion-side twin of *Resolve, don't float* (which governs the surfacing side): same defect — making the operator own work the agent should have closed. The cost isn't tidiness — stale tracked-state silently corrupts the next prioritization, because the *User = Director* board is only as good as its inputs, and Principle #8's feedback loop compounds only when the ledger reflects reality. Find the *owning* entry by the artifact, not the ticket number; add a dated, attributed note; refresh any dependency whose live state you just learned. Origin: 2026-06-04 — an agent shipped + verified a fix end-to-end, then *offered* to update the loop ledger instead of just doing it ("I shouldn't have to manually maintain [it]"). Promoted memory → Harness, since loop-maintenance discipline helps every operator, not one machine.
 
 ### Fire on decision shape, not decision size 🤖
 The trigger for invoking Harness (and the wider review stack — `office-hours`, `ceo-plan-review`, `engineering-review`, `investigate`) is *whether the work contains a real choice point*, not how big the work is. Small decisions routinely hide the highest-leverage option surfaces — especially around format, friction, ICP fit, and false binaries. A 30-minute task with two viable approaches needs the framework just as much as a 3-day build; the analysis cost is 3–5 minutes either way and the upside is surfacing options the operator hadn't seen.
