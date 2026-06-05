@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v30 (2026-06-05). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
+> **Status**: v31 (2026-06-05). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 

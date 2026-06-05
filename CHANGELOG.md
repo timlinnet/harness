@@ -2,6 +2,19 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v31 — 2026-06-05
+
+**A new portable skill — `skills/interface-craft/` — the craft authority.** Promotes Josh Puckett's vision-based Design Critique into the substrate and adds the Harness seam: system-coherence first, dynamic brand, stage-matched register, the 10/10 model, and the promote-the-value / protect-the-faith guardrail.
+
+**What v31 adds**:
+- **New skill `skills/interface-craft/SKILL.md`** — vision-based ("render → see → critique → fix → re-score", not a remembered checklist), portable for any driver (operator / teammate / agent). Headline principle: **system-coherence, not single-page** — a surface must cohere with its app (screenshot it *in context*); brand / warmth / density are system decisions, not page tweaks (often the hire-a-design-agent rung of *Generative Gap Resolution*). Encodes: match register to journey stage (cold → feeling + proof; committed power-user → direct + concrete); dynamic brand (`get_brand_guidelines` / DESIGN.md, craft wins ties); the 10/10 = mechanical-craft (→8) + resonance + proof + stage-register (→10); and the hard guardrail — **the AI never authors faith content; an ICP score never buys a faith line** (#15, v30). Nomenclature: "your coding agent" (any MCP client), business-native voice.
+
+**Why a skill, not a Position**: it is *applied method* (a critique loop a driver runs), not a contingent bet. It rides existing Positions (Trust-Through-Shared-Values, Clarity-Over-Gates, the Integrity Gate, Generative Gap Resolution) and the `icp-consult` convention.
+
+**Catalyst**: 2026-06-05 — built while taking the FreedomOS *Connect Harness* page 5 → 8 and learning the hard way that (a) a beautiful warm page inside a cool-gray app is a disjointed *island* (system-coherence), (b) register must match journey stage (lush copy that won a "cold" read became noise to the committed power-user actually on the page), and (c) an ICP sim will push toward faith content to raise its score — which the human-set values guardrail must outrank. Same memory → Harness routing as v22/v24–v30.
+
+**For external adopters**: pull the latest clone (`git pull`). One new skill; the strategic principles it rides are unchanged. It fires on any UI / design / critique work and is most valuable for autonomous agents producing visual output, where no human eye backstops the default.
+
 ## v30 — 2026-06-05
 
 **A refinement to 🎯 *Trust Through Transparency + Shared Values* — *promote the value, protect the faith*.** Separates the *promotable* value layer (integrity / honesty / shared-values — a quiet operating filter) from the *protected* wisdom layer (faith: never monetized, never AI-authored).
