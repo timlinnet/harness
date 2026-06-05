@@ -2,6 +2,21 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v29 — 2026-06-05
+
+**A new 🎯 Strategic Position — *Generative Gap Resolution: refuse the empty layer, resolve by rung* — plus its convention.** When a driver hits a capability gap, the substrate's job is to recognize it loudly and *generate* the right-rung resolver on demand (note → skill → agent → MCP → primitive), not to pre-build every capability. Surfaced while making a FreedomOS surface stage-aware; the customer-journey gap exposed the general pattern.
+
+**What v29 adds**:
+- **New 🎯 Strategic Position `Generative Gap Resolution`** (`FIRST_PRINCIPLES.md`, last in Strategic Positions, before Heuristics). Two halves: **(1) refuse an empty foundational layer and surface it** — don't silently default on a missing ICP / brand / journey-stage (the confident-wrong-output failure); a gate that fires, *Guarantee by construction* applied to context, living in the substrate so it fires for non-customers too (and the noise reveals where a context-holding product earns its place). **(2) resolve by the cheapest rung, graduate up only as the need recurs/scales** — a *ladder* (Connector-Hierarchy-shaped), not a fixed line; each rung's resolver *generated on demand* (Self-discovery #13 raised from tools to resolution forms). The **resolver-router** = the substrate (any driver self-routes) + a runtime Chief-of-Staff persona (FreedomOS: Linnet).
+- **New convention `conventions/generative-gap-resolution.md`** — the ladder table, the loud-refusal mechanism (generalizing FreedomOS's live wisdom-gate), the resolver-router, the customer-journey worked example, and the note that the FreedomOS runtime implementation goes through the full chain.
+- **Refined `conventions/icp-consult.md`** — *journey stage is a required input*: the consult silently assumes "cold prospect" without it and mis-scores a settings page as a landing page; on an empty journey, refuse-to-assume and surface. Corollary for craft/marketing skills: **match register to stage** (resonance for cold, concrete outcome for committed).
+
+**Why a Position, not a Heuristic**: it is a contingent architectural *bet* (generate-on-demand resolution + loud refusal vs. pre-building primitives), with real *could-be-wrong-if* conditions and named alternatives — the same altitude and shape as *Connector Hierarchy* (a tiered decision + a detailed convention), not a single derivable rule.
+
+**Catalyst**: 2026-06-05 — Tim, midway through making the FreedomOS *Connect Harness* page stage-aware, saw that an ICP consult scored it wrong for lack of journey-stage context, and pushed up to meta: the system should be *generative on demand* for the exact gap a driver hits, and Harness should *refuse an empty foundational layer and surface it* — for non-subscribers too. Approved Recommendation B (build the meta-machinery, not the customer-journey primitive) and "Harness convention first, CoS rides it." Same memory → Harness routing as v22/v24–v28.
+
+**For external adopters**: pull the latest clone (`git pull`). One new Position + one new convention; one existing convention (`icp-consult`) gains a required-input note. Nothing else changes meaning. The Position fires whenever any driver hits a capability gap or a foundational layer is empty — i.e. constantly, for users and agents alike.
+
 ## v28 — 2026-06-04
 
 **🪨 Principle #8 (*Feedback loops compound*) gains a *Cross-pool corollary* — compounding can run across *two* pools (a disciplined core funding a separate allocator), not only a system improving itself.** Surfaced from a Bill Ackman / Buffett-GEICO insurance-float discussion. The timeless-finance core stays *out* of Harness (not an AI-age principle); only the part that re-derives from #8, plus its one AI-native mutation, earns a note.

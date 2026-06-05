@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v28 (2026-06-04). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
+> **Status**: v29 (2026-06-05). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 
@@ -271,6 +271,19 @@ When the consumer of a service is an agent, not a human, the winning product sur
 *Could be wrong if* regulation forces a *mandatory* human-approval step into specific high-consequence agent actions (then agent-completable is illegal there, not a feature), or the agent-as-customer market stays niche and human-gated SaaS keeps winning on distribution.
 
 *Alternatives*: browser-automation-first (let agents drive human UIs via computer-use — bet the API never comes); human-assisted-agent (a manual approval rail on every external action — safe but doesn't scale, the failure mode this position rejects); agnostic (no opinion on whether our surfaces are agent-completable).
+
+### Generative Gap Resolution — refuse the empty layer, resolve by rung 🤖
+When a driver (operator or agent) hits a **capability gap**, the platform's job is not to *have* every capability pre-built — it is to **recognize the gap loudly and generate the right-rung resolver on demand**. Two halves:
+
+**(1) Refuse an empty foundational layer; surface it.** Don't silently default on missing foundational context — an undefined ICP, brand, or customer-journey stage — because the silent default produces confident-but-wrong output (an ICP consult that assumes "cold prospect" because no journey stage was supplied, then mis-scores an in-app page as a landing page). Refuse to proceed on the empty layer and make the emptiness *noisy*: *Guarantee by construction, not by vigilance* applied to context — a gate that fires, not a reviewer who must remember. It lives in the substrate, so it fires whether or not the driver is any product's paying customer — and for a non-customer the noise itself reveals where a context-holding product (FreedomOS) earns its place.
+
+**(2) Resolve by the cheapest rung that works; graduate up only as the need recurs or scales.** There is no fixed line between "note it" and "build a primitive" — there is a **ladder**, climbed only as far as the need justifies (Patience over code, #7): knowledge the LLM has → inline; context/state → a note (→ a primitive only if universal); a recurring method → a generated skill; sustained ownership + judgment → hire an agent (the interview reverse-engineers the PhD employee); a missing action → an MCP (Connector Hierarchy); core + universal → a platform primitive (like CRM). A single need *stacks* rungs (a customer journey: context → owned by a Growth agent → may pull an MCP → graduates to a primitive if universal) — that's the climb, not a contradiction. Each rung's resolver is **generated when the gap is hit** (`skill-creator` writes the skill, a hire interview reverse-engineers the agent, the agent keeps its own markdown) — Self-discovery (#13) raised from *tools* to *resolution forms*.
+
+The **resolver-router** picks the starting rung and recognizes when to graduate: the substrate (this Position — any driver self-routes) plus, at runtime, a Chief-of-Staff persona that recognizes gaps in conversation and routes to hire / skill / MCP / primitive (in FreedomOS, Linnet — the runtime embodiment that rides the convention). Detail + worked example: `conventions/generative-gap-resolution.md`.
+
+*Could be wrong if* on-demand generation quality stays too low to trust (pre-built primitives win on reliability); the routing overhead exceeds just building the obvious primitive; or "refuse the empty layer" over-fires into friction that trains drivers to suppress it.
+
+*Alternatives*: pre-build every primitive (no generation — heavy, slow, guesses needs); pure-inline (resolve everything in-context, nothing persists — loses compounding); human-only resolution (the operator decides every gap — doesn't scale to agent ops); silent-default (proceed on best-guess when context is missing — the failure this rejects).
 
 ---
 

@@ -11,6 +11,10 @@ The scorer is a **native MCP tool** your agent calls directly. It honors one con
 
 `ceo-plan-review` (Step 0D) calls it when wired and treats the result as a first-class **input** — it informs the decision, it never auto-gates (*Clarity Over Gates*).
 
+## Journey stage is a required input
+
+The consult mis-prescribes without the customer's **journey stage** — it silently assumes a cold prospect. A *cold prospect* on a marketing surface wants feeling and proof; a *committed power-user mid-app* on a settings surface wants directness and the outcome, and reads emotional copy as *noise*. Same deliverable, opposite register. So always pass the stage (e.g. `context: "existing customer, post-onboarding, in-app handoff — not a cold prospect"`); on an **empty / undefined journey**, refuse-to-assume and surface it rather than defaulting (per *Generative Gap Resolution* → `conventions/generative-gap-resolution.md`). Corollary for any craft or marketing skill that consumes this signal: **match register to stage** — resonance leads for cold, concrete outcome leads for committed. (Observed live: the same FreedomOS page scored 4/10 read as a landing page, 7/10 once the consult knew it was an in-app handoff — and the lush copy that *won* at "cold" became the thing the committed user called noise.)
+
 ## Wire your own (one-time, per operator / per machine)
 
 1. **Stand up or get access to an ICP scorer** that speaks the `challenge_as_customer` MCP contract over Streamable HTTP. FreedomOS ships one; any backend honoring the contract works.
