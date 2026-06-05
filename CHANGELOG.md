@@ -2,6 +2,17 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v26 — 2026-06-04
+
+**A fourth 📐 Heuristic in the "don't hand the operator agent-work" family — *Own the flow when driving an external approval* — the external-cockpit face of *Resolve, don't float*.** When the agent drives an external system and an action surfaces an approval the operator must click in *that* system's UI, the agent keeps control of the flow instead of stalling on a hand-back.
+
+**What v26 adds**:
+- **New 📐 Heuristic `Own the flow when driving an external approval`** (`FIRST_PRINCIPLES.md`, sited right after *Don't float settled process*). Two faces of one move: **(1) guide the click** — tell the operator exactly what the card is, whether to approve, what will happen, and *how to interact with the external UI vs. the chat*; **(2) poll, then fire** — watch the approval state read-only and auto-continue the instant it flips, rather than handing over a *"tell me when you've clicked"* and stalling. Plus **verify the effect, not the card** — an approval can mark *completed* while the downstream effect lags or fails; re-check the real result and re-fire the tool if the grant exists but the effect didn't land (*Observe agents by telemetry, not self-report* applied to a card's status). Anchored to Principle #17 (the operator clicks, the agent reconciles) and the *Agent-Native Surface* position's *request → operator one-click approve* gate, of which this is the operator-side companion.
+
+**Catalyst**: 2026-06-04/05 — the FreedomOS Director (Javier) hire, driving `interview_for_hire` / `hire_agent_with_context` / `update_company` approval cards. The operator asked *"can you wait for approval and fire when you see it? — and if so that's a harness update,"* and named the broader principle: Claude-Code-as-cockpit should keep control as the flow moves forward and guide UI interaction explicitly. Same memory → Harness routing as v22/v24/v25 — a workflow discipline that helps every operator driving an external approval surface shouldn't live in one machine's notes.
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic, sited after *Don't float settled process*; no existing entry's meaning changed. It fires on any host where the agent drives an external system that surfaces operator-click approvals (an MCP with approval cards, an OAuth consent screen, a deploy gate). The `README.md` Status stamp was also synced — it had drifted to v23 while the doc moved through v24/v25.
+
 ## v25 — 2026-06-04
 
 **A third 📐 Heuristic in the "don't hand the operator agent-work" family — *Don't float settled process* — the execution-side twin of *Resolve, don't float* (surfacing side) and *Maintain tracked state* (completion side).** Promoted straight from an operator correction: the same defect surfaced again, now on the *shipping* mechanics.
