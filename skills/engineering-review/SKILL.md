@@ -141,6 +141,8 @@ List illegal state transitions and what prevents them.
 
 **Rule**: If a failure can happen silently, that is a critical defect.
 
+**Standing failure mode — unsurfaced agent decisions** (fires for any agent oversight / telemetry / provenance / approval feature): a system that records *surfaced* events is blind to *unsurfaced* ones — an agent that silently resolves a decision without escalating or emitting it is invisible, and **absence of a record ≠ the event didn't happen.** When reviewing such a feature: name the unsurfaced path explicitly; pair capture with a soft forcing function that pushes events to surface (e.g. an escalate-on-decision-shape instruction in the agent's prompt); and never let an audit/coverage view imply completeness it cannot have. Specializes the silent-failure rule above + the *Observe agents by telemetry, not self-report* heuristic (telemetry is the right source — but only for what reaches it). Origin: 2026-06-04 decision-provenance office-hours.
+
 ### 5. Boundary Analysis
 
 - What are the trust boundaries? (Frontend ↔ Edge Function ↔ Database ↔ External API)
