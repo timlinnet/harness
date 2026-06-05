@@ -2,6 +2,19 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v30 — 2026-06-05
+
+**A refinement to 🎯 *Trust Through Transparency + Shared Values* — *promote the value, protect the faith*.** Separates the *promotable* value layer (integrity / honesty / shared-values — a quiet operating filter) from the *protected* wisdom layer (faith: never monetized, never AI-authored).
+
+**What v30 adds**:
+- **Refined 🎯 Position `Trust Through Transparency + Shared Values`** (`FIRST_PRINCIPLES.md`): an integrity *floor* (promote, quietly) + a wisdom *ceiling* (protect). The floor — we build with and for people of integrity, and speak to family / time / freedom / stewardship — is a quiet Integrity-Gate filter, **not** a billboard: stated loudly it reads performative and backfires (a faith-driven ICP rated it 8/10 *and* said they'd tune out if it got louder). The ceiling — the deepest identifying value (here, faith) is never monetized and **never AI-authored**; speaking of it is wisdom not knowledge (#15), so the machine defers and the human authors. Neither is conflated with the loud refuse-empty-layer gate (*Generative Gap Resolution*).
+
+**Why a refinement, not a new entry**: it sharpens an existing Position's *Shared Values* half (visibility + the faith boundary), the way *transparent degradation* sharpened the Transparency half — same home, no new bet.
+
+**Catalyst**: 2026-06-05 — Tim, reasoning through whether faith belongs in a public business framework, separated the value (integrity / honesty / shared-values, promotable) from faith (personal, wisdom-layer, never AI-generated). Run through Harness + the live ICP (8/10, "keep it a quiet filter, not a billboard"); both converged on *promote the value, protect the faith, quietly*. Generalized — "the deepest identifying value" — so it fits any operator, faith as this one's instance.
+
+**For external adopters**: pull the latest clone (`git pull`). One existing Position gains a refinement; nothing else changes. It governs how loudly you state values (quietly) and what the AI must never author (the wisdom layer — for this operator, faith).
+
 ## v29 — 2026-06-05
 
 **A new 🎯 Strategic Position — *Generative Gap Resolution: refuse the empty layer, resolve by rung* — plus its convention.** When a driver hits a capability gap, the substrate's job is to recognize it loudly and *generate* the right-rung resolver on demand (note → skill → agent → MCP → primitive), not to pre-build every capability. Surfaced while making a FreedomOS surface stage-aware; the customer-journey gap exposed the general pattern.

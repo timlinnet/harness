@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v29 (2026-06-05). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
+> **Status**: v30 (2026-06-05). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 
@@ -165,6 +165,8 @@ Most products lean on one. We bet on both because the ICP cares about both — t
 
 **Refinement — transparent degradation (2026-06-03):** a third face of Transparency that shows up under failure, not success. Trust is deepened not by appearing unbreachable but by failing safe and *saying so* — when a control holds an action or pulls an agent's autonomy back, it does so visibly and narrates why. Generalizes the Integrity Gate's "surface what failed" from pre-ship output to runtime enforcement. (Mechanism: the FreedomOS Engine-side CISO's auto-demote + report — freedom-ai decision 0009.)
 <!-- Provenance: the "transparent degradation (2026-06-03)" refinement above was authored in an office-hours session and bundled by auto-sync into commit bb257fb (whose message, "principles: add 'Resolve, don't float' heuristic", describes only the other change in that commit). It pairs with freedom-ai decision 0009 (Engine-side CISO v1) and security-architecture v2.1 Layer 5. -->
+
+**Refinement — promote the value, protect the faith (2026-06-05):** the Shared Values bet has an integrity *floor* and a wisdom *ceiling*. **Floor (promote, quietly):** we build with and for people of *integrity and honesty*, and we speak to what our people live by — family, time, freedom, stewardship. A quiet operating *filter* (the Integrity Gate's values-check), never a billboard — stated loudly it reads performative and backfires (live: a faith-driven ICP rated the commitment 8/10 *and* said they'd tune out if it got louder). **Ceiling (protect):** the deepest identifying value — for this operator, faith — is never monetized and **never AI-authored**; knowing how to *speak* of it is wisdom, not knowledge (#15), so the machine recognizes it, defers, and leaves the authoring to the human. Two mechanisms, never conflated with the loud refuse-empty-layer gate (which fires only on missing context — *Generative Gap Resolution*).
 
 *Could be wrong if* users prefer results over reasoning (trust = outcomes); or values-signaling backfires in mixed audiences; or trust commoditizes around brand instead.
 
