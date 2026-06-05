@@ -14,6 +14,31 @@ The fix is structural, not a reminder (*Guarantee by construction, not by vigila
 
 **Adopter funnel.** The gate lives in the substrate, so it fires for a Harness adopter who is **not** a customer of any context-holding product. For them, the noise *is* the value reveal: it shows exactly where a product like FreedomOS earns its place — the thing that holds and resolves that context so the gap stops recurring. The substrate enforces the discipline for everyone; the product makes resolving it effortless.
 
+#### Three states — and *proposal-from-evidence ≠ authorship* (refinement 2026-06-05)
+
+A foundational layer is not binary. It has **three** states:
+
+| State | Meaning | Resolver |
+|---|---|---|
+| `done` | set + meaningful | — |
+| `empty` | no signal anywhere — genuinely blank | **author from blank** (the guided next-action ladder) |
+| `unsynthesized` | exists in the driver's world (their site, revenue, words, connected docs) but was never *pulled together* | **synthesize a grounded draft → human ratifies/edits** |
+
+The trap the third state fixes: an established driver hits a blank field for something they *do* have (in their head, in their artifacts), and either (a) feels re-interrogated and bounces, or (b) types a hollow placeholder (`"we help people"`) that clears a naive non-null check and poisons everything downstream (the wisdom-gate's `WisdomLayerHollow` failure). **Both naive fixes — push the form, or accept the self-declaration — land in a named hole.**
+
+The resolver for `unsynthesized` is **harvest → reflect a draft → sharpen by disagreement**:
+1. **Harvest before asking** — read the signal the driver already produced (their site, their top customers by revenue, connected docs). Arrive already understanding the business; the driver feels *seen*, not interrogated.
+2. **Reflect a grounded draft** — present each tenet as a strawman *with its evidence shown beside it* (*Trust Through Transparency*: distinguish data from interpretation, so ratification is informed, not a rubber-stamp).
+3. **Sharpen by disagreement** — corrections are the high-signal, low-effort input. **Recognition over recall**: judgment on a draft beats authorship from a void.
+
+**The authorship boundary (the knife-edge).** Synthesizing a draft does **not** breach *"agents don't author the wisdom layer"* (#15 / *User = Director*) under two conditions, both required:
+- **Grounded, not invented** — the draft is synthesized from the driver's *own* signal. The agent is a mirror, not an author. (Inventing numbers from nothing is the forbidden act — the Javier failure.)
+- **Ratified, not committed** — nothing enters the layer until the human confirms or edits. `authored_by` stays the human.
+
+The line: *an agent may propose a grounded strawman; the human authors by ratifying.* This is the structural defeat of the hollow-layer failure — an evidence-grounded, human-edited tenet **cannot** be the placeholder a `length > 10` check only hopes to catch (*Guarantee by construction, not by vigilance*). And because the synthesis routinely surfaces a gap the driver didn't know they had (*"your site sells segment A, but 70% of revenue is segment B"*), **the friction-reducer and the day-one value delivery are the same move** — onboarding flips from a tax into a payoff.
+
+**It scales with available signal, it isn't two discrete modes.** Rich signal (established owner, site + financials) → confident draft, mostly confirmation. Thin signal (clean slate, one landing page or a sentence in chat) → tentative draft, more co-creation. No signal at all → the degenerate case → fall back to authoring-from-blank. Signal-availability is derived live (#12), so the surface picks the path itself.
+
 ### 2. Resolve by the cheapest rung; graduate up as the need recurs or scales
 
 There is no fixed line between "note it" and "build a primitive" — there is a **ladder**. Climb only as far as the need justifies (Patience over code, #7 — complexity must earn its place). The disambiguating question is *what kind of gap is it?*
@@ -50,6 +75,8 @@ The instance that surfaced this convention, sequenced down the ladder:
 ## FreedomOS runtime implementation (downstream, through the chain)
 
 The substrate is this convention. The product-side implementation — generalizing the wisdom-gate to all foundational layers, and building the Chief-of-Staff resolver-router — touches the agent pipeline and a trust surface, so it goes through the full chain (office-hours → ceo-plan-review → engineering-review → /cso → build), tracked as its own loop. Not autonomous.
+
+The `unsynthesized`-state resolver (synthesize-then-ratify) has its own FreedomOS instance — **extraction-by-synthesis onboarding**, which composes over the loud-setup-state surface to turn empty tenets into evidence-grounded drafts the operator confirms. Same chain, tracked as its own design (`.agent/design-docs/2026-06-05-extraction-by-synthesis-onboarding.md`).
 
 ---
 

@@ -2,6 +2,20 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v32 — 2026-06-05
+
+**A refinement to 🎯 *Generative Gap Resolution* — *proposal-from-evidence ≠ authorship*.** A foundational layer has *three* states, not two: between `done` and `empty` sits **`unsynthesized`** — it exists in the driver's world (their site, revenue, words, connected docs) but was never pulled together. The resolver differs by state, and an agent may draft the unsynthesized layer without breaching *"agents don't author the wisdom layer."*
+
+**What v32 adds**:
+- **Refined 🎯 Position `Generative Gap Resolution`** (`FIRST_PRINCIPLES.md`): the three-state model + the **synthesize-then-ratify** resolver for the `unsynthesized` state (harvest the driver's own signal → reflect a grounded draft → sharpen by their corrections; *recognition over recall*). The authorship knife-edge: drafting does **not** breach #15 / *User = Director* when the draft is **grounded in the driver's own signal** (extraction, not invention) **and** commit requires **human ratification** (`authored_by` stays the human) — *an agent proposes a grounded strawman; the human authors by ratifying*. It defeats the hollow-layer failure (`"we help people"`) **by construction**, and the synthesis surfaces a gap the driver didn't know they had (stated ICP vs who actually pays), so the friction-reducer and the day-one value are the *same* move.
+- **Refined `conventions/generative-gap-resolution.md`** — the three-state table, the harvest→reflect→sharpen mechanics, the two-condition authorship boundary, the *show-the-evidence* anti-rubber-stamp, and the "scales with available signal, not two discrete modes" framing. Plus a pointer to the FreedomOS instance (extraction-by-synthesis onboarding, going through the chain).
+
+**Why a refinement, not a new entry**: it sharpens an existing Position's half (1) — *how* you resolve a foundational layer that *looks* empty but isn't — the way v30 sharpened Trust and v28 added a corollary to #8. Same home, no new bet.
+
+**Catalyst**: 2026-06-05 — answering an adoption question (existing business vs clean slate), the sharp consequence surfaced: the highest-friction onboarding isn't the clean slate but the **established owner who's never articulated their vision but believes they have** — blank fields re-interrogate them (they bounce) or invite a hollow self-declaration (poisons downstream). The fix — synthesize from what they've already produced, let them ratify — generalizes past FreedomOS to any driver hitting an *unsynthesized* (vs empty) foundational layer. Same memory → Harness routing as v22/v24–v31.
+
+**For external adopters**: pull the latest clone (`git pull`). One existing Position gains a refinement; nothing else changes meaning. It fires whenever a driver hits a foundational layer that *looks* empty but is really unsynthesized — and tells you to draft-then-ratify rather than push a blank form or trust a hollow self-declaration.
+
 ## v31 — 2026-06-05
 
 **A new portable skill — `skills/interface-craft/` — the craft authority.** Promotes Josh Puckett's vision-based Design Critique into the substrate and adds the Harness seam: system-coherence first, dynamic brand, stage-matched register, the 10/10 model, and the promote-the-value / protect-the-faith guardrail.
