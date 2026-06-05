@@ -4,7 +4,7 @@
 
 > **Audiences**: Agents read 🤖 sections at runtime. Builders (the human team and any agent-CEO operators) read everything. Sections marked 🏗️ are builder-only context.
 
-> **Status**: v27 (2026-06-04). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
+> **Status**: v28 (2026-06-04). The framework is itself a feedback machine — refinements expected as the world signals. See `CHANGELOG.md` for evolution history.
 
 ---
 
@@ -86,6 +86,8 @@ Cognitive load, maintenance cost, and surface area scale super-linearly with sys
 
 ### 8. Feedback loops compound; one-shot improvements don't 🤖
 A system with feedback that improves itself outperforms an equivalent system without feedback within finite cycles. Compound interest in code. **Therefore: build feedback machines, not just features.** Approval/denial cycles. Skill evolution. Score updates. Notes that compress over time. The whole system gets smarter through cycles, not rewrites. Kaizen is the human-scale version of this same principle.
+
+**Cross-pool corollary**: compounding need not be a system improving *itself* — a disciplined core can throw off a surplus that funds a *separate* compounding pool (insurance float → an allocator, à la Berkshire; a cash-cow product → new bets, à la AWS funding Amazon). Two pools, one principle. The core's *discipline* is the precondition: leverage on a mediocre core compounds the losses, so the survivors are the disciplined, not the merely levered. **AI-age mutation**: the redeploy loop historically needed a singular allocator (a Buffett); an operator + agents can now run it — the *agent-run compounding allocator*, a contingent bet best held as a Strategic Position where it applies, not as bedrock here.
 
 ### 9. Token economics favor planning 🤖
 Correcting a wrong path costs more tokens than planning a right one (re-prompt + context replay vs. cheap analysis up front). **Therefore: plan before executing** for non-trivial work — for agents and humans alike. The quality of output is proportional to the quality of the plan. Strategy first, action second.

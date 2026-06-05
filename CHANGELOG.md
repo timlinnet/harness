@@ -2,6 +2,19 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v28 — 2026-06-04
+
+**🪨 Principle #8 (*Feedback loops compound*) gains a *Cross-pool corollary* — compounding can run across *two* pools (a disciplined core funding a separate allocator), not only a system improving itself.** Surfaced from a Bill Ackman / Buffett-GEICO insurance-float discussion. The timeless-finance core stays *out* of Harness (not an AI-age principle); only the part that re-derives from #8, plus its one AI-native mutation, earns a note.
+
+**What v28 adds**:
+- **Refined 🪨 Principle #8** (`FIRST_PRINCIPLES.md`): a *Cross-pool corollary* — a disciplined core engine can throw off a surplus that funds a *separate* compounding pool (insurance float → allocator, à la Berkshire; a cash-cow → new bets, à la AWS funding Amazon). Names the precondition the float archetype hides: the *discipline* of the core, not the leverage — leverage on a mediocre core compounds the losses, so survivors are the disciplined, not the merely levered (the survivorship hole in "just leverage a good product"). Flags the **AI-age mutation**: the redeploy loop historically needed a singular allocator (a Buffett); an operator + agents can now run it (the *agent-run compounding allocator*), explicitly marked a contingent **bet**, not bedrock.
+
+**Why a corollary, not a new Principle**: the float/leverage model is *timeless finance* — true in 1955, not specific to the AI age — so admitting it whole would dilute Harness's scope (next would come "margin of safety," "diversify"…). Only what re-derives from an existing principle (#8) plus the AI-native twist belongs in the canon; the full operator thesis lives downstream as a FreedomOS Strategic Posture.
+
+**Catalyst**: 2026-06-04 — Tim, after a Bill Ackman podcast on emulating Buffett, asked whether "find a product you do well and leverage it faithfully" fits Harness. Pressure-testing found two of its three claims already in canon (#8; *Marketing is part of the product*), and the third (float as capital structure) out of scope as a principle — but the cross-pool shape and the agent-run-allocator mutation were worth keeping. Same memory → Harness routing as v22/v24/v25/v26/v27.
+
+**For external adopters**: pull the latest clone (`git pull`). No new entry; one existing Principle (#8) gains a corollary — its core meaning is unchanged, extended to cross-pool compounding.
+
 ## v27 — 2026-06-04
 
 **A new 📐 Heuristic — *Guarantee by construction, not by vigilance* — generalizing the agent-security "don't lean on the reviewer remembering" move into a cross-domain design question.** Surfaced in the FreedomOS CSO secure-architecture work, but promoted only after the operator pressed the right gate: *does it generalize beyond security?* It does.
