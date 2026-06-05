@@ -2,6 +2,21 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v27 — 2026-06-04
+
+**A new 📐 Heuristic — *Guarantee by construction, not by vigilance* — generalizing the agent-security "don't lean on the reviewer remembering" move into a cross-domain design question.** Surfaced in the FreedomOS CSO secure-architecture work, but promoted only after the operator pressed the right gate: *does it generalize beyond security?* It does.
+
+**What v27 adds**:
+- **New 📐 Heuristic `Guarantee by construction, not by vigilance`** (`FIRST_PRINCIPLES.md`, sited at the end of the Heuristics list, before the consolidation note): when a guarantee rests on someone *remembering* — a review step, a test, a "check for X" — ask whether the **structure** can carry it instead, making the failure class *unreachable* rather than *detectable*. Question 2 (*delete it*) applied to failure modes. Framed as a **question, not a mandate**: situationally false when the structural cost outweighs the stakes, and premature by-construction ossifies structure before the failure class is understood.
+
+**The generalization gate (the operator's challenge)**: "if it's already covered in security, does it have value outside security? Only then should we adopt it." The proof it generalizes is already in the canon — the *Realtime when agents have CRUD* tactic is this exact move in a non-security domain (tie the UI subscription to the write capability so stale data can't render), just unnamed. Plus data-integrity (a `role='executive'`-mid-onboarding state made unrepresentable) and loop-state staleness (structural derivation vs. `/audit-loops` vigilance). Its unique value over the scattered instances: it fires on the *shape* — a vigilance dependency — *before* the domain is classified, which is exactly when the domain-specific rules stay silent and the miss slips through.
+
+**Why a Heuristic, not a Principle**: a derivable, cost-dialed design directive, not irreducible bedrock — its underlying truth (structural guarantees don't regress; vigilance ones do) follows from #7 (complexity compounds) + #17 (finite attention) over #8's cycles. First Principles carry no cost-benefit dial; this one does. Deciding test: if it were false, nothing else in Harness re-derives.
+
+**Catalyst**: 2026-06-04 — Tim noticed the "safe by construction" / "completed by construction" framing recurring across the security work and a separate conversation, and asked to run it against Harness. The FreedomOS `CLAUDE.md` CSO paragraph was slimmed to *reference* this heuristic instead of re-stating the "don't lean on memory" motivation, so it lives in one canonical place. Same memory → Harness routing as v22/v24/v25/v26: a generalizable design discipline shouldn't rot in one project's notes.
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic, sited at the end of the Heuristics list; no existing entry's meaning changed. It fires wherever a guarantee could rest on vigilance instead of structure — i.e. nearly everywhere.
+
 ## v26 — 2026-06-04
 
 **A fourth 📐 Heuristic in the "don't hand the operator agent-work" family — *Own the flow when driving an external approval* — the external-cockpit face of *Resolve, don't float*.** When the agent drives an external system and an action surfaces an approval the operator must click in *that* system's UI, the agent keeps control of the flow instead of stalling on a hand-back.
