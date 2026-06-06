@@ -2,6 +2,19 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v34 — 2026-06-06
+
+**A new 📐 Heuristic — *Self-explaining surface — clear to humans and agents*.** A feature isn't done until it explains itself at the point of use to *both* its audiences — the human (its UI / ratify surface) and the agent (its MCP tool description). The tool description *is* the agent's UI; an opaque one is an unusable feature for the agent exactly as an unlabeled button is for the human. Two gates, one bar.
+
+**What v34 adds**:
+- **New 📐 Heuristic `Self-explaining surface — clear to humans and agents`** (`FIRST_PRINCIPLES.md`): the **legibility half of *Agent-Native Surface*** (the position makes the agent a real customer; this lets it read the menu) and the **feature-surface application of *Clarity Over Gates*** (operator + agent are first-class users of the same substrate). Deploy **by construction, not memory** (*Guarantee by construction…*): (1) a **generative hook** — any agent deriving a description writes for a cold operator *and* a cold agent (purpose + when-to-use + for-whom), with an explainer in the ratify UI; (2) a **structural gate** — the tool-registry conformance check fails the build on a registered tool with no what/when/for-whom description; (3) a **semantic check** — whether it actually reads clearly routes to the design pass, ICP as the test. The honest seam: construction guarantees *presence + structure*; clarity stays review-assisted (same shape as the `/cso` gate — it guarantees a re-review *happened*, not that it was *correct*).
+
+**Why a heuristic, not a Principle**: a derivable, cost-dialed directive (you wouldn't gate a throwaway internal tool), descending from *Clarity Over Gates* + *Agent-Native Surface* + #16; situationally false for single-audience surfaces.
+
+**Catalyst**: 2026-06-06 — the FreedomOS feature-deriver, where the requirement that the deriver explain *itself* ("this read your app's code and proposes features — you confirm the real ones") generalized to *every* feature's two surfaces; a missing tool description had already caused a real grounding bug (`get_product_context`). Same memory → Harness routing as v22 / v24–v33.
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic; nothing else changes meaning. It fires on any work that ships a capability with a human surface *and* an agent surface — most valuable for MCP / tool work and autonomous agents, where an opaque tool description silently degrades every downstream run.
+
 ## v33 — 2026-06-05
 
 **A new 📐 Heuristic — *Validate in context, not in isolation*** (with its design corollary, *evolve the surface, don't parallel it*). A change verified alone passed a test production never runs; isolation hides interaction effects — competition, duplication, regression, the conflict that only exists once two things share a surface. The corollary: when the ask is "improve the existing thing," default to *modifying* that surface, not standing a parallel one beside it.
