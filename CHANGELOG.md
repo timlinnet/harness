@@ -2,6 +2,19 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v33 — 2026-06-05
+
+**A new 📐 Heuristic — *Validate in context, not in isolation*** (with its design corollary, *evolve the surface, don't parallel it*). A change verified alone passed a test production never runs; isolation hides interaction effects — competition, duplication, regression, the conflict that only exists once two things share a surface. The corollary: when the ask is "improve the existing thing," default to *modifying* that surface, not standing a parallel one beside it.
+
+**What v33 adds**:
+- **New 📐 Heuristic `Validate in context, not in isolation`** (`FIRST_PRINCIPLES.md`): the unit of validation is the change *in its real neighborhood*; render / test the new thing stacked with its live neighbors, and if you must isolate it, flag the integration check as *deferred-to-live* and treat live verification on the real surface as the gate that catches this class. Plus the **evolve-vs-parallel** design default — make the choice explicit at design-review; "distinct new surface" must *win*, not slip in as the lazy default. Anchored to #7, the *substrate-not-container* reading of #3, and *Guarantee by construction*.
+
+**Why a heuristic, not a Principle**: it's a cost-dialed design / verification directive derivable from #7 + #17 (a redundant surface compounds; isolated review skips the interaction test), carrying a situationally-false dial (genuinely-separate jobs shouldn't be force-merged) — not irreducible bedrock.
+
+**Catalyst**: 2026-06-05 — a FreedomOS dashboard "Portfolio" card was design-reviewed as an *isolated* mock (the existing Solomon Ring shown only as a faded ghost beside it), which hid that the two would read as two competing "portfolio" surfaces; the operator had expected the work to *evolve* the existing card, not add a parallel one. The competition surfaced only on the live dashboard — costing a shipped card plus a full office-hours reconciliation to undo. Operator: *"I thought you were modifying it."* Same memory → Harness routing as v22 / v24–v32.
+
+**For external adopters**: pull the latest clone (`git pull`). One new heuristic; nothing else changes meaning. It fires on any work that adds a new element beside existing ones — UI surfaces, APIs, agents, docs — and is most valuable where the new thing shares a surface with what's already there.
+
 ## v32 — 2026-06-05
 
 **A refinement to 🎯 *Generative Gap Resolution* — *proposal-from-evidence ≠ authorship*.** A foundational layer has *three* states, not two: between `done` and `empty` sits **`unsynthesized`** — it exists in the driver's world (their site, revenue, words, connected docs) but was never pulled together. The resolver differs by state, and an agent may draft the unsynthesized layer without breaching *"agents don't author the wisdom layer."*
