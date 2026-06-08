@@ -2,6 +2,21 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v35 — 2026-06-06
+
+**Two new entries + a meta-rule, from the FreedomOS Adoption Pipeline** — an operator-driven build that ran an audit's findings through a gated, headless multi-agent pipeline and surfaced three generalizable shapes.
+
+**What v35 adds**:
+- **New 📐 Heuristic `Proof of work is a primitive, not a gate`** (`FIRST_PRINCIPLES.md`): force long-running agents to externalize their reasoning into a durable, auditable artifact — visibility is the anti-hallucination forcing function *and* the artifact is the agent's memory (resume, cite-instead-of-re-derive, learn, earn autonomy). Make the writing structural (a schema the agent must fill — *Guarantee by construction*) and surface it (*Render-rich for review*). One shared record *shape* for coding + business agents — converge the shape before the storage. Descends from #8 + *Observe by telemetry* + *Guarantee by construction*.
+- **New 🎯 Strategic Position `Self-regulating agentic execution — budget-aware, objective-anchored, compounding`**: an agent on a long-running objective plans within an explicit budget, monitors spend against plan, adapts to budget + company context, and compounds competence with use. The human sets budget + objective + approves at the seams (#15); the agent self-regulates within the envelope (*Clarity Over Gates*). One bet, many instances — the system improving itself **and** an agent running a marketing/SEO/ad campaign are the same shape. Generalizes the *agent-run compounding allocator* (#8) from capital to any bounded resource; endgame is a user-facing %-allocation dial (fixes / R&D / marketing / payouts).
+- **New epistemic rule `Self-eval before admission`** (in *How we hold this framework*): nothing enters the framework without first being run against the existing framework for conflicts (contradicts a Principle? duplicates/tensions a Position/Heuristic? dresses a bet as bedrock?) — named + resolved before commit. *Guarantee by construction* applied to the framework itself; the conflict-check is a structural admission gate, not a remembered step.
+
+**Self-eval of this commit** (the new rule, applied to itself): no hard conflicts. Seams named in-canon — the position's *budget-as-the-gate* is reconciled with *Guarantee by construction* (the budget ceiling is the hard gate; optimization within it is agent judgment) and pairs with *Agent-Native Surface* (high-consequence actions still need grain-not-budget gating); the heuristic reinforces #8 + *Observe by telemetry* rather than competing with them.
+
+**Catalyst**: 2026-06-06 — the FreedomOS Adoption Pipeline session. The operator recognized the proof-of-work ledger as an *empowering memory primitive*, generalized the self-improvement loop to *any* budget-bounded agentic objective (marketing as the worked example), and asked for the admission self-eval to be codified rather than repeatedly requested. Same memory → Harness routing as v22 / v24–v34.
+
+**For external adopters**: pull the latest (`git pull`). Two new entries + one epistemic rule; nothing else changes meaning. The heuristic fires on any long-running/autonomous agent work; the position on any agent managing a bounded resource; the admission rule on every future change to this framework.
+
 ## v34 — 2026-06-06
 
 **A new 📐 Heuristic — *Self-explaining surface — clear to humans and agents*.** A feature isn't done until it explains itself at the point of use to *both* its audiences — the human (its UI / ratify surface) and the agent (its MCP tool description). The tool description *is* the agent's UI; an opaque one is an unusable feature for the agent exactly as an unlabeled button is for the human. Two gates, one bar.
