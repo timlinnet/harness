@@ -2,6 +2,21 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v36 — 2026-06-08
+
+**A sharpening of 📐 *Guarantee by construction, not by vigilance* — *cover every input to the guarded state, not just the salient one*.** Choosing construction over vigilance isn't the end of the job: a structural guarantee can still fail *partially* when it watches only the obvious source. You wire up the input in front of you, feel covered, but the guarded state has *other* inputs you never enumerated — so the by-construction guarantee silently has holes.
+
+**What v36 adds**:
+- **Sharpened 📐 Heuristic `Guarantee by construction, not by vigilance`** (`FIRST_PRINCIPLES.md`): a new sub-clause — the structure must cover *every* input to the guarded state, not just the salient one. The trap is enumerating the write paths to the source you're looking at and feeling covered, while the guarded state *derives* from other inputs (other tables, writers, or events) the structure never watches. Recurs across DB triggers vs. derived state, cache invalidation (invalidate on *all* writers, not the obvious one), event-driven reactions, and materialized views. The fix-test: *"what are ALL the inputs to the state I'm reacting to?"* — not *"where does the one source I'm looking at change?"* The tell: you covered one write path to a derived state that has other inputs.
+
+**Why a sharpening, not a new entry**: it names a failure mode *inside* by-construction — an incomplete structural guarantee — rather than a new move; same heuristic, same anchors (#5 / #7 / #17), same layer. The prior text chose construction over vigilance but said nothing about construction's own *completeness*; this closes that gap. (Same in-place-sharpening shape as v30 / v32 refining an existing entry.)
+
+**Self-eval of this commit** (the admission gate, applied to itself): no conflict. It does not duplicate the heuristic — the heuristic's own tell ("the control is 'the reviewer remembers'") *passes* an incomplete-but-structural guarantee (a trigger that reliably fires, but over a partial input set), so the gap was real and uncovered. It strengthens #5 / #7 / #17, contradicts nothing, and stays a Heuristic (cost-dialed, derivable), not bedrock.
+
+**Catalyst**: 2026-06-08 — a "by construction" auto-resolver shipped with a hole. A DB trigger watched the single salient table an action wrote, but the state it was clearing was *derived* from three sources, so an input that arrived through an unwatched source never cleared. The review had counted the write paths to the one source and felt covered — the exact trap the sub-clause now names. Same memory → Harness routing as v22 / v24–v35.
+
+**For external adopters**: pull the latest (`git pull`). One existing heuristic gains a sub-clause; nothing else changes meaning. It fires whenever you make a guarantee structural over a *derived* state — triggers, caches, event reactions, materialized views — and tells you to enumerate *all* of that state's inputs, not just the one in front of you.
+
 ## v35 — 2026-06-06
 
 **Two new entries + a meta-rule, from the FreedomOS Adoption Pipeline** — an operator-driven build that ran an audit's findings through a gated, headless multi-agent pipeline and surfaced three generalizable shapes.
