@@ -84,7 +84,7 @@ The `harness` skill auto-fires on decision language ("should we build X", "let's
 
 ## Status
 
-v26 (2026-06-04). The framework is itself a feedback machine; expect refinements as the world gives signal. Each Strategic Position carries a *"could be wrong if..."* condition and a map of alternative bets not taken.
+v37 (2026-06-10). The framework is itself a feedback machine; expect refinements as the world gives signal. Each Strategic Position carries a *"could be wrong if..."* condition and a map of alternative bets not taken.
 
 ## Author
 
