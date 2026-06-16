@@ -2,6 +2,15 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v39 — 2026-06-16
+
+**📐 New Heuristic `A predictive scorer never authors`.** A scorer/judge/verifier/consult returns a *verdict* (score, errors, opinion) — it must never produce the user-facing artifact it judges. When a scoring verdict drives a separate model call that *replaces* the work, the scorer becomes an ungrounded author: it optimizes for its rubric, not the task, and fabricates to satisfy it. Correction belongs to the agent's own loop (re-answer with full context, or stand) or to an advisory surfaced to the operator.
+
+**What v39 adds**:
+- **New 📐 Heuristic `A predictive scorer never authors`** (`FIRST_PRINCIPLES.md`): the *authoring* corollary of `Context-Grounded Consumer Simulation` (score informs, never gates — and a fortiori never authors) and `Clarity Over Gates`. Deploy by construction (`Guarantee by construction`): scorer modules return a parsed verdict object, never the model's prose, and a conformance gate fails the build if a scoring/judge/verify surface returns model-authored content. The boundary is *who authors*, not *whether re-generation happens* — an agent revising its **own** output in its **own** loop is fine; a learning loop rewriting a **skill/playbook** from scores is a different category (#8, improves the tool); a **user-invoked** transform is author-by-request.
+
+**Why a heuristic, not a Principle**: a derivable, cost-dialed directive descending from two Positions + `Guarantee by construction`, not irreducible bedrock. Origin: 2026-06-15/16 — the same scorer-rewrites-content defect surfaced three times in one platform (an ungrounded "content improvement specialist" rewrote an internal brand audit into a fabricated USP <797> pharmacy self-audit; a chat deliverable reviser fabricated an SOP report; a fact-check verifier rewrote replies), each a separate copy — so the fix was to name the rule and gate it (`check-scorer-no-author.sh` is the originating project's reference implementation, kept project-local per the route-learnings boundary).
+
 ## v38 — 2026-06-15
 
 **🎯 Position `Agents as first-class citizens` generalized → `Four-Door Parity — first-class on every surface`, + a new 📐 Heuristic `Open every door, or ratify the wall`.** The old position bet on *UI ↔ agent* interchangeability (two surfaces). The world signalled more: a product engine is reachable through *several* surfaces — conversational (chat), autonomous (a scheduled agent), programmatic (MCP/external), and direct (UI) — and a feature that lands on one or two **silently locks the other drivers out**. The position now covers N surfaces; the heuristic makes the completeness *structural*.
