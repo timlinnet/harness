@@ -2,6 +2,15 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v40 — 2026-06-16
+
+**📐 `built` is not `done` — the `verified` axis on *Four-Door Parity`.** A door's resolved state (built / wall / subsumed) is a claim about *code*: reachable through the one shared owner, gate-checkable from the manifest. It does **not** prove the capability works. Orthogonal to it is a **`verified`** axis — a recorded live-check that the capability is *reachable on the surface a real driver actually uses* AND *functions against real data* (not test fixtures). Green-by-construction verifies code against its own assumptions; only a live-check catches a capability that compiles, passes its tests, and deploys clean — yet still doesn't work (landed on the wrong surface, or dormant against real data). Score `built` and `verified` separately; built-but-unverified is visible debt; a door is *done* only when verified.
+
+**What v40 adds**:
+- **`verified` axis added to the `Four-Door Parity` Position** (`FIRST_PRINCIPLES.md`): the surface-completeness score now discloses code-reachability (`built`) *and* live-reality (`verified`) as two axes. This is *Guarantee by construction, not by vigilance* turned on **verification itself** — "did you live-check it?" becomes an un-skippable record (a built capability with no verification status is malformed), not a thing a reviewer must remember.
+
+**Why an axis, not a new state**: `built`/`verified` are orthogonal — a door can be built-unverified (the common debt), built-verified (done), or verified-negative (live-checked, found broken → stays unverified). Folding them into one ladder would hide the debt. Origin: 2026-06-16 — the originating project marked a capability "built / 4-of-4 / 100%" on code-compiles + deployed evidence; live-verify (operator-prompted) found the affordance had landed on a dead UI component for a capability that returns "no agent" on every real row. Gate green, tests green, deploy verified — all true, none of them looked at the live surface or real data. The reference gate (`check-surface-coverage.sh` reporting `built X/N · verified Y/M` + a live-verify-debt list) is kept project-local per the route-learnings boundary.
+
 ## v39 — 2026-06-16
 
 **📐 New Heuristic `A predictive scorer never authors`.** A scorer/judge/verifier/consult returns a *verdict* (score, errors, opinion) — it must never produce the user-facing artifact it judges. When a scoring verdict drives a separate model call that *replaces* the work, the scorer becomes an ungrounded author: it optimizes for its rubric, not the task, and fabricates to satisfy it. Correction belongs to the agent's own loop (re-answer with full context, or stand) or to an advisory surfaced to the operator.
