@@ -2,6 +2,12 @@
 
 The framework is itself a feedback machine (Principle #8). This log captures major structural shifts and additions.
 
+## v42 — 2026-06-18
+
+**📐 New Heuristic `Authorize the recipient, not just the actor`.** A write that routes a record to *another* principal must be authorized on **both** ends (the actor's right to write × the recipient's eligibility to receive) — an authorization policy that fences only the actor's tenant is a cross-tenant injection channel the moment it's composed with an un-fenced read/notify path keyed on the recipient. Verify against the *whole* policy set (write × read × trigger × notification), and make the adversarial *refutation* pass **structural**, not a lens a careful reviewer must remember.
+
+Per *self-eval before admission*: checked against the framework — contradicts no Principle; it **sharpens** (does not duplicate) *Validate in context, not in isolation* by naming that heuristic's highest-stakes, attacker-context instance, and extends *Guarantee by construction, not by vigilance* onto authorization *review method*. Lands as a **standalone** Heuristic (not a fold into its parent) because it carries an actionable composition rule + a review-method rule neither parent states. Crystallized from a live case: a thorough, live-verified single-pass RLS review concluded "no cross-tenant surface," and the mandatory `/cso` adversarial pass then constructed the exact cross-tenant card+push injection it had missed.
+
 ## v41 — 2026-06-18
 
 **🎯 Position `Self-regulating agentic execution` promoted + re-titled → `The Freedom Engine — profit-per-attention, constraint-routed, self-regulating`, + two new 📐 Heuristics + a `Guarantee by construction` extension.** The prior position already owned the envelope / compound / %-dial machinery; an operator design session crystallized its missing *objective function* at the product altitude: maximize **profit**, with the operator's **attention** as the binding scarce constraint and **compute** as the substitution lever (money → compute → profit → money). Freedom is *not* the maximand — it is the operator's downstream result, taught by their own content, kept outside the optimizer in the wisdom layer (#15). Per *evolve, don't parallel* + the *self-eval before admission* gate, the bet **fuses into the existing position** (one metabolism, not two) rather than landing as a second Position.
