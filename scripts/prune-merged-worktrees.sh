@@ -16,12 +16,16 @@
 #
 # A worktree is pruned only if BOTH hold:
 #   clean  — `git status --porcelain` is empty (no uncommitted / untracked work)
-#   merged — branch is an ancestor of origin/HEAD (regular / fast-forward merge)
-#            OR its name is in `gh pr list --state merged` (the only reliable
-#            squash-merge signal). gh is optional; if absent, ancestor-only —
-#            which under-prunes (safe), never over-prunes.
+#   merged — its branch name is in `gh pr list --state merged` — a CONFIRMED
+#            merged PR, the only signal that proves the branch's work shipped.
+#            We deliberately do NOT use `merge-base --is-ancestor`: a freshly
+#            created worktree points AT origin/HEAD with no commits yet, which is
+#            trivially an ancestor — so ancestry would prune a worktree another
+#            concurrent session is still setting up (observed: it removed a brand-
+#            new worktree mid-build). gh required; if absent, nothing is pruned.
 # NEVER touched: the primary checkout, .claude/worktrees/* (harness-managed),
-#   detached HEADs, dirty trees, unmerged branches.
+#   detached HEADs, dirty trees, unmerged branches, or any branch without a
+#   merged PR (covers fresh / in-flight / direct-push-to-main worktrees).
 #
 # Defensive: silent-exits on missing git / unreadable repos. bash 3.2 compatible.
 
@@ -37,9 +41,8 @@ prune_repo() {
   [ -d "$repo/.git" ] || return 0
 
   primary=$( (cd "$repo" && git rev-parse --show-toplevel) 2>/dev/null ) || return 0
-  base=$( (cd "$repo" && git symbolic-ref --quiet --short refs/remotes/origin/HEAD) 2>/dev/null || echo "origin/main" )
 
-  # Squash-merge signal: merged-PR head branches (one network call; optional).
+  # Merged-PR head branches — the ONLY prune signal (one network call).
   merged_set=""
   if command -v gh >/dev/null 2>&1; then
     merged_set=$( (cd "$repo" && gh pr list --state merged --limit 400 --json headRefName -q '.[].headRefName') 2>/dev/null || echo "" )
@@ -70,11 +73,12 @@ prune_repo() {
       kept_dirty=$((kept_dirty + 1)); path=""; continue
     fi
 
-    # merged gate (ancestor OR squash-merged PR head)
+    # merged gate — CONFIRMED merged PR only. NOT merge-base ancestry: a freshly
+    # created worktree's branch is at origin/HEAD with no commits, trivially an
+    # ancestor, and ancestry would prune it out from under a concurrent session
+    # still setting it up (observed). A merged PR proves the work shipped.
     is_merged=0
-    if git -C "$repo" merge-base --is-ancestor "$branch" "$base" 2>/dev/null; then
-      is_merged=1
-    elif [ -n "$merged_set" ] && printf '%s\n' "$merged_set" | grep -qxF "$branch"; then
+    if [ -n "$merged_set" ] && printf '%s\n' "$merged_set" | grep -qxF "$branch"; then
       is_merged=1
     fi
     if [ "$is_merged" = 0 ]; then kept_unmerged=$((kept_unmerged + 1)); path=""; continue; fi
